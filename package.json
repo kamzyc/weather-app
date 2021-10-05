@@ -1,0 +1,13 @@
+{
+   "name": "weather-app",
+   "version": "1.0.0",
+   "description": "Weather app with location detection and forcast for next days",
+   "main": "index.html",
+   "browserslist": "last 10 versions",
+   "scripts": {},
+   "keywords": [
+      "weather"
+   ],
+   "author": "Kamzyc",
+   "license": "ISC"
+}
