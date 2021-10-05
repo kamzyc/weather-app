@@ -4,7 +4,13 @@
    "description": "Weather app with location detection and forcast for next days",
    "main": "index.html",
    "browserslist": "last 10 versions",
-   "scripts": {},
+   "scripts": {
+      "watch-sass": "sass src/scss/main.scss src/css/style.css -w",
+      "devserver": "live-server --browser=firefox",
+      "dev-styles": "npm-run-all --parallel devserver watch-sass",
+      "start": "parcel index.html",
+      "build": "parcel build index.html --dist-dir ./dist"
+   },
    "keywords": [
       "weather"
    ],
