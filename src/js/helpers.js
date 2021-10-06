@@ -1,4 +1,4 @@
-export const checkFlag = (query) => {
+export const setFlag = (query) => {
    const regex = /^\d+$/g;
-   return regex.test(query) ? "zip" : "name";
+   return regex.test(query) ? "zip" : "q";
 };

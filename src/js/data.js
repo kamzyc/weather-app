@@ -6,41 +6,41 @@ one call : https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&e
 */
 
 import { API_URL, API_KEY } from "./config";
-import { checkFlag } from "./helpers";
+import { setFlag } from "./helpers";
 
-export const getWeatherFromLocation = async (query) => {
+export const getWeatherFromLocation = async (query, units) => {
    try {
       const response = await fetch(
-         `${API_URL}${checkFlag(query)}=${query}&appid=${API_KEY}`
+         `${API_URL}${setFlag(query)}=${query}&units=${units}&appid=${API_KEY}`
       );
       const data = await response.json();
 
       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
+      return data;
    } catch (error) {
-      console.error(error);
+      throw error;
    }
 };
 
-// export const getWeatherFromCityName = async (cityName) => {
-//    try {
-//       const response = await fetch(`${API_URL}q=${cityName}&appid=${API_KEY}`);
-//       const data = await response.json();
+export const getWeatherFromCoords = async ({ lat, lon, units }) => {
+   try {
+      const response =
+         await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=${units}&appid=${API_KEY}
+      `);
+      const data = await response.json();
 
-//       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
-//    } catch (error) {
-//       console.error(error);
-//    }
-// };
+      if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
+      return data;
+   } catch (error) {
+      throw error;
+   }
+};
 
-// export const getWeatherFromZipCode = async (zipCode) => {
-//    try {
-//       const response = await fetch(`${API_URL}zip=${zipCode}&appid=${API_KEY}`);
-//       const data = await response.json();
+export const setLocation = (location, newLocation) => {
+   const { lat, lon, name, unit } = newLocation;
+   location.lat = lat;
+   location.lon = lon;
+   location.name = name;
 
-//       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
-
-//       console.log(data);
-//    } catch (error) {
-//       console.error(error);
-//    }
-// };
+   if (unit) location.unit = unit;
+};

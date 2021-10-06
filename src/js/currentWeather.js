@@ -3,7 +3,7 @@ class CurrentWeather {
       this._name = "Current location";
       this._lat = null;
       this._lon = null;
-      this._unit = "metric";
+      this._units = "metric";
    }
 
    get name() {
@@ -34,12 +34,12 @@ class CurrentWeather {
       return this._unit;
    }
 
-   set unit(unit) {
-      this._unit = unit;
+   set units(units) {
+      this._units = units;
    }
 
    toogleUnit() {
-      this._unit = this._unit === "metric" ? "imperial" : "metric";
+      this._units = this._units === "metric" ? "imperial" : "metric";
    }
 }
 
