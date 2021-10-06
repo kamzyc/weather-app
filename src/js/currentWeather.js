@@ -1,10 +1,8 @@
 class CurrentWeather {
-   constructor() {
-      this._name = "Current location";
-      this._lat = null;
-      this._lon = null;
-      this._units = "metric";
-   }
+   _name = "Current location";
+   _lat = null;
+   _lon = null;
+   _units = "metric";
 
    get name() {
       return this._name;
@@ -30,17 +28,17 @@ class CurrentWeather {
       this._lon = lon;
    }
 
-   get unit() {
-      return this._unit;
+   get units() {
+      return this._units;
    }
 
    set units(units) {
       this._units = units;
    }
 
-   toogleUnit() {
+   toogleUnit = () => {
       this._units = this._units === "metric" ? "imperial" : "metric";
-   }
+   };
 }
 
 export default new CurrentWeather();
