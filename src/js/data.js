@@ -8,10 +8,12 @@ one call : https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&e
 import { API_URL, API_KEY } from "./config";
 import { setFlag } from "./helpers";
 
-export const getDataFromLocation = async (name, units) => {
+export const getDataFromLocation = async (searchName, units) => {
    try {
       const response = await fetch(
-         `${API_URL}${setFlag(name)}=${name}&units=${units}&appid=${API_KEY}`
+         `${API_URL}${setFlag(
+            searchName
+         )}=${searchName}&units=${units}&appid=${API_KEY}`
       );
       const data = await response.json();
 
