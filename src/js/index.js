@@ -1,33 +1,31 @@
 "use strict";
 
-import currentWeather from "./currentWeather";
-import { getWeatherFromLocation, getWeatherFromCoords } from "./data";
+import currentLocation from "./currentLocation";
+import { getDataFromLocation, getWeatherFromCoords, setLocation } from "./data";
+import * as dom from "./dom";
+
+export const searchForm = document.querySelector(".search");
+export const searchInput = document.querySelector(".search__input");
 
 // getWeatherFromCityName("London");
 // getWeatherFromZipCode(46580);
 
-const coordsWeather = async () => {
-   const lat = 52.237049;
-   const lon = 21.017532;
-
-   currentWeather.lat = lat;
-   currentWeather.lon = lon;
+searchForm.addEventListener("submit", async (event) => {
+   event.preventDefault();
 
    try {
-      const weather = await getWeatherFromCoords(currentWeather);
-      console.log(weather);
+      const locationData = await getDataFromLocation(
+         searchInput.value,
+         currentLocation.units
+      );
+
+      const locationWeather = await getWeatherFromCoords({
+         ...locationData,
+         units: currentLocation.units,
+      });
+
+      setLocation(currentLocation, { ...locationData });
    } catch (error) {
       console.error(error);
    }
-};
-
-const locationWeather = async () => {
-   try {
-      const weather = await getWeatherFromLocation("London");
-      console.log(weather);
-   } catch (error) {
-      console.error(error);
-   }
-};
-
-locationWeather();
+});

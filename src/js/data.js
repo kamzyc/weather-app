@@ -8,15 +8,19 @@ one call : https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&e
 import { API_URL, API_KEY } from "./config";
 import { setFlag } from "./helpers";
 
-export const getWeatherFromLocation = async (query, units) => {
+export const getDataFromLocation = async (name, units) => {
    try {
       const response = await fetch(
-         `${API_URL}${setFlag(query)}=${query}&units=${units}&appid=${API_KEY}`
+         `${API_URL}${setFlag(name)}=${name}&units=${units}&appid=${API_KEY}`
       );
       const data = await response.json();
 
       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
-      return data;
+
+      const { name } = data;
+      const { lat, lon } = data.coord;
+
+      return { name, lat, lon };
    } catch (error) {
       throw error;
    }
@@ -37,10 +41,9 @@ export const getWeatherFromCoords = async ({ lat, lon, units }) => {
 };
 
 export const setLocation = (location, newLocation) => {
-   const { lat, lon, name, unit } = newLocation;
+   const { name, lat, lon, units } = newLocation;
+   location.name = name;
    location.lat = lat;
    location.lon = lon;
-   location.name = name;
-
-   if (unit) location.unit = unit;
+   if (units) location.units = units;
 };

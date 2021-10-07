@@ -1,4 +1,4 @@
-class CurrentWeather {
+class CurrentLocation {
    _name = "Current location";
    _lat = null;
    _lon = null;
@@ -36,9 +36,9 @@ class CurrentWeather {
       this._units = units;
    }
 
-   toogleUnit = () => {
+   swapUnits = () => {
       this._units = this._units === "metric" ? "imperial" : "metric";
    };
 }
 
-export default new CurrentWeather();
+export default new CurrentLocation();
