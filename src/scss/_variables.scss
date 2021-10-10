@@ -26,17 +26,17 @@
    justify-content: center;
 }
 
-@mixin marginBottom($size: medium) {
+@mixin margin($side: bottom, $size: medium) {
    @if $size == small {
-      margin-bottom: 2rem;
+      margin-#{$side}: 2rem;
    }
 
    @if $size == medium {
-      margin-bottom: 3rem;
+      margin-#{$side}: 3rem;
    }
 
    @if $size == big {
-      margin-bottom: 4rem;
+      margin-#{$side}: 4rem;
    }
 }
 

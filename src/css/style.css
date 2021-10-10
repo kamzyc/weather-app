@@ -102,5 +102,17 @@ body {
   grid-row: 3/span 1;
   font-size: 1rem;
 }
+.navbar {
+  width: 100%;
+  margin-top: 2rem;
+}
+.navbar__list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+  list-style: none;
+}
 
 /*# sourceMappingURL=style.css.map */
