@@ -8,31 +8,37 @@
    <title>Weather app</title>
 
    <!-- CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
    <link rel="stylesheet" href="/src/css/style.css">
-
    <!-- JS -->
    <script defer src="src/js/index.js" type="module"></script>
 </head>
 
 <body>
-   <h1 class="title">Weather app</h1>
+   <div class="cointainer">
+      <header class="search">
+         <form class="search__form">
+            <input class="search__input" type="search" placeholder="Search by name or zip code..." autocomplete="off"
+               required>
+            <button class="search__button btn" type="submit">
+               <i class="fas fa-search btn__icon search__icon"></i>
+            </button>
+         </form>
+      </header>
 
-   <form class="search">
-      <input class="search__input" type="search">
-      <button class="search__button" type="submit">Search</button>
-   </form>
+      <main class="current-weather">
+         <h2 class="current-weather__title">Current location</h2>
 
-   <main class="current-weather">
-      <h2 class="current-weather__title">Current location</h2>
-
-      <div class="current-weather__temp">10</div>
-      <div class="current-weather__description">Cloudy</div>
-      <div class="current-weather__max-min">
-         <span class="max">10</span>
-         <span class="min">2</span>
-      </div>
-   </main>
-
+         <div class="current-weather__temp">10</div>
+         <div class="current-weather__description">Cloudy</div>
+         <div class="current-weather__max-min">
+            <span class="max">10</span>
+            <span class="min">2</span>
+         </div>
+      </main>
+   </div>
 </body>
 
 </html>

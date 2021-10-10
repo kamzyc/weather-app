@@ -1,0 +1,15 @@
+::root {
+}
+
+@mixin flexCenter($direction: row) {
+   display: flex;
+   flex-direction: $direction;
+   align-items: center;
+   justify-content: center;
+}
+
+@mixin mq($breakpoint) {
+   @media only screen and (max-width: $breakpoint) {
+      @content;
+   }
+}
