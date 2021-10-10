@@ -11,26 +11,10 @@ body {
    font-family: system-ui, sans-serif;
    background: steelblue;
    padding: 1.5rem 2rem;
+   color: white;
 }
 
 .container {
-   max-width: 10rem;
-}
-
-.btn {
-   border: 2px solid white;
-   width: 2.75rem;
-   aspect-ratio: 1;
-   border-radius: 50%;
-   outline: none;
-   background: transparent;
-
-   &:hover,
-   &:focus {
-      border-color: cyan;
-   }
-
-   &__icon {
-      color: white;
-   }
+   @include flexCenter(column);
+   gap: 2rem;
 }

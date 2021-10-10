@@ -1,11 +1,43 @@
 ::root {
 }
 
+.btn {
+   border: 2px solid white;
+   width: 2.75rem;
+   aspect-ratio: 1;
+   border-radius: 50%;
+   outline: none;
+   background: transparent;
+
+   &:hover,
+   &:focus {
+      border-color: cyan;
+   }
+
+   &__icon {
+      color: white;
+   }
+}
+
 @mixin flexCenter($direction: row) {
    display: flex;
    flex-direction: $direction;
    align-items: center;
    justify-content: center;
+}
+
+@mixin marginBottom($size: medium) {
+   @if $size == small {
+      margin-bottom: 2rem;
+   }
+
+   @if $size == medium {
+      margin-bottom: 3rem;
+   }
+
+   @if $size == big {
+      margin-bottom: 4rem;
+   }
 }
 
 @mixin mq($breakpoint) {

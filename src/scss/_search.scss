@@ -1,20 +1,27 @@
 .search {
    @include flexCenter;
+   width: 100%;
 
    &__form {
-      width: 80%;
       @include flexCenter;
+      width: 100%;
    }
 
    &__input {
       border: none;
-      background: inherit;
+      outline: none;
+      background: transparent;
       flex: 1;
       height: 2.5rem;
       color: white;
       font-size: 1.25rem;
+
+      ::placeholder {
+         font-size: 0.25rem;
+      }
    }
 
    &__button {
+      flex-shrink: 0;
    }
 }

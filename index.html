@@ -13,11 +13,11 @@
       crossorigin="anonymous" referrerpolicy="no-referrer" />
    <link rel="stylesheet" href="/src/css/style.css">
    <!-- JS -->
-   <script defer src="src/js/index.js" type="module"></script>
+   <!-- <script defer src="src/js/index.js" type="module"></script> -->
 </head>
 
 <body>
-   <div class="cointainer">
+   <div class="container">
       <header class="search">
          <form class="search__form">
             <input class="search__input" type="search" placeholder="Search by name or zip code..." autocomplete="off"
@@ -30,14 +30,39 @@
 
       <main class="current-weather">
          <h2 class="current-weather__title">Current location</h2>
+         <div class="current-weather__date">Thu, 5 Decenver 10:51 am</div>
 
-         <div class="current-weather__temp">10</div>
-         <div class="current-weather__description">Cloudy</div>
-         <div class="current-weather__max-min">
-            <span class="max">10</span>
-            <span class="min">2</span>
-         </div>
+         <section class="current-weather__content">
+            <div class="current-weather__temp">14</div>
+            <div class="current-weather__icon">X</div>
+            <span class="current-weather__description">Clear sky</span>
+            <div class="current-weather__min-max">
+               <span class="max">22</span>
+               /
+               <span class="min">6</span>
+            </div>
+         </section>
       </main>
+
+      <nav class="navbar">
+         <ul class="navbar__list">
+            <li class="navbar__item">
+               <button class="btn">
+                  <i class="fas fa-sync btn__icon"></i>
+               </button>
+            </li>
+            <li class="navbar__item">
+               <button class="btn">
+                  <i class="far fa-compass btn__icon"></i>
+               </button>
+            </li>
+            <li class="navbar__item">
+               <button class="btn">
+                  <i class="far fa-compass btn__icon"></i>
+               </button>
+            </li>
+         </ul>
+      </nav>
    </div>
 </body>
 
