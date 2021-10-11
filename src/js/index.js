@@ -32,7 +32,6 @@ import * as dom from "./dom";
 // });
 
 const init = () => {
-   console.log("Init");
    // add handlers
    dom.searchForm.addEventListener("submit", searchHandler);
 };
@@ -47,7 +46,7 @@ const searchHandler = async (event) => {
          currentLocation.units
       );
 
-      console.log(weather);
+      // console.log(weather);
 
       // set location
       // setLocation(currentLocation, coords);

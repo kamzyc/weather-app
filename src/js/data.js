@@ -12,6 +12,15 @@ const setFlag = (query) => {
    return regex.test(query) ? "zip" : "q";
 };
 
+const formatName = (name) => {
+   return name
+      .split("_")
+      .map((word, i) =>
+         i === 0 ? word : word[0].toUpperCase() + word.slice(1)
+      )
+      .join("");
+};
+
 export const getCurrentWeatherFromSearch = async (searchName, units) => {
    try {
       const response = await fetch(
@@ -30,6 +39,7 @@ export const getCurrentWeatherFromSearch = async (searchName, units) => {
          wind: data.wind,
       };
 
+      console.log(weather);
       return weather;
    } catch (error) {
       throw error;
