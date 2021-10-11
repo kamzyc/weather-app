@@ -18,18 +18,31 @@ export const currentWeather = document.querySelector(".current-weather");
    </main>
 */
 
-export const clearElem = (element) => {
+const clearElem = (element) => {
    element.querySelectorAll("*").forEach((children) => children.remove());
 };
 
-export const createElem = (tag = "div", className, content) => {
+const createElem = (tag = "div", className, content) => {
    const element = document.createElement(tag);
    element.classList.add(className);
    element.innerText = content;
    return element;
 };
 
-export const appendElem = (element, parent) => {
+const appendElem = (element, parent) => {
    console.log(element);
    parent.append(element);
+};
+
+export const updateView = (location, weather) => {
+   console.log("Updating view...");
+   console.log(location);
+   console.log(weather);
+
+   const temp = weather.current.temp;
+   const pressure = weather.current.pressure;
+   const humidity = weather.current.humidity;
+   const description = weather.current.weather[0].description;
+   const wind = weather.current.wind_speed;
+   const windDeg = weather.current.wind_deg;
 };

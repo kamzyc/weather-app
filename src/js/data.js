@@ -6,9 +6,13 @@ one call : https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&e
 */
 
 import { API_URL, API_KEY } from "./config";
-import { setFlag } from "./helpers";
 
-export const getDataFromLocation = async (searchName, units) => {
+const setFlag = (query) => {
+   const regex = /^\d+$/g;
+   return regex.test(query) ? "zip" : "q";
+};
+
+export const getCurrentWeatherFromSearch = async (searchName, units) => {
    try {
       const response = await fetch(
          `${API_URL}${setFlag(
@@ -19,10 +23,14 @@ export const getDataFromLocation = async (searchName, units) => {
 
       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
 
-      const { name } = data;
-      const { lat, lon } = data.coord;
+      const weather = {
+         name: data.name,
+         cords: data.coord,
+         main: data.main,
+         wind: data.wind,
+      };
 
-      return { name, lat, lon };
+      return weather;
    } catch (error) {
       throw error;
    }
