@@ -2,6 +2,12 @@
 
 :root {
    --ff-main: "Titillium Web", sans-serif;
+
+   --hue: 192;
+   --sat: 44%;
+   --bright: 35%;
+
+   --clr-bg: hsl(var(--hue) var(--sat) var(--bright) / 1);
 }
 
 @mixin flexCenter($direction: row) {

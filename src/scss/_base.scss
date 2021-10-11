@@ -9,7 +9,7 @@
 body {
    min-height: 100vh;
    padding: 1.5rem 2rem;
-   background: steelblue;
+   background: var(--clr-bg);
    color: white;
    font-family: var(--ff-main);
 }

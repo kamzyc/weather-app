@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap");
 :root {
   --ff-main: "Titillium Web", sans-serif;
+  --hue: 192;
+  --sat: 44%;
+  --bright: 35%;
+  --clr-bg: hsl(var(--hue) var(--sat) var(--bright) / 1);
 }
 
 *,
@@ -14,7 +18,7 @@
 body {
   min-height: 100vh;
   padding: 1.5rem 2rem;
-  background: steelblue;
+  background: var(--clr-bg);
   color: white;
   font-family: var(--ff-main);
 }
@@ -28,15 +32,12 @@ body {
 }
 
 .btn {
-  border: 2px solid white;
   width: 2.75rem;
   aspect-ratio: 1;
+  border: 2px solid white;
   border-radius: 50%;
   outline: none;
   background: transparent;
-}
-.btn:hover, .btn:focus {
-  border-color: cyan;
 }
 .btn__icon {
   color: white;

@@ -1,15 +1,10 @@
 .btn {
-   border: 2px solid white;
    width: 2.75rem;
    aspect-ratio: 1;
+   border: 2px solid white;
    border-radius: 50%;
    outline: none;
    background: transparent;
-
-   &:hover,
-   &:focus {
-      border-color: cyan;
-   }
 
    &__icon {
       color: white;
