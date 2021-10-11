@@ -4,7 +4,7 @@
 
    &__form {
       @include flexCenter;
-      width: 100%;
+      width: 80%;
    }
 
    &__input {
@@ -14,14 +14,11 @@
       flex: 1;
       height: 2.5rem;
       color: white;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
+      font-weight: 400;
 
-      ::placeholder {
-         font-size: 0.25rem;
+      &::placeholder {
+         font-size: 1rem;
       }
-   }
-
-   &__button {
-      flex-shrink: 0;
    }
 }

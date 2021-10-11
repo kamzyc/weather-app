@@ -1,12 +1,28 @@
 .btn {
-   width: 2.75rem;
-   aspect-ratio: 1;
-   border: 2px solid white;
+   @include boxSize(var(--btn-size));
+   @include flexCenter;
+   color: var(--clr-main-2);
+   border: 1px solid var(--clr-main-2);
    border-radius: 50%;
    outline: none;
    background: transparent;
+   flex-shrink: 0;
+   transform: scale(1);
+
+   transition: transform 0.1s;
 
    &__icon {
-      color: white;
+      font-size: var(--icon-size);
+      color: var(--clr-main-2);
+      transform: scale(1);
+      transition: transform 0.1s;
+   }
+
+   &:hover,
+   &:focus,
+   &:hover &__icon,
+   &:focus &__icon {
+      color: var(--clr-main-1);
+      transform: scale(1.05);
    }
 }

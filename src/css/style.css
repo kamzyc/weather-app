@@ -2,9 +2,12 @@
 :root {
   --ff-main: "Titillium Web", sans-serif;
   --hue: 192;
-  --sat: 44%;
-  --bright: 35%;
-  --clr-bg: hsl(var(--hue) var(--sat) var(--bright) / 1);
+  --clr-bg-1: hsl(var(--hue) 44% 35% / 1);
+  --clr-bg-2: hsl(var(--hue) 44% 22% / 1);
+  --clr-main-1: hsl(var(--hue) 5% 95% / 1);
+  --clr-main-2: hsl(var(--hue) 20% 85% / 1);
+  --btn-size: 3rem;
+  --icon-size: 1rem;
 }
 
 *,
@@ -17,10 +20,10 @@
 
 body {
   min-height: 100vh;
-  padding: 1.5rem 2rem;
-  background: var(--clr-bg);
-  color: white;
+  background: linear-gradient(to bottom, var(--clr-bg-1) 0%, var(--clr-bg-2) 100%);
+  color: var(--clr-main-1);
   font-family: var(--ff-main);
+  font-weight: 400;
 }
 
 .container {
@@ -29,18 +32,34 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding: 1.5rem 2rem;
 }
 
 .btn {
-  width: 2.75rem;
-  aspect-ratio: 1;
-  border: 2px solid white;
+  width: var(--btn-size);
+  height: var(--btn-size);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-main-2);
+  border: 1px solid var(--clr-main-2);
   border-radius: 50%;
   outline: none;
   background: transparent;
+  flex-shrink: 0;
+  transform: scale(1);
+  transition: transform 0.1s;
 }
 .btn__icon {
-  color: white;
+  font-size: var(--icon-size);
+  color: var(--clr-main-2);
+  transform: scale(1);
+  transition: transform 0.1s;
+}
+.btn:hover, .btn:focus, .btn:hover .btn__icon, .btn:focus .btn__icon {
+  color: var(--clr-main-1);
+  transform: scale(1.05);
 }
 
 .search {
@@ -55,7 +74,7 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 80%;
 }
 .search__input {
   border: none;
@@ -64,13 +83,11 @@ body {
   flex: 1;
   height: 2.5rem;
   color: white;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
-.search__input ::placeholder {
-  font-size: 0.25rem;
-}
-.search__button {
-  flex-shrink: 0;
+.search__input::placeholder {
+  font-size: 1rem;
 }
 
 .current-weather {
@@ -79,9 +96,11 @@ body {
 }
 .current-weather__title {
   font-size: 1.25rem;
+  font-weight: 400;
 }
 .current-weather__date {
   font-size: 0.75rem;
+  font-weight: 200;
   margin-bottom: 3rem;
 }
 .current-weather__content {
@@ -94,6 +113,7 @@ body {
   grid-column: 1/span 1;
   grid-row: 1/span 1;
   font-size: 6rem;
+  font-weight: 700;
 }
 .current-weather__icon {
   font-size: 6rem;
@@ -101,13 +121,21 @@ body {
 .current-weather__description {
   grid-column: 1/-1;
   grid-row: 2/span 1;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
+  font-weight: 300;
 }
 .current-weather__min-max {
   grid-column: 1/-1;
   grid-row: 3/span 1;
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
+.current-weather__min-max .max {
+  font-weight: 400;
+}
+.current-weather__min-max .min {
+  font-weight: 200;
+}
+
 .navbar {
   width: 100%;
   margin-top: 2rem;

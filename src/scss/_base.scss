@@ -8,13 +8,18 @@
 
 body {
    min-height: 100vh;
-   padding: 1.5rem 2rem;
-   background: var(--clr-bg);
-   color: white;
+   background: linear-gradient(
+      to bottom,
+      var(--clr-bg-1) 0%,
+      var(--clr-bg-2) 100%
+   );
+   color: var(--clr-main-1);
    font-family: var(--ff-main);
+   font-weight: 400;
 }
 
 .container {
    @include flexCenter(column);
    gap: 2rem;
+   padding: 1.5rem 2rem;
 }

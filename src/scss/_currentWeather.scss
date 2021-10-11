@@ -4,10 +4,12 @@
 
    &__title {
       font-size: 1.25rem;
+      font-weight: 400;
    }
 
    &__date {
       font-size: 0.75rem;
+      font-weight: 200;
       @include margin();
    }
 
@@ -23,6 +25,7 @@
       grid-row: 1 / span 1;
 
       font-size: 6rem;
+      font-weight: 700;
    }
 
    &__icon {
@@ -32,18 +35,21 @@
    &__description {
       grid-column: 1 / -1;
       grid-row: 2 / span 1;
-      font-size: 1.5rem;
+      font-size: 1.75rem;
+      font-weight: 300;
    }
 
    &__min-max {
       grid-column: 1 / -1;
       grid-row: 3 / span 1;
-      font-size: 1rem;
+      font-size: 1.25rem;
 
       .max {
+         font-weight: 400;
       }
 
       .min {
+         font-weight: 200;
       }
    }
 }
