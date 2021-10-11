@@ -8,10 +8,10 @@
 
 body {
    min-height: 100vh;
-   font-family: system-ui, sans-serif;
-   background: steelblue;
    padding: 1.5rem 2rem;
+   background: steelblue;
    color: white;
+   font-family: var(--ff-main);
 }
 
 .container {

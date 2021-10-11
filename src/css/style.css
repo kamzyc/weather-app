@@ -1,3 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap");
+:root {
+  --ff-main: "Titillium Web", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  padding: 1.5rem 2rem;
+  background: steelblue;
+  color: white;
+  font-family: var(--ff-main);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
 .btn {
   border: 2px solid white;
   width: 2.75rem;
@@ -11,30 +40,6 @@
 }
 .btn__icon {
   color: white;
-}
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  min-height: 100vh;
-  font-family: system-ui, sans-serif;
-  background: steelblue;
-  padding: 1.5rem 2rem;
-  color: white;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
 }
 
 .search {
