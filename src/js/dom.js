@@ -3,8 +3,7 @@
 // DOM elements
 export const searchForm = document.querySelector(".search");
 export const searchInput = document.querySelector(".search__input");
-const titleContainer = document.querySelector(".current-weather__title");
-const weatherContainer = document.querySelector(".current-weather__content");
+const weatherContainer = document.querySelector(".current-weather");
 
 const clearElem = (element) => {
    element.querySelectorAll("*").forEach((children) => children.remove());
@@ -17,29 +16,94 @@ const createElem = (tag, className, content) => {
    return element;
 };
 
-const appendElem = (element, parent) => {
-   parent.append(element);
+const appendElem = (elements, parent) => {
+   elements.forEach((element) => parent.append(element));
 };
 
-const createWeatherTitle = (title) => {
-   const titleElem = createElem("h2", "current-weather__location", title);
+const createTitleElem = (name) => {
+   return createElem("h2", "current-weather__location", name);
+};
 
+const createDateElem = () => {
    const date = new Date().toISOString();
-   const dateElem = createElem("div", "current-weather__date", date);
-
-   clearElem(titleContainer);
-   appendElem(titleElem, titleContainer);
-   appendElem(dateElem, titleContainer);
+   return createElem("div", "current-weather__date", date);
 };
 
-export const updateView = (location, weather) => {
-   console.log("Updating view...");
+const createIconElem = (main) => {
+   return createElem("div", "current-weather__icon", "X");
+};
 
-   // title
-   createWeatherTitle(location.name);
+const createMaxMinElem = (max, min) => {
+   const section = createElem("div", "current-weather__min-max", "");
+   const tempMaxElem = createElem("span", "max", `${max} / `);
+   const tempMinElem = createElem("span", "min", min);
+   appendElem([tempMaxElem, tempMinElem], section);
+   return section;
+};
+
+const createWeatherDataElem = (
+   { tempMain, tempMax, tempMin },
+   description,
+   main
+) => {
+   const tempElem = createElem("div", "current-weather__temp", tempMain);
+   const descriptionElem = createElem(
+      "div",
+      "current-weather__description",
+      description
+   );
+   const iconElem = createIconElem(main);
+   const maxMinSection = createMaxMinElem(tempMax, tempMin);
+
+   const section = createElem("section", "current-weather__content", "");
+
+   appendElem([tempElem, iconElem, descriptionElem, maxMinSection], section);
+   return section;
+};
+
+const createWeatherElem = (name, temp, description, main) => {
+   const titleElem = createTitleElem(name);
+   const dateElem = createDateElem();
+   const weatherDataElem = createWeatherDataElem(temp, description, main);
+
+   return [titleElem, dateElem, weatherDataElem];
+};
+
+export const updateView = ({ name }, { temp, description }) => {
+   console.log("Updating view...");
+   const weatherElem = createWeatherElem(name, temp, description);
+   clearElem(weatherContainer);
+   appendElem(weatherElem, weatherContainer);
 };
 
 /*
-<h2 class="current-weather__title">Current location</h2>
-<div class="current-weather__date">Thu, 5 Decenver 10:51 am</div>
+ <h2 class="current-weather__location">Current location</h2>
+         <div class="current-weather__date">Thu, 5 Decenver 10:51 am</div>
+
+         <section class="current-weather__content">
+            <div class="current-weather__temp">14&deg;</div>
+            <div class="current-weather__icon">X</div>
+            <div class="current-weather__description">Clear sky</div>
+            <div class="current-weather__min-max">
+               <span class="max">22</span>
+               /
+               <span class="min">6</span>
+            </div>
+         </section>
+
+
+
+         weather: {
+            temp: {
+               main: data.main.temp,
+               tempMax: data.main.temp_max,
+               tempMin: data.main.temp_min,
+            },
+            humidity: data.main.humidity,
+            pressure: data.main.pressure,
+            wind: { angle: data.wind.deg, speed: data.wind.speed },
+            description: data.weather[0].description,
+            main: data.weather[0].main,
+         },
+      
 */

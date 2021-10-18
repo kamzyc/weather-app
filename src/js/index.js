@@ -50,7 +50,7 @@ const searchHandler = async (event) => {
       setLocation(currentLocation, currentWeather.coord);
 
       // update view
-      dom.updateView(currentLocation, currentWeather);
+      dom.updateView(currentLocation, currentWeather.weather);
    } catch (error) {
       console.error(error);
    }

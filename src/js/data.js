@@ -28,9 +28,9 @@ export const getCurrentWeatherFromSearch = async (searchName, units) => {
          coord: { ...data.coord, name: data.name },
          weather: {
             temp: {
-               main: data.main.temp,
-               tempMax: data.main.temp_max,
-               tempMin: data.main.temp_min,
+               tempMain: Math.round(data.main.temp),
+               tempMax: Math.round(data.main.temp_max),
+               tempMin: Math.round(data.main.temp_min),
             },
             humidity: data.main.humidity,
             pressure: data.main.pressure,
