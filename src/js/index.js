@@ -41,18 +41,16 @@ const searchHandler = async (event) => {
    console.log("Searching...");
    try {
       // get coords and current weather
-      const weather = await getCurrentWeatherFromSearch(
+      const currentWeather = await getCurrentWeatherFromSearch(
          dom.searchInput.value,
          currentLocation.units
       );
 
-      // console.log(weather);
-
       // set location
-      // setLocation(currentLocation, coords);
+      setLocation(currentLocation, currentWeather.coord);
 
       // update view
-      // dom.updateView(currentLocation, weather);
+      dom.updateView(currentLocation, currentWeather);
    } catch (error) {
       console.error(error);
    }

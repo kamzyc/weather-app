@@ -94,7 +94,7 @@ body {
   width: 100%;
   text-align: center;
 }
-.current-weather__title {
+.current-weather__location {
   font-size: 1.25rem;
   font-weight: 400;
 }
