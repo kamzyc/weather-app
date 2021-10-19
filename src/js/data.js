@@ -25,7 +25,7 @@ export const getCurrentWeatherFromSearch = async (searchName, units) => {
       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
 
       const currentWeather = {
-         coord: { ...data.coord, name: data.name },
+         coords: { ...data.coord, name: data.name },
          weather: {
             temp: {
                tempMain: Math.round(data.main.temp),
@@ -46,15 +46,32 @@ export const getCurrentWeatherFromSearch = async (searchName, units) => {
    }
 };
 
-export const getDailyWeatherFromCoords = async ({ lat, lon, units }) => {
+export const getCurrentWeatherFromCoords = async ({ lat, lon, units }) => {
    try {
-      const response =
-         await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&units=${units}&appid=${API_KEY}
-      `);
+      const response = await fetch(
+         `${API_URL}lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
+      );
       const data = await response.json();
 
       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
-      return data;
+
+      const currentWeather = {
+         coords: { ...data.coord, name: data.name },
+         weather: {
+            temp: {
+               tempMain: Math.round(data.main.temp),
+               tempMax: Math.round(data.main.temp_max),
+               tempMin: Math.round(data.main.temp_min),
+            },
+            humidity: data.main.humidity,
+            pressure: data.main.pressure,
+            wind: { angle: data.wind.deg, speed: data.wind.speed },
+            description: data.weather[0].description,
+            main: data.weather[0].main,
+         },
+      };
+
+      return currentWeather;
    } catch (error) {
       throw error;
    }

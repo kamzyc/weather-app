@@ -1,6 +1,9 @@
 // DOM elements
 export const searchForm = document.querySelector(".search");
 export const searchInput = document.querySelector(".search__input");
+export const syncBtn = document.querySelector(".navbar__sync");
+export const geoBtn = document.querySelector(".navbar__geo");
+export const pinBtn = document.querySelector(".navbar__pin");
 const weatherContainer = document.querySelector(".current-weather");
 
 const clearElem = (element) => {
