@@ -16,6 +16,8 @@ body {
    color: var(--clr-main-1);
    font-family: var(--ff-main);
    font-weight: 400;
+   @include flexCenter;
+   align-items: flex-start;
 }
 
 .container {

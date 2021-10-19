@@ -1,5 +1,3 @@
-"use strict";
-
 import currentLocation from "./currentLocation";
 import {
    getCurrentWeatherFromSearch,

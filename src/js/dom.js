@@ -1,5 +1,3 @@
-"use strict";
-
 // DOM elements
 export const searchForm = document.querySelector(".search");
 export const searchInput = document.querySelector(".search__input");
@@ -9,15 +7,20 @@ const clearElem = (element) => {
    element.querySelectorAll("*").forEach((children) => children.remove());
 };
 
-const createElem = (tag, className, content) => {
+const createElem = (tag, classNames, content) => {
    const element = document.createElement(tag);
-   element.classList.add(className);
+   if (Array.isArray(classNames))
+      classNames.forEach((className) => element.classList.add(className));
+   else element.classList.add(classNames);
+
    element.innerText = content;
    return element;
 };
 
 const appendElem = (elements, parent) => {
-   elements.forEach((element) => parent.append(element));
+   if (Array.isArray(elements))
+      elements.forEach((element) => parent.append(element));
+   else parent.append(elements);
 };
 
 const createTitleElem = (name) => {
@@ -35,8 +38,8 @@ const createIconElem = (main) => {
 
 const createMaxMinElem = (max, min) => {
    const section = createElem("div", "current-weather__min-max", "");
-   const tempMaxElem = createElem("span", "max", `${max} / `);
-   const tempMinElem = createElem("span", "min", min);
+   const tempMaxElem = createElem("span", "max", `${max}`);
+   const tempMinElem = createElem("span", "min", ` / ${min}`);
    appendElem([tempMaxElem, tempMinElem], section);
    return section;
 };
@@ -46,7 +49,7 @@ const createWeatherDataElem = (
    description,
    main
 ) => {
-   const tempElem = createElem("div", "current-weather__temp", tempMain);
+   const tempElem = createElem("div", "current-weather__temp", `${tempMain}°`);
    const descriptionElem = createElem(
       "div",
       "current-weather__description",
@@ -61,7 +64,7 @@ const createWeatherDataElem = (
    return section;
 };
 
-const createWeatherElem = (name, temp, description, main) => {
+const createMainElem = (name, temp, description, main) => {
    const titleElem = createTitleElem(name);
    const dateElem = createDateElem();
    const weatherDataElem = createWeatherDataElem(temp, description, main);
@@ -71,9 +74,9 @@ const createWeatherElem = (name, temp, description, main) => {
 
 export const updateView = ({ name }, { temp, description }) => {
    console.log("Updating view...");
-   const weatherElem = createWeatherElem(name, temp, description);
+   const mainElem = createMainElem(name, temp, description);
    clearElem(weatherContainer);
-   appendElem(weatherElem, weatherContainer);
+   appendElem(mainElem, weatherContainer);
 };
 
 /*
