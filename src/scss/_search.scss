@@ -3,6 +3,7 @@
       @include flexCenter;
       justify-content: space-between;
       gap: 1.25rem;
+      position: relative;
    }
 
    &__input {
@@ -17,8 +18,10 @@
       font-weight: 400;
       flex-shrink: 1;
 
-      &::placeholder {
-         font-size: 1rem;
+      &::-webkit-input-placeholder {
+         color: var(--clr-main-2);
+         opacity: 0.6;
+         font-size: 1.25rem;
       }
    }
 }
