@@ -6,6 +6,7 @@
   --clr-bg-2: hsl(var(--hue) 44% 22% / 1);
   --clr-main-1: hsl(var(--hue) 5% 95% / 1);
   --clr-main-2: hsl(var(--hue) 20% 85% / 1);
+  --clr-error: hsl(359 68% 36% / 1);
   --btn-size: 3rem;
   --icon-size: 1rem;
 }
@@ -24,11 +25,6 @@ body {
   color: var(--clr-main-1);
   font-family: var(--ff-main);
   font-weight: 400;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 .container {
@@ -38,6 +34,8 @@ body {
   justify-content: center;
   gap: 2rem;
   padding: 1.5rem 2rem;
+  max-width: 40rem;
+  margin: 0 auto;
 }
 
 .btn {
@@ -67,6 +65,10 @@ body {
   transform: scale(1.05);
 }
 
+.search {
+  width: 100%;
+  margin: 0 1rem;
+}
 .search__form {
   display: flex;
   flex-direction: row;
@@ -86,7 +88,7 @@ body {
   color: var(--clr-main-1);
   font-size: 1.25rem;
   font-weight: 400;
-  flex-shrink: 1;
+  flex: 1;
 }
 .search__input::-webkit-input-placeholder {
   color: var(--clr-main-2);
@@ -102,6 +104,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+.current-weather .error {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.75rem;
+  max-width: 15ch;
+  font-weight: 600;
+  color: var(--clr-error);
 }
 .current-weather__location {
   font-size: 1.25rem;

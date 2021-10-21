@@ -3,6 +3,17 @@
    height: 20rem;
    text-align: center;
    @include flexCenter(column);
+   position: relative;
+
+   .error {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 0.75rem;
+      max-width: 15ch;
+      font-weight: 600;
+      color: var(--clr-error);
+   }
 
    &__location {
       font-size: 1.25rem;

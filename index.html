@@ -19,6 +19,7 @@
 
 <body>
    <div class="container">
+
       <header class="search">
          <form class="search__form">
             <input class="search__input" type="search" autocomplete="off" placeholder="City name or zip code" required>
@@ -29,6 +30,9 @@
       </header>
 
       <main class="current-weather">
+         <div class="error">
+            No acces to geolocation
+         </div>
          <h2 class="current-weather__location">Current location</h2>
          <div class="current-weather__date">Thu, 5 Decenver 10:51 am</div>
 

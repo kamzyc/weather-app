@@ -16,12 +16,14 @@ body {
    color: var(--clr-main-1);
    font-family: var(--ff-main);
    font-weight: 400;
-   @include flexCenter;
-   align-items: flex-start;
+   // @include flexCenter;
+   // align-items: flex-start;
 }
 
 .container {
    @include flexCenter(column);
    gap: 2rem;
    padding: 1.5rem 2rem;
+   max-width: 40rem;
+   margin: 0 auto;
 }
