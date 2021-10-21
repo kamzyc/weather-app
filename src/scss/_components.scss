@@ -26,3 +26,11 @@
       transform: scale(1.05);
    }
 }
+
+.line {
+   @include margin(top, small);
+   @include margin(bottom, small);
+   height: 1px;
+   width: 80%;
+   background: var(--clr-main-2);
+}

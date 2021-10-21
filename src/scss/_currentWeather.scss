@@ -5,6 +5,10 @@
    @include flexCenter(column);
    position: relative;
 
+   & > * {
+      animation: fadeIn 1s;
+   }
+
    .error {
       position: absolute;
       right: 0;
@@ -64,5 +68,14 @@
       .min {
          font-weight: 200;
       }
+   }
+}
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
    }
 }

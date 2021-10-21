@@ -1,6 +1,5 @@
 .search {
    width: 100%;
-   margin: 0 1rem;
    &__form {
       @include flexCenter;
       justify-content: space-between;
@@ -23,7 +22,7 @@
       &::-webkit-input-placeholder {
          color: var(--clr-main-2);
          opacity: 0.6;
-         font-size: 1.25rem;
+         font-size: 0.8rem;
       }
    }
 }
