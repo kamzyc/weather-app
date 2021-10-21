@@ -81,35 +81,3 @@ export const updateView = ({ name }, { temp, description }) => {
    clearElem(weatherContainer);
    appendElem(mainElem, weatherContainer);
 };
-
-/*
- <h2 class="current-weather__location">Current location</h2>
-         <div class="current-weather__date">Thu, 5 Decenver 10:51 am</div>
-
-         <section class="current-weather__content">
-            <div class="current-weather__temp">14&deg;</div>
-            <div class="current-weather__icon">X</div>
-            <div class="current-weather__description">Clear sky</div>
-            <div class="current-weather__min-max">
-               <span class="max">22</span>
-               /
-               <span class="min">6</span>
-            </div>
-         </section>
-
-
-
-         weather: {
-            temp: {
-               main: data.main.temp,
-               tempMax: data.main.temp_max,
-               tempMin: data.main.temp_min,
-            },
-            humidity: data.main.humidity,
-            pressure: data.main.pressure,
-            wind: { angle: data.wind.deg, speed: data.wind.speed },
-            description: data.weather[0].description,
-            main: data.weather[0].main,
-         },
-      
-*/

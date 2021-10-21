@@ -77,3 +77,9 @@ export const setLocation = (location, { name, lat, lon, units }) => {
    location.lon = lon;
    if (units) location.units = units;
 };
+
+export const getCurrentPosition = () => {
+   return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+   });
+};
