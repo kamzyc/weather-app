@@ -13,6 +13,35 @@ const setFlag = (query) => {
    return regex.test(query) ? "zip" : "q";
 };
 
+const convertToWeatherObject = (data) => {
+   return {
+      coords: { ...data.coord, name: data.name },
+      weather: {
+         temp: {
+            tempMain: Math.round(data.main.temp),
+            tempMax: Math.round(data.main.temp_max),
+            tempMin: Math.round(data.main.temp_min),
+         },
+         humidity: data.main.humidity,
+         pressure: data.main.pressure,
+         wind: { angle: data.wind.deg, speed: data.wind.speed },
+         description: data.weather[0].description,
+         main: data.weather[0].main,
+      },
+   };
+};
+
+const getWeatherData = async (response) => {
+   try {
+      const data = await response.json();
+      if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
+      const weatherData = convertToWeatherObject(data);
+      return weatherData;
+   } catch (error) {
+      throw error;
+   }
+};
+
 export const getCurrentWeatherFromSearch = async (searchName, units) => {
    try {
       const response = await fetch(
@@ -20,25 +49,8 @@ export const getCurrentWeatherFromSearch = async (searchName, units) => {
             searchName
          )}=${searchName}&units=${units}&appid=${API_KEY}`
       );
-      const data = await response.json();
 
-      if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
-
-      const currentWeather = {
-         coords: { ...data.coord, name: data.name },
-         weather: {
-            temp: {
-               tempMain: Math.round(data.main.temp),
-               tempMax: Math.round(data.main.temp_max),
-               tempMin: Math.round(data.main.temp_min),
-            },
-            humidity: data.main.humidity,
-            pressure: data.main.pressure,
-            wind: { angle: data.wind.deg, speed: data.wind.speed },
-            description: data.weather[0].description,
-            main: data.weather[0].main,
-         },
-      };
+      const currentWeather = await getWeatherData(response);
 
       return currentWeather;
    } catch (error) {
@@ -51,25 +63,7 @@ export const getCurrentWeatherFromCoords = async ({ lat, lon, units }) => {
       const response = await fetch(
          `${API_URL}lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
       );
-      const data = await response.json();
-
-      if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
-
-      const currentWeather = {
-         coords: { ...data.coord, name: data.name },
-         weather: {
-            temp: {
-               tempMain: Math.round(data.main.temp),
-               tempMax: Math.round(data.main.temp_max),
-               tempMin: Math.round(data.main.temp_min),
-            },
-            humidity: data.main.humidity,
-            pressure: data.main.pressure,
-            wind: { angle: data.wind.deg, speed: data.wind.speed },
-            description: data.weather[0].description,
-            main: data.weather[0].main,
-         },
-      };
+      const currentWeather = await getWeatherData(response);
 
       return currentWeather;
    } catch (error) {
@@ -77,8 +71,7 @@ export const getCurrentWeatherFromCoords = async ({ lat, lon, units }) => {
    }
 };
 
-export const setLocation = (location, newLocation) => {
-   const { name, lat, lon, units } = newLocation;
+export const setLocation = (location, { name, lat, lon, units }) => {
    location.name = name;
    location.lat = lat;
    location.lon = lon;

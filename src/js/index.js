@@ -1,11 +1,16 @@
 import currentLocation from "./currentLocation";
-import { getCurrentWeatherFromSearch, setLocation } from "./data";
+import {
+   getCurrentWeatherFromCoords,
+   getCurrentWeatherFromSearch,
+   setLocation,
+} from "./data";
 import * as dom from "./dom";
 
 const init = () => {
    // add handlers
    dom.searchForm.addEventListener("submit", searchHandler);
    dom.geoBtn.addEventListener("click", geoHandler);
+   dom.syncBtn.addEventListener("click", syncHandler);
 };
 
 const searchHandler = async (event) => {
@@ -28,33 +33,43 @@ const searchHandler = async (event) => {
    }
 };
 
-const setNewCurrentPositon = () => {
+const syncHandler = async () => {
    try {
-      if (!navigator.geolocation) geoError();
-      navigator.geolocation.getCurrentPosition((position) => {
-         geoSuccess(position);
-      }, geoError);
+      const currentWeather = await getCurrentWeatherFromCoords(currentLocation);
+
+      dom.updateView(currentLocation, currentWeather.weather);
    } catch (error) {
       console.error(error);
    }
 };
 
-const geoError = () => {
-   throw new Error("No access to gps");
+const geoHandler = async () => {
+   console.log("Geolocation weather...");
 };
 
-const geoSuccess = (position) => {
-   const newLocation = {
-      name: "Current position",
-      lat: position.coords.latitude,
-      lon: position.coords.longitude,
-   };
+// const setNewCurrentPositon = () => {
+//    try {
+//       if (!navigator.geolocation) geoError();
+//       navigator.geolocation.getCurrentPosition((position) => {
+//          geoSuccess(position);
+//       }, geoError);
+//    } catch (error) {
+//       console.error(error);
+//    }
+// };
 
-   setLocation(currentLocation, newLocation);
-};
+// const geoError = () => {
+//    throw new Error("No access to gps");
+// };
 
-const geoHandler = () => {
-   setNewCurrentPositon();
-};
+// const geoSuccess = (position) => {
+//    const newLocation = {
+//       name: "Current position",
+//       lat: position.coords.latitude,
+//       lon: position.coords.longitude,
+//    };
+
+//    setLocation(currentLocation, newLocation);
+// };
 
 init();
