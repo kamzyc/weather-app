@@ -4,6 +4,7 @@ import {
    getCurrentWeatherFromSearch,
    setLocation,
    getCurrentPosition,
+   getHourlyAndDailyWeather,
 } from "./data";
 import * as dom from "./dom";
 
@@ -29,6 +30,12 @@ const searchHandler = async (event) => {
 
       // update view
       dom.updateView(currentLocation, currentWeather.weather);
+
+      // hourly weather
+      const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
+
+      console.log(hourly);
+      console.log(daily);
    } catch (error) {
       console.error(error);
    }
