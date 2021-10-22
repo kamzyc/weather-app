@@ -28,14 +28,11 @@ const searchHandler = async (event) => {
       // set location
       setLocation(currentLocation, currentWeather.coords);
 
-      // update view
-      dom.updateView(currentLocation, currentWeather.weather);
-
       // hourly weather
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
-      console.log(hourly);
-      console.log(daily);
+      // update view
+      dom.updateView(currentLocation, currentWeather.weather, hourly);
    } catch (error) {
       console.error(error);
    }

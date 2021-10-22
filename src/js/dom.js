@@ -26,6 +26,7 @@ const appendElem = (elements, parent) => {
    else parent.append(elements);
 };
 
+//^ MAIN ELEMENT
 const createTitleElem = (name) => {
    return createElem("h2", "current-weather__location", name);
 };
@@ -71,9 +72,31 @@ const createMainElem = (name, temp, description, main) => {
    return [titleElem, dateElem, weatherDataElem];
 };
 
-export const updateView = ({ name }, { temp, description }) => {
+//^ hOURLY ELEMENT
+const createHourElem = ({ time, temp, description, main }) => {
+   const hourElem = createElem(
+      "div",
+      null,
+      `${time} -- ${temp} -- ${description}`
+   );
+
+   return hourElem;
+};
+
+const createHourlyElem = (hours) => {
+   const hourlyElem = hours.map((hour) => createHourElem(hour));
+   return hourlyElem;
+};
+
+export const updateView = ({ name }, { temp, description }, hours) => {
    console.log("Updating view...");
+
+   // main view
    const mainElem = createMainElem(name, temp, description);
    clearElem(weatherContainer);
    appendElem(mainElem, weatherContainer);
+
+   // hourly view
+   const hourlyElem = createHourlyElem(hours);
+   console.log(hourlyElem);
 };
