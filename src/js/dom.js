@@ -47,19 +47,15 @@ const createMaxMinElem = (max, min) => {
    return section;
 };
 
-const createWeatherDataElem = (
-   { tempMain, tempMax, tempMin },
-   description,
-   main
-) => {
-   const tempElem = createElem("div", "current-weather__temp", `${tempMain}°`);
+const createWeatherDataElem = (temp, description, main) => {
+   const tempElem = createElem("div", "current-weather__temp", `${temp.main}°`);
    const descriptionElem = createElem(
       "div",
       "current-weather__description",
       description
    );
    const iconElem = createIconElem(main);
-   const maxMinSection = createMaxMinElem(tempMax, tempMin);
+   const maxMinSection = createMaxMinElem(temp.max, temp.min);
 
    const section = createElem("section", "current-weather__content", "");
 

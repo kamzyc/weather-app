@@ -19,9 +19,9 @@ const convertToWeatherObject = (data) => {
       coords: { ...data.coord, name: data.name },
       weather: {
          temp: {
-            tempMain: Math.round(data.main.temp),
-            tempMax: Math.round(data.main.temp_max),
-            tempMin: Math.round(data.main.temp_min),
+            main: Math.round(data.main.temp),
+            max: Math.round(data.main.temp_max),
+            min: Math.round(data.main.temp_min),
          },
          humidity: data.main.humidity,
          pressure: data.main.pressure,
