@@ -66,8 +66,11 @@ const geoHandler = async () => {
       // get current weather
       const currentWeather = await getCurrentWeatherFromCoords(currentLocation);
 
+      // get hourly and daily weather
+      const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
+
       // update view
-      dom.updateView(currentLocation, currentWeather.weather);
+      dom.updateView(currentLocation, currentWeather.weather, hourly);
    } catch (error) {
       console.error(error);
    }
