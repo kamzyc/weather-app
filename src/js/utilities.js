@@ -1,23 +1,12 @@
-import { MONTHS, DAYS } from "./config";
+import { DATE_OPTIONS } from "./config";
 
 export const setFlag = (query) => {
    const regex = /^\d+$/g;
    return regex.test(query) ? "zip" : "q";
 };
 
-export const convertDate = (date, withTime = false) => {
-   const monthIndex = date.getMonth();
-   const dayIndex = date.getDay();
-   const day = date.getDate();
-   const time = date.toLocaleString("en-US", {
-      hour: "2-digit",
-      hour12: true,
-      minute: "2-digit",
-   });
-
-   return `${DAYS[dayIndex]}, ${day} ${MONTHS[monthIndex]} ${
-      withTime ? time : ""
-   }`;
+export const convertDate = (date, options) => {
+   return date.toLocaleString("en-US", options);
 };
 
 const isArray = (value) => Array.isArray(value);

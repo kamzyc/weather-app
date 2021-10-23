@@ -73,29 +73,4 @@ const geoHandler = async () => {
    }
 };
 
-// const setNewCurrentPositon = () => {
-//    try {
-//       if (!navigator.geolocation) geoError();
-//       navigator.geolocation.getCurrentPosition((position) => {
-//          geoSuccess(position);
-//       }, geoError);
-//    } catch (error) {
-//       console.error(error);
-//    }
-// };
-
-// const geoError = () => {
-//    throw new Error("No access to gps");
-// };
-
-// const geoSuccess = (position) => {
-//    const newLocation = {
-//       name: "Current position",
-//       lat: position.coords.latitude,
-//       lon: position.coords.longitude,
-//    };
-
-//    setLocation(currentLocation, newLocation);
-// };
-
 init();

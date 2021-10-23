@@ -1,3 +1,4 @@
+import { NUM_HOURS, DATE_OPTIONS } from "./config";
 import {
    addClasses,
    addContent,
@@ -13,6 +14,7 @@ export const searchInput = document.querySelector(".search__input");
 export const syncBtn = document.querySelector(".navbar__sync");
 export const geoBtn = document.querySelector(".navbar__geo");
 export const pinBtn = document.querySelector(".navbar__pin");
+
 const weatherContainer = document.querySelector(".current-weather");
 const hourlyContainer = document.querySelector(".hourly");
 
@@ -22,7 +24,7 @@ const createTitleElem = (name) => {
 };
 
 const createDateElem = () => {
-   const date = convertDate(new Date(), true);
+   const date = convertDate(new Date(), DATE_OPTIONS.LONG);
    return createElem("div", "current-weather__date", date);
 };
 
@@ -33,8 +35,8 @@ const createIconElem = (main) => {
 
 const createMaxMinElem = (max, min) => {
    const parent = createElem("div", "current-weather__min-max", "");
-   const tempMaxElem = createElem("span", "max", `${max}`);
-   const tempMinElem = createElem("span", "min", ` / ${min}`);
+   const tempMaxElem = createElem("span", "max", `${max}°`);
+   const tempMinElem = createElem("span", "min", ` / ${min}°`);
    addElem([tempMaxElem, tempMinElem], parent);
    return parent;
 };
@@ -49,13 +51,13 @@ const createWeatherElem = (temp, description, main) => {
    const iconElem = createIconElem(main);
    const maxMinSection = createMaxMinElem(temp.max, temp.min);
 
-   const section = createElem("section", "current-weather__content", "");
+   const parent = createElem("section", "current-weather__content", "");
 
-   addElem([tempElem, iconElem, descriptionElem, maxMinSection], section);
-   return section;
+   addElem([tempElem, iconElem, descriptionElem, maxMinSection], parent);
+   return parent;
 };
 
-const createMainElem = (name, temp, description, main) => {
+const createMainElem = ({ name }, { temp, description, main }) => {
    const titleElem = createTitleElem(name);
    const dateElem = createDateElem();
    const weatherDataElem = createWeatherElem(temp, description, main);
@@ -64,31 +66,46 @@ const createMainElem = (name, temp, description, main) => {
 };
 
 //^ hOURLY ELEMENT
-const createHourElem = ({ time, temp, description, main }) => {
-   const hourElem = createElem(
+const createHourElem = ({ time, main, temp }) => {
+   const timeElem = createElem(
       "div",
-      "",
-      `${time} -- ${temp} -- ${description}`
+      "hourly__time",
+      convertDate(time, DATE_OPTIONS.ONLY_TIME)
    );
+   const iconElem = createElem("div", "hourly__icon", "X");
+   const tempElem = createElem("div", "hourly__temp", temp);
 
+   const hourElem = createElem("li", "hourly__item", "");
+   addElem([timeElem, iconElem, tempElem], hourElem);
    return hourElem;
 };
 
-const createHourlyElem = (hours) => {
-   const hourlyElem = hours.map((hour) => createHourElem(hour));
-
-   return hourlyElem;
+const createHoursElem = (hourly) => {
+   const hoursElem = hourly.map(createHourElem);
+   return hoursElem;
 };
 
-export const updateView = ({ name }, { temp, description }, hours) => {
+const createHourlyElem = (hourly) => {
+   const listElem = createElem("ul", "hourly__list", "");
+   const hoursElem = createHoursElem(hourly);
+
+   addElem(hoursElem, listElem);
+
+   return listElem;
+};
+
+export const updateView = (location, currentWeather, hourly) => {
    console.log("Updating view...");
 
-   // main view
-   const mainElem = createMainElem(name, temp, description);
+   // create views
+   const mainElem = createMainElem(location, currentWeather);
+   const hourlyElem = createHourlyElem(hourly.slice(1, NUM_HOURS));
 
    // clear containers
    clearElem(weatherContainer);
+   clearElem(hourlyContainer);
 
    // append elements
    addElem(mainElem, weatherContainer);
+   addElem(hourlyElem, hourlyContainer);
 };
