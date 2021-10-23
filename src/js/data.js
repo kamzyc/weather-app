@@ -8,11 +8,7 @@ hourly : pro.openweathermap.org/data/2.5/forecast/hourly?lat={lat}&lon={lon}&app
 */
 
 import { API_URL, API_KEY, NUM_HOURS, NUM_DAYS } from "./config";
-
-const setFlag = (query) => {
-   const regex = /^\d+$/g;
-   return regex.test(query) ? "zip" : "q";
-};
+import { setFlag } from "./utilities";
 
 const convertToWeatherObject = (data) => {
    return {
