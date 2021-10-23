@@ -1,0 +1,18 @@
+.hourly {
+   background: coral;
+
+   &__list {
+      @include flexCenter();
+      list-style: none;
+      gap: 1rem;
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+   }
+
+   &__item {
+      background: cornflowerblue;
+      padding: 1rem 1.25rem;
+      @include flexCenter(column);
+      gap: 1rem;
+   }
+}
