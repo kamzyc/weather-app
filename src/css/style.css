@@ -39,11 +39,6 @@ body {
   overflow-x: hidden;
 }
 
-.test img {
-  width: 5rem;
-  height: 5rem;
-}
-
 .btn {
   width: var(--btn-size);
   height: var(--btn-size);
@@ -161,7 +156,8 @@ body {
   justify-content: center;
 }
 .current-weather__icon img {
-  transform: scale(0.5);
+  width: 10rem;
+  height: 10rem;
 }
 .current-weather__description {
   grid-column: 1/-1;

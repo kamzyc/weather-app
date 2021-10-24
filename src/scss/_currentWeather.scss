@@ -51,7 +51,8 @@
       @include flexCenter;
 
       img {
-         transform: scale(0.5);
+         width: 10rem;
+         height: 10rem;
          // max-width: 100%;
       }
    }
