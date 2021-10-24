@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.69 57.51"><defs><style>.cls-1{fill:#f2f4f9;}.cls-2{fill:#fff;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Weather_Icons" data-name="Weather Icons"><path class="cls-1" d="M50.18,0A23.83,23.83,0,0,0,27.52,16.45a18.37,18.37,0,0,0-13,11.08,15,15,0,0,0,0,30v0h36V0Z"/><path class="cls-2" d="M73.82,20.91A23.82,23.82,0,0,0,50.46,0v57.5H73.15v0a18.32,18.32,0,0,0,.67-36.56Z"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90.69 57.51">
+   <defs>
+      <style>.cls-1{fill:#f2f4f9;}.cls-2{fill:#fff;}</style>
+   </defs>
+   <g>
+      <path class="cls-1" d="M50.18,0A23.83,23.83,0,0,0,27.52,16.45a18.37,18.37,0,0,0-13,11.08,15,15,0,0,0,0,30v0h36V0Z" />
+      <path class="cls-2" d="M73.82,20.91A23.82,23.82,0,0,0,50.46,0v57.5H73.15v0a18.32,18.32,0,0,0,.67-36.56Z" />
+   </g>
+</svg>
