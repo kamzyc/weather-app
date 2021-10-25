@@ -1,4 +1,4 @@
-import { NUM_HOURS, DATE_OPTIONS } from "./config";
+import { NUM_HOURS, DATE_OPTIONS, ICONS_MATRIX } from "./config";
 import {
    addClasses,
    addContent,
@@ -33,8 +33,8 @@ const createDateElem = () => {
 const createIconElem = (id, className) => {
    const parent = createElem("div", className, "");
    const icon = createElem("img", "", "");
-   // addAttribute(icon, "src", "../src/imgs/drizzle.svg");
-   icon.src = "../imgs/drizzle.svf";
+   addAttribute(icon, "src", ICONS_MATRIX["800"]["n"]);
+
    addElem(icon, parent);
    // return createElem("div", "current-weather__icon", "X");
    return parent;
