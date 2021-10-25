@@ -28,7 +28,7 @@ const searchHandler = async (event) => {
       // set location
       setLocation(currentLocation, currentWeather.coords);
 
-      // hourly weather
+      // get hourly and daily weather
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
@@ -40,9 +40,14 @@ const searchHandler = async (event) => {
 
 const syncHandler = async () => {
    try {
+      // get current weather
       const currentWeather = await getCurrentWeatherFromCoords(currentLocation);
 
-      dom.updateView(currentLocation, currentWeather.weather);
+      // get hourly and daily weather
+      const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
+
+      // update view
+      dom.updateView(currentLocation, currentWeather.weather, hourly);
    } catch (error) {
       console.error(error);
    }

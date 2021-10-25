@@ -21,6 +21,10 @@ export const addContent = (element, content) => {
    element.innerText = content;
 };
 
+export const addAttribute = (element, name, value) => {
+   element.setAttribute(name, value);
+};
+
 export const clearElem = (element) => {
    element.querySelectorAll("*").forEach((children) => children.remove());
 };
@@ -32,8 +36,8 @@ export const addElem = (elements, parent) => {
 
 export const createElem = (tag, classes, content) => {
    const element = document.createElement(tag);
-   addClasses(element, classes);
-   addContent(element, content);
+   if (classes) addClasses(element, classes);
+   if (content) addContent(element, content);
 
    return element;
 };

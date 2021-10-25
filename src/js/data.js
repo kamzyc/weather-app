@@ -23,7 +23,9 @@ const convertToWeatherObject = (data) => {
          pressure: data.main.pressure,
          wind: { angle: data.wind.deg, speed: data.wind.speed },
          description: data.weather[0].description,
-         main: data.weather[0].main,
+         id: data.weather[0].id,
+         sunrise: new Date(data.sys.sunrise * 1000),
+         sunset: new Date(data.sys.sunset * 1000),
       },
    };
 };
@@ -34,7 +36,7 @@ const convertToHourlyObject = (data) => {
          time: new Date(hour.dt * 1000),
          temp: Math.round(hour.temp),
          description: hour.weather[0].description,
-         main: hour.weather[0].main,
+         id: hour.weather[0].id,
       };
    });
 
@@ -51,7 +53,7 @@ const convertToDailyObject = (data) => {
             min: Math.round(day.temp.min),
          },
          description: day.weather[0].description,
-         main: day.weather[0].main,
+         id: day.weather[0].id,
       };
    });
 
@@ -63,6 +65,7 @@ const getWeatherData = async (response) => {
       const data = await response.json();
       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
       const weatherData = convertToWeatherObject(data);
+
       return weatherData;
    } catch (error) {
       throw error;
@@ -71,7 +74,6 @@ const getWeatherData = async (response) => {
 
 export const getCurrentWeatherFromSearch = async (searchName, units) => {
    try {
-      // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
       const response = await fetch(
          `${API_URL}weather?${setFlag(
             searchName
@@ -88,7 +90,6 @@ export const getCurrentWeatherFromSearch = async (searchName, units) => {
 
 export const getCurrentWeatherFromCoords = async ({ lat, lon, units }) => {
    try {
-      //api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
       const response = await fetch(
          `${API_URL}weather?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
       );

@@ -6,6 +6,7 @@ import {
    addElem,
    createElem,
    convertDate,
+   addAttribute,
 } from "./utilities";
 
 // DOM elements
@@ -29,8 +30,14 @@ const createDateElem = () => {
 };
 
 //! to change
-const createIconElem = (main) => {
-   return createElem("div", "current-weather__icon", "X");
+const createIconElem = (id, className) => {
+   const parent = createElem("div", className, "");
+   const icon = createElem("img", "", "");
+   // addAttribute(icon, "src", "../src/imgs/drizzle.svg");
+   icon.src = "../imgs/drizzle.svf";
+   addElem(icon, parent);
+   // return createElem("div", "current-weather__icon", "X");
+   return parent;
 };
 
 const createMaxMinElem = (max, min) => {
@@ -41,14 +48,14 @@ const createMaxMinElem = (max, min) => {
    return parent;
 };
 
-const createWeatherElem = (temp, description, main) => {
+const createWeatherElem = (temp, description, id) => {
    const tempElem = createElem("div", "current-weather__temp", `${temp.main}°`);
    const descriptionElem = createElem(
       "div",
       "current-weather__description",
       description
    );
-   const iconElem = createIconElem(main);
+   const iconElem = createIconElem(id, "current-weather__icon");
    const maxMinSection = createMaxMinElem(temp.max, temp.min);
 
    const parent = createElem("section", "current-weather__content", "");
@@ -57,16 +64,16 @@ const createWeatherElem = (temp, description, main) => {
    return parent;
 };
 
-const createMainElem = ({ name }, { temp, description, main }) => {
+const createMainElem = ({ name }, { temp, description, id }) => {
    const titleElem = createTitleElem(name);
    const dateElem = createDateElem();
-   const weatherDataElem = createWeatherElem(temp, description, main);
+   const weatherDataElem = createWeatherElem(temp, description, id);
 
    return [titleElem, dateElem, weatherDataElem];
 };
 
 //^ hOURLY ELEMENT
-const createHourElem = ({ time, main, temp }) => {
+const createHourElem = ({ time, id, temp }) => {
    const timeElem = createElem(
       "div",
       "hourly__time",

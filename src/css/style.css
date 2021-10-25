@@ -140,6 +140,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: max-content repeat(2, 1fr);
+  column-gap: 1rem;
 }
 .current-weather__temp {
   grid-column: 1/span 1;
@@ -158,6 +159,7 @@ body {
 .current-weather__icon img {
   width: 10rem;
   height: 10rem;
+  max-width: 100%;
 }
 .current-weather__description {
   grid-column: 1/-1;
