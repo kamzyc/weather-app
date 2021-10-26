@@ -27,14 +27,27 @@ const createDateElem = () => {
    return createElem("div", "current-weather__date", date);
 };
 
-//! to change
+const checkIcon = (id, dayTime) => {
+   let iconType;
+   for (const [key] of Object.entries(ICONS)) {
+      if (key.includes(id) && key.includes(dayTime)) {
+         iconType = key;
+         console.log(iconType);
+      }
+   }
+
+   return iconType;
+};
+
+const checkDayTime = (sunrise, sunset) => {};
+
 const createIconElem = (id, className) => {
    const parent = createElem("div", className, "");
    const icon = createElem("img", "", "");
-   addAttribute(icon, "src", ICONS["800"]);
+   const iconType = checkIcon(id, "d");
+   addAttribute(icon, "src", ICONS[`${iconType}`]);
 
    addElem(icon, parent);
-   // return createElem("div", "current-weather__icon", "X");
    return parent;
 };
 
