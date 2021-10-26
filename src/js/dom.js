@@ -39,12 +39,21 @@ const checkIcon = (id, dayTime) => {
    return iconType;
 };
 
-const checkDayTime = (sunrise, sunset) => {};
+const checkDayTime = (sunrise, sunset) => {
+   const currentTime = new Date().getTime();
+   if (currentTime < sunrise.getTime()) return "n";
+   if (currentTime > sunrise.getTime() && currentTime < sunset.getTime())
+      return "d";
+   return "n";
+};
 
-const createIconElem = (id, className) => {
+const createIconElem = (className, id, sunrise, sunset) => {
    const parent = createElem("div", className, "");
    const icon = createElem("img", "", "");
-   const iconType = checkIcon(id, "d");
+
+   const dayTime = checkDayTime(sunrise, sunset);
+   const iconType = checkIcon(id, dayTime);
+
    addAttribute(icon, "src", ICONS[`${iconType}`]);
 
    addElem(icon, parent);
@@ -59,14 +68,19 @@ const createMaxMinElem = (max, min) => {
    return parent;
 };
 
-const createWeatherElem = (temp, description, id) => {
+const createWeatherElem = (temp, description, id, sunrise, sunset) => {
    const tempElem = createElem("div", "current-weather__temp", `${temp.main}°`);
    const descriptionElem = createElem(
       "div",
       "current-weather__description",
       description
    );
-   const iconElem = createIconElem(id, "current-weather__icon");
+   const iconElem = createIconElem(
+      "current-weather__icon",
+      id,
+      sunrise,
+      sunset
+   );
    const maxMinSection = createMaxMinElem(temp.max, temp.min);
 
    const parent = createElem("section", "current-weather__content", "");
@@ -75,10 +89,19 @@ const createWeatherElem = (temp, description, id) => {
    return parent;
 };
 
-const createMainElem = ({ name }, { temp, description, id }) => {
+const createMainElem = (
+   { name },
+   { temp, description, id, sunrise, sunset }
+) => {
    const titleElem = createTitleElem(name);
    const dateElem = createDateElem();
-   const weatherDataElem = createWeatherElem(temp, description, id);
+   const weatherDataElem = createWeatherElem(
+      temp,
+      description,
+      id,
+      sunrise,
+      sunset
+   );
 
    return [titleElem, dateElem, weatherDataElem];
 };
