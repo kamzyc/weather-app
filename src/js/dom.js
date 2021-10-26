@@ -114,6 +114,7 @@ const createHourElem = ({ time, id, temp }) => {
       convertDate(time, DATE_OPTIONS.ONLY_TIME)
    );
    const iconElem = createElem("div", "hourly__icon", "X");
+   // const iconElem = createIconElem("hourly__icon", id, sunrise, sunset);
    const tempElem = createElem("div", "hourly__temp", temp);
 
    const hourElem = createElem("li", "hourly__item", "");
@@ -137,6 +138,9 @@ const createHourlyElem = (hourly) => {
 
 export const updateView = (location, currentWeather, hourly) => {
    console.log("Updating view...");
+
+   const sunrise = currentWeather.sunrise;
+   const sunset = currentWeather.sunset;
 
    // create views
    const mainElem = createMainElem(location, currentWeather);

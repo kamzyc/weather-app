@@ -7,7 +7,14 @@ daily : api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={
 hourly : pro.openweathermap.org/data/2.5/forecast/hourly?lat={lat}&lon={lon}&appid={API key}
 */
 
-import { API_URL, API_KEY, NUM_HOURS, NUM_DAYS } from "./config";
+import {
+   API_URL,
+   API_KEY,
+   NUM_HOURS,
+   NUM_DAYS,
+   SEC_IN_MIN,
+   MIN_IN_HOUR,
+} from "./config";
 import { setFlag } from "./utilities";
 
 const convertToWeatherObject = (data) => {
@@ -109,6 +116,8 @@ export const getHourlyAndDailyWeather = async ({ lat, lon, units }) => {
 
       const data = await response.json();
       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
+
+      console.log(data);
 
       const hourly = convertToHourlyObject(data.hourly);
       const daily = convertToDailyObject(data.daily);
