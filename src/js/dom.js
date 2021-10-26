@@ -33,7 +33,7 @@ const createDateElem = () => {
 const createIconElem = (id, className) => {
    const parent = createElem("div", className, "");
    const icon = createElem("img", "", "");
-   addAttribute(icon, "src", ICONS_MATRIX["800"]["n"]);
+   addAttribute(icon, "src", ICONS_MATRIX["800"]);
 
    addElem(icon, parent);
    // return createElem("div", "current-weather__icon", "X");

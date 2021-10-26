@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 
-import clearSkyDayIcon from "url:../imgs/clear-sky-day.svg";
-import clearSkyNightIcon from "url:../imgs/clear-sky-night.svg";
+import clearSkyDayIcon from "url:../imgs/icons/800d.svg";
+import clearSkyNightIcon from "url:../imgs/icons/800n.svg";
 
 dotenv.config();
 export const API_KEY = process.env.API_KEY;
@@ -24,5 +24,32 @@ export const DATE_OPTIONS = {
 };
 
 export const ICONS_MATRIX = {
-   800: { d: clearSkyDayIcon, n: clearSkyNightIcon },
+   800: clearSkyDayIcon,
 };
+
+console.log(import.meta);
+
+/*
+800: d n
+8xx:  
+      801  d n
+      802 
+      803, 804
+7xx:
+      701, ...
+6xx:
+      600, 601, 620, 621 - d n
+      602, 622
+      611, 612, 613, 615, 616
+5xx:
+      500, 501, 520, 521 - d n
+      502, 503, 504, 522, 531
+      511
+3xx: 
+      300, ...
+2xx:
+      210, 211, 230
+      200, 201, 202, 231, 232
+      212, 221
+
+*/
