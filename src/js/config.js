@@ -23,11 +23,9 @@ export const DATE_OPTIONS = {
    ONLY_TIME: { hour: "2-digit", minute: "2-digit" },
 };
 
-export const ICONS_MATRIX = {
+export const ICONS = {
    800: clearSkyDayIcon,
 };
-
-console.log(import.meta);
 
 /*
 800: d n

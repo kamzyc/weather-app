@@ -1,7 +1,5 @@
-import { NUM_HOURS, DATE_OPTIONS, ICONS_MATRIX } from "./config";
+import { NUM_HOURS, DATE_OPTIONS, ICONS } from "./config";
 import {
-   addClasses,
-   addContent,
    clearElem,
    addElem,
    createElem,
@@ -33,7 +31,7 @@ const createDateElem = () => {
 const createIconElem = (id, className) => {
    const parent = createElem("div", className, "");
    const icon = createElem("img", "", "");
-   addAttribute(icon, "src", ICONS_MATRIX["800"]);
+   addAttribute(icon, "src", ICONS["800"]);
 
    addElem(icon, parent);
    // return createElem("div", "current-weather__icon", "X");
