@@ -7,7 +7,14 @@ daily : api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={
 hourly : pro.openweathermap.org/data/2.5/forecast/hourly?lat={lat}&lon={lon}&appid={API key}
 */
 
-import { API_URL, API_KEY, NUM_HOURS, NUM_DAYS } from "./config";
+import {
+   API_URL,
+   API_KEY,
+   NUM_HOURS,
+   NUM_DAYS,
+   MIN_IN_HOUR,
+   SEC_IN_MIN,
+} from "./config";
 import { setFlag } from "./utilities";
 
 const convertToWeatherObject = (data) => {
@@ -24,7 +31,7 @@ const convertToWeatherObject = (data) => {
          wind: { angle: data.wind.deg, speed: data.wind.speed },
          description: data.weather[0].description,
          id: data.weather[0].id,
-         timezone: data.timezone,
+         timezone: data.timezone / MIN_IN_HOUR / SEC_IN_MIN,
          sunrise: new Date(data.sys.sunrise * 1000),
          sunset: new Date(data.sys.sunset * 1000),
       },

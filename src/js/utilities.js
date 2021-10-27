@@ -1,4 +1,4 @@
-import { DATE_OPTIONS } from "./config";
+import { ICONS } from "./config";
 
 export const setFlag = (query) => {
    const regex = /^\d+$/g;
@@ -9,35 +9,15 @@ export const convertDate = (date, options) => {
    return date.toLocaleString("en-US", options);
 };
 
-const isArray = (value) => Array.isArray(value);
+export const isArray = (value) => Array.isArray(value);
 
-export const addClasses = (element, classes) => {
-   if (isArray(classes))
-      classes.forEach((className) => element.classList.add(className));
-   else element.classList.add(classes);
-};
+export const checkIcon = (id, dayTime) => {
+   let iconName;
+   for (const [key] of Object.entries(ICONS)) {
+      if (key.includes(id) && key.includes(dayTime)) {
+         iconName = key;
+      }
+   }
 
-export const addContent = (element, content) => {
-   element.innerText = content;
-};
-
-export const addAttribute = (element, name, value) => {
-   element.setAttribute(name, value);
-};
-
-export const clearElem = (element) => {
-   element.querySelectorAll("*").forEach((children) => children.remove());
-};
-
-export const addElem = (elements, parent) => {
-   if (isArray(elements)) elements.forEach((element) => parent.append(element));
-   else parent.append(elements);
-};
-
-export const createElem = (tag, classes, content) => {
-   const element = document.createElement(tag);
-   if (classes) addClasses(element, classes);
-   if (content) addContent(element, content);
-
-   return element;
+   return iconName;
 };
