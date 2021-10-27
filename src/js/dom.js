@@ -154,3 +154,5 @@ export const updateView = (location, currentWeather, hourly) => {
    addElem(mainElem, weatherContainer);
    addElem(hourlyElem, hourlyContainer);
 };
+
+// new version

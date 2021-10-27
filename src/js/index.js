@@ -20,19 +20,19 @@ const searchHandler = async (event) => {
 
    try {
       // get coords and current weather
-      const currentWeather = await getCurrentWeatherFromSearch(
+      const { coords, weather } = await getCurrentWeatherFromSearch(
          dom.searchInput.value,
          currentLocation.units
       );
 
       // set location
-      setLocation(currentLocation, currentWeather.coords);
+      setLocation(currentLocation, coords);
 
       // get hourly and daily weather
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      dom.updateView(currentLocation, currentWeather.weather, hourly);
+      dom.updateView(currentLocation, weather, hourly);
    } catch (error) {
       console.error(error);
    }
@@ -41,13 +41,13 @@ const searchHandler = async (event) => {
 const syncHandler = async () => {
    try {
       // get current weather
-      const currentWeather = await getCurrentWeatherFromCoords(currentLocation);
+      const { weather } = await getCurrentWeatherFromCoords(currentLocation);
 
       // get hourly and daily weather
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      dom.updateView(currentLocation, currentWeather.weather, hourly);
+      dom.updateView(currentLocation, weather, hourly);
    } catch (error) {
       console.error(error);
    }
@@ -58,24 +58,24 @@ const geoHandler = async () => {
 
    try {
       // get current coords
-      const currentPosition = await getCurrentPosition();
-      const coords = {
+      const { coords } = await getCurrentPosition();
+      const currentCoords = {
          name: "Current location",
-         lat: currentPosition.coords.latitude,
-         lon: currentPosition.coords.longitude,
+         lat: coords.latitude,
+         lon: coords.longitude,
       };
 
       // set location
-      setLocation(currentLocation, coords);
+      setLocation(currentLocation, currentCoords);
 
       // get current weather
-      const currentWeather = await getCurrentWeatherFromCoords(currentLocation);
+      const { weather } = await getCurrentWeatherFromCoords(currentLocation);
 
       // get hourly and daily weather
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      dom.updateView(currentLocation, currentWeather.weather, hourly);
+      dom.updateView(currentLocation, weather, hourly);
    } catch (error) {
       console.error(error);
    }
