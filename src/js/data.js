@@ -88,7 +88,7 @@ export const getCurrentWeatherFromSearch = async (searchName, units) => {
       );
 
       const weather = await getWeatherData(response);
-      console.log(weather);
+
       return weather;
    } catch (error) {
       throw error;
@@ -101,7 +101,7 @@ export const getCurrentWeatherFromCoords = async ({ lat, lon, units }) => {
          `${API_URL}weather?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
       );
       const weather = await getWeatherData(response);
-      console.log(weather);
+
       return weather;
    } catch (error) {
       throw error;
@@ -119,7 +119,6 @@ export const getHourlyAndDailyWeather = async ({ lat, lon, units }) => {
 
       const hourly = convertToHourlyObject(data.hourly);
       const daily = convertToDailyObject(data.daily);
-      console.log(hourly);
 
       return { hourly, daily };
    } catch (error) {

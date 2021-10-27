@@ -5,7 +5,8 @@ export const setFlag = (query) => {
    return regex.test(query) ? "zip" : "q";
 };
 
-export const convertDate = (date, options) => {
+export const convertDate = (date, options, timezone) => {
+   date.setHours(date.getUTCHours() + timezone);
    return date.toLocaleString("en-US", options);
 };
 
@@ -20,4 +21,12 @@ export const checkIcon = (id, dayTime) => {
    }
 
    return iconName;
+};
+
+export const checkDayTime = (sunrise, sunset) => {
+   const currentTime = new Date().getTime();
+   if (currentTime < sunrise.getTime()) return "n";
+   if (currentTime > sunrise.getTime() && currentTime < sunset.getTime())
+      return "d";
+   return "n";
 };

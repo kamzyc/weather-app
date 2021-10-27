@@ -1,5 +1,5 @@
 import { NUM_HOURS, DATE_OPTIONS, ICONS } from "./config";
-import { convertDate, checkIcon } from "./utilities";
+import { convertDate, checkIcon, checkDayTime } from "./utilities";
 import DOMCreator from "./DOMCreator";
 
 // DOM elements
@@ -9,7 +9,7 @@ export const syncBtn = document.querySelector(".navbar__sync");
 export const geoBtn = document.querySelector(".navbar__geo");
 export const pinBtn = document.querySelector(".navbar__pin");
 
-const weatherContainer = document.querySelector(".current-weather");
+const mainWeatherContainer = document.querySelector(".current-weather");
 const hourlyContainer = document.querySelector(".hourly");
 
 //^ MAIN ELEMENT
@@ -22,14 +22,6 @@ const createDateElem = () => {
    const date = convertDate(new Date(), DATE_OPTIONS.LONG);
    // return createElem("div", "current-weather__date", date);
    return DOMCreator.createElement("div", "current-weather__date", date);
-};
-
-const checkDayTime = (sunrise, sunset) => {
-   const currentTime = new Date().getTime();
-   if (currentTime < sunrise.getTime()) return "n";
-   if (currentTime > sunrise.getTime() && currentTime < sunset.getTime())
-      return "d";
-   return "n";
 };
 
 const createIconElem = (className, id, sunrise, sunset) => {
@@ -137,29 +129,64 @@ const createHourlyElem = (hourly) => {
    return listElem;
 };
 
-export const updateView = (location, currentWeather, hourly) => {
-   console.log("Updating view...");
+// export const updateView = (location, currentWeather, hourly) => {
+//    console.log("Updating view...");
 
-   const sunrise = currentWeather.sunrise;
-   const sunset = currentWeather.sunset;
+//    const sunrise = currentWeather.sunrise;
+//    const sunset = currentWeather.sunset;
 
-   // create views
-   const mainElem = createMainElem(location, currentWeather);
-   const hourlyElem = createHourlyElem(hourly.slice(1, NUM_HOURS));
+//    // create views
+//    const mainElem = createMainElem(location, currentWeather);
+//    const hourlyElem = createHourlyElem(hourly.slice(1, NUM_HOURS));
 
-   // clear containers
-   DOMCreator.clearElement(weatherContainer);
-   DOMCreator.clearElement(hourlyContainer);
+//    // clear containers
+//    DOMCreator.clearElement(weatherContainer);
+//    DOMCreator.clearElement(hourlyContainer);
 
-   // append elements
-   DOMCreator.appendElements(mainElem, weatherContainer);
-   DOMCreator.appendElements(hourlyElem, hourlyContainer);
-};
+//    // append elements
+//    DOMCreator.appendElements(mainElem, weatherContainer);
+//    DOMCreator.appendElements(hourlyElem, hourlyContainer);
+// };
 
 // new version
 
-// export const updateView = (location, weather, hourly) => {
-//    console.log("Updating view...");
-//    const e = DOMCreator.createElement("div", "x", "x");
-//    console.log(e);
-// };
+//? Main weather element
+const createMainWeatherElement = ({ name, lat, lon }, { timezone }) => {
+   const mainClass = "current-weather";
+   const parent = DOMCreator.createElement("main", `${mainClass}`);
+
+   // title
+   const locationElement = DOMCreator.createElement(
+      "h2",
+      `${mainClass}__location`,
+      `${name} ${lat.toFixed()} ${lon.toFixed()}` //! to update
+   );
+
+   // time and date
+   const currentDate = convertDate(new Date(), DATE_OPTIONS.LONG, timezone);
+   const dateElement = DOMCreator.createElement(
+      "div",
+      `${mainClass}__date`,
+      currentDate
+   );
+   e;
+
+   // add to parent
+   DOMCreator.appendElements([locationElement, dateElement], parent);
+   return parent;
+};
+
+export const updateView = (location, weather, hourly) => {
+   console.log("Updating view...");
+   console.log(location);
+   console.log(weather);
+
+   // create elements
+   const mainWeatherElement = createMainWeatherElement(location, weather);
+
+   // clear containers
+   DOMCreator.clearElement(mainWeatherContainer);
+
+   // add elements to containers
+   DOMCreator.appendElements(mainWeatherElement, mainWeatherContainer);
+};
