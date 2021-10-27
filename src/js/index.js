@@ -6,13 +6,13 @@ import {
    getCurrentPosition,
    getHourlyAndDailyWeather,
 } from "./data";
-import * as dom from "./dom";
+import * as view from "./view";
 
 const init = () => {
    // add handlers
-   dom.searchForm.addEventListener("submit", searchHandler);
-   dom.geoBtn.addEventListener("click", geoHandler);
-   dom.syncBtn.addEventListener("click", syncHandler);
+   view.searchForm.addEventListener("submit", searchHandler);
+   view.geoBtn.addEventListener("click", geoHandler);
+   view.syncBtn.addEventListener("click", syncHandler);
 };
 
 const searchHandler = async (event) => {
@@ -21,7 +21,7 @@ const searchHandler = async (event) => {
    try {
       // get coords and current weather
       const { coords, weather } = await getCurrentWeatherFromSearch(
-         dom.searchInput.value,
+         view.searchInput.value,
          currentLocation.units
       );
 
@@ -32,7 +32,7 @@ const searchHandler = async (event) => {
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      dom.updateView(currentLocation, weather, hourly);
+      view.updateView(currentLocation, weather, hourly);
    } catch (error) {
       console.error(error);
    }
@@ -47,15 +47,13 @@ const syncHandler = async () => {
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      dom.updateView(currentLocation, weather, hourly);
+      view.updateView(currentLocation, weather, hourly);
    } catch (error) {
       console.error(error);
    }
 };
 
 const geoHandler = async () => {
-   console.log("Geolocation weather...");
-
    try {
       // get current coords
       const { coords } = await getCurrentPosition();
@@ -75,7 +73,7 @@ const geoHandler = async () => {
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      dom.updateView(currentLocation, weather, hourly);
+      view.updateView(currentLocation, weather, hourly);
    } catch (error) {
       console.error(error);
    }

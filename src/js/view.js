@@ -6,6 +6,7 @@ import {
    convertDate,
    addAttribute,
 } from "./utilities";
+import DOMCreator from "./DOMCreator";
 
 // DOM elements
 export const searchForm = document.querySelector(".search");
@@ -136,23 +137,28 @@ const createHourlyElem = (hourly) => {
    return listElem;
 };
 
-export const updateView = (location, currentWeather, hourly) => {
-   console.log("Updating view...");
+// export const updateView = (location, currentWeather, hourly) => {
+//    console.log("Updating view...");
 
-   const sunrise = currentWeather.sunrise;
-   const sunset = currentWeather.sunset;
+//    const sunrise = currentWeather.sunrise;
+//    const sunset = currentWeather.sunset;
 
-   // create views
-   const mainElem = createMainElem(location, currentWeather);
-   const hourlyElem = createHourlyElem(hourly.slice(1, NUM_HOURS));
+//    // create views
+//    const mainElem = createMainElem(location, currentWeather);
+//    const hourlyElem = createHourlyElem(hourly.slice(1, NUM_HOURS));
 
-   // clear containers
-   clearElem(weatherContainer);
-   clearElem(hourlyContainer);
+//    // clear containers
+//    clearElem(weatherContainer);
+//    clearElem(hourlyContainer);
 
-   // append elements
-   addElem(mainElem, weatherContainer);
-   addElem(hourlyElem, hourlyContainer);
-};
+//    // append elements
+//    addElem(mainElem, weatherContainer);
+//    addElem(hourlyElem, hourlyContainer);
+// };
 
 // new version
+
+export const updateView = (location, weather, hourly) => {
+   console.log("Updating view...");
+   DOMCreator.x();
+};
