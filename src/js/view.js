@@ -1,4 +1,4 @@
-import { NUM_HOURS, DATE_OPTIONS, ICONS } from "./config";
+import { NUM_HOURS, DATE_OPTIONS, ICONS, CLASSNAMES } from "./config";
 import { convertDate, checkIcon, checkDayTime } from "./utilities";
 import DOMCreator from "./DOMCreator";
 
@@ -148,41 +148,100 @@ const createHourlyElem = (hourly) => {
 //    DOMCreator.appendElements(hourlyElem, hourlyContainer);
 // };
 
+// const createIconElem = (className, id, sunrise, sunset) => {
+//    const parent = DOMCreator.createElement("div", className);
+//    const icon = DOMCreator.createElement("img");
+
+//    const dayTime = checkDayTime(sunrise, sunset);
+//    const iconType = checkIcon(id, dayTime);
+
+//    // addAttribute(icon, "src", ICONS[`${iconType}`]);
+//    DOMCreator.addAttribute(icon, "src", ICONS[`${iconType}`]);
+
+//    // addElem(icon, parent);
+//    DOMCreator.appendElements(icon, parent);
+//    return parent;
+// };
+
 // new version
 
 //? Main weather element
-const createMainWeatherElement = ({ name, lat, lon }, { timezone }) => {
-   const mainClass = "current-weather";
-   const parent = DOMCreator.createElement("main", `${mainClass}`);
+const createIconElem = (
+   id,
+   sunrise,
+   sunset,
+   className = CLASSNAMES.CURRENT_WEATHER
+) => {
+   const parent = DOMCreator.createElement("");
+};
+
+const createContentElement = ({ temp, id }, { sunrise, sunset }) => {
+   const parent = DOMCreator.createElement(
+      "section",
+      `${CLASSNAMES.CURRENT_WEATHER}__content`
+   );
+
+   // temp
+   const tempElement = DOMCreator.createElement(
+      "div",
+      `${CLASSNAMES.CURRENT_WEATHER}__temp`,
+      `${temp.main}°`
+   );
+
+   // icon
+   const iconElement = createIconElem(id, sunrise, sunset);
+
+   // description
+   // min-max
+
+   // add to parent
+   DOMCreator.appendElements([tempElement], parent);
+   return parent;
+};
+
+const createMainWeatherElement = ({ name, lat, lon }, timeData, weather) => {
+   const parent = DOMCreator.createElement("main", CLASSNAMES.CURRENT_WEATHER);
 
    // title
    const locationElement = DOMCreator.createElement(
       "h2",
-      `${mainClass}__location`,
+      `${CLASSNAMES.CURRENT_WEATHER}__location`,
       `${name} ${lat.toFixed()} ${lon.toFixed()}` //! to update
    );
 
    // time and date
-   const currentDate = convertDate(new Date(), DATE_OPTIONS.LONG, timezone);
+   const currentDate = convertDate(
+      new Date(),
+      DATE_OPTIONS.LONG,
+      timeData.timezone
+   );
    const dateElement = DOMCreator.createElement(
       "div",
-      `${mainClass}__date`,
+      `${CLASSNAMES.CURRENT_WEATHER}__date`,
       currentDate
    );
-   e;
+
+   // content
+   const contentElement = createContentElement(weather, timeData);
 
    // add to parent
-   DOMCreator.appendElements([locationElement, dateElement], parent);
+   DOMCreator.appendElements(
+      [locationElement, dateElement, contentElement],
+      parent
+   );
    return parent;
 };
 
-export const updateView = (location, weather, hourly) => {
+export const updateView = (location, timeData, weather) => {
    console.log("Updating view...");
-   console.log(location);
    console.log(weather);
 
    // create elements
-   const mainWeatherElement = createMainWeatherElement(location, weather);
+   const mainWeatherElement = createMainWeatherElement(
+      location,
+      timeData,
+      weather
+   );
 
    // clear containers
    DOMCreator.clearElement(mainWeatherContainer);

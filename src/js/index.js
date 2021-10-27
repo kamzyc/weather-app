@@ -19,8 +19,8 @@ const searchHandler = async (event) => {
    event.preventDefault();
 
    try {
-      // get coords and current weather
-      const { coords, weather } = await getCurrentWeatherFromSearch(
+      // get coords, time and current weather
+      const { coords, weather, timeData } = await getCurrentWeatherFromSearch(
          view.searchInput.value,
          currentLocation.units
       );
@@ -32,7 +32,7 @@ const searchHandler = async (event) => {
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      view.updateView(currentLocation, weather, hourly);
+      view.updateView(currentLocation, timeData, weather);
    } catch (error) {
       console.error(error);
    }
@@ -40,14 +40,16 @@ const searchHandler = async (event) => {
 
 const syncHandler = async () => {
    try {
-      // get current weather
-      const { weather } = await getCurrentWeatherFromCoords(currentLocation);
+      // get current weather and time
+      const { weather, timeData } = await getCurrentWeatherFromCoords(
+         currentLocation
+      );
 
       // get hourly and daily weather
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      view.updateView(currentLocation, weather, hourly);
+      view.updateView(currentLocation, timeData, weather);
    } catch (error) {
       console.error(error);
    }
@@ -66,14 +68,16 @@ const geoHandler = async () => {
       // set location
       setLocation(currentLocation, currentCoords);
 
-      // get current weather
-      const { weather } = await getCurrentWeatherFromCoords(currentLocation);
+      // get current weather and time
+      const { weather, timeData } = await getCurrentWeatherFromCoords(
+         currentLocation
+      );
 
       // get hourly and daily weather
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      view.updateView(currentLocation, weather, hourly);
+      view.updateView(currentLocation, timeData, weather);
    } catch (error) {
       console.error(error);
    }

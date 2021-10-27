@@ -31,6 +31,8 @@ const convertToWeatherObject = (data) => {
          wind: { angle: data.wind.deg, speed: data.wind.speed },
          description: data.weather[0].description,
          id: data.weather[0].id,
+      },
+      timeData: {
          timezone: data.timezone / MIN_IN_HOUR / SEC_IN_MIN,
          sunrise: new Date(data.sys.sunrise * 1000),
          sunset: new Date(data.sys.sunset * 1000),
@@ -87,9 +89,9 @@ export const getCurrentWeatherFromSearch = async (searchName, units) => {
          )}=${searchName}&units=${units}&appid=${API_KEY}`
       );
 
-      const weather = await getWeatherData(response);
+      const weatherData = await getWeatherData(response);
 
-      return weather;
+      return weatherData;
    } catch (error) {
       throw error;
    }
@@ -100,9 +102,9 @@ export const getCurrentWeatherFromCoords = async ({ lat, lon, units }) => {
       const response = await fetch(
          `${API_URL}weather?lat=${lat}&lon=${lon}&units=${units}&appid=${API_KEY}`
       );
-      const weather = await getWeatherData(response);
+      const weatherData = await getWeatherData(response);
 
-      return weather;
+      return weatherData;
    } catch (error) {
       throw error;
    }
