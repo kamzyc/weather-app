@@ -9,6 +9,7 @@
   --clr-error: hsl(359 68% 36% / 1);
   --btn-size: 3rem;
   --icon-size: 1rem;
+  --soft-border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
 }
 
 *,
@@ -238,20 +239,20 @@ body {
   align-items: stretch;
 }
 .daily__item {
-  --border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   justify-content: space-between;
-  border-bottom: var(--border);
+  border-bottom: var(--soft-border);
   padding: 1rem 0;
 }
 .daily__item:first-child {
-  border-top: var(--border);
+  border-top: var(--soft-border);
 }
 .daily__time {
   font-size: 1.25rem;
+  width: 10ch;
 }
 .daily__icon img {
   width: 4rem;
@@ -260,6 +261,8 @@ body {
 }
 .daily__min-max {
   font-size: 1.25rem;
+  width: 9ch;
+  text-align: right;
 }
 .daily__min-max .max {
   font-weight: 400;

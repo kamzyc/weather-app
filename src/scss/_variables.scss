@@ -15,6 +15,8 @@
 
    --btn-size: 3rem;
    --icon-size: 1rem;
+
+   --soft-border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
 }
 
 @mixin flexCenter($direction: row) {

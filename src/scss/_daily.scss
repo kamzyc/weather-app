@@ -1,9 +1,6 @@
 .daily {
    width: 100%;
 
-   .daily__panel {
-   }
-
    &__list {
       list-style: none;
       @include flexCenter(column);
@@ -11,19 +8,19 @@
    }
 
    &__item {
-      --border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
       @include flexCenter;
       justify-content: space-between;
-      border-bottom: var(--border);
+      border-bottom: var(--soft-border);
       padding: 1rem 0;
    }
 
    &__item:first-child {
-      border-top: var(--border);
+      border-top: var(--soft-border);
    }
 
    &__time {
       font-size: 1.25rem;
+      width: 10ch;
    }
 
    &__icon {
@@ -36,7 +33,8 @@
 
    &__min-max {
       font-size: 1.25rem;
-
+      width: 9ch;
+      text-align: right;
       .max {
          font-weight: 400;
       }
