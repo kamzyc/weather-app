@@ -35,11 +35,11 @@ const createIconElement = (
    return parent;
 };
 
-const createMinMaxElement = ({ min, max }) => {
-   const parent = DOMCreator.createElement(
-      "div",
-      `${CLASSNAMES.CURRENT_WEATHER}__min-max`
-   );
+const createMaxMinElement = (
+   { min, max },
+   className = CLASSNAMES.CURRENT_WEATHER
+) => {
+   const parent = DOMCreator.createElement("div", `${className}__min-max`);
    const maxElemement = DOMCreator.createElement("span", "max", `${max}°`);
    const minElement = DOMCreator.createElement("span", "min", ` / ${min}°`);
 
@@ -74,11 +74,11 @@ const createContentElement = (
    );
 
    // min-max
-   const minMaxElement = createMinMaxElement(temp);
+   const maxMinElement = createMaxMinElement(temp);
 
    // add to parent
    DOMCreator.appendElements(
-      [tempElement, iconElement, descriptionElement, minMaxElement],
+      [tempElement, iconElement, descriptionElement, maxMinElement],
       parent
    );
    return parent;
@@ -184,11 +184,49 @@ const createHourlyElement = (hourly, timeData) => {
 
 //? Daily element
 //////////////////////////////////////////////////////////////////////////////////////////
-const createDailyElement = (daily) => {
+
+const createDayElement = (
+   { time, temp, id },
+   { timezone, sunrise, sunset }
+) => {
+   const parent = DOMCreator.createElement("li", `${CLASSNAMES.DAILY}__item`);
+
+   // date
+   const dateElement = DOMCreator.createElement(
+      "div",
+      `${CLASSNAMES.DAILY}__time`,
+      convertDate(time, DATE_OPTIONS.SHORT, timezone)
+   );
+
+   // icon
+   const iconElement = createIconElement(id, sunrise, sunset, CLASSNAMES.DAILY);
+
+   //temp (max / min)
+   const maxMinElement = createMaxMinElement(temp, CLASSNAMES.DAILY);
+
+   DOMCreator.appendElements([dateElement, iconElement, maxMinElement], parent);
+   return parent;
+};
+
+const createDaysElement = (daily, timeData) => {
+   const parent = DOMCreator.createElement("ul", `${CLASSNAMES.DAILY}__list`);
+   const daysElement = daily.map((day) => {
+      return createDayElement(day, timeData);
+   });
+
+   DOMCreator.appendElements(daysElement, parent);
+   return parent;
+};
+
+const createDailyElement = (daily, timeData) => {
    const parent = DOMCreator.createElement("div", `${CLASSNAMES.DAILY}__panel`);
 
    console.log(daily);
-   DOMCreator.appendElements([], parent);
+
+   // day elements
+   const daysElement = createDaysElement(daily, timeData);
+
+   DOMCreator.appendElements(daysElement, parent);
    return parent;
 };
 //////////////////////////////////////////////////////////////////////////////////////////
