@@ -166,6 +166,45 @@ const createHoursElement = (hourly, timeData) => {
    return parent;
 };
 
+const createGraphElement = () => {
+   const parent = DOMCreator.createElement("div", "graph");
+   const labels = ["January", "February", "March", "April", "May", "June"];
+   const data = {
+      labels: labels,
+      datasets: [
+         {
+            label: "My First dataset",
+            backgroundColor: "white",
+            borderColor: "white",
+            data: [0, 10, 5, 2, 20, 30, 45],
+         },
+      ],
+   };
+
+   const config = {
+      type: "line",
+      data: data,
+      options: {},
+   };
+
+   const canvas = DOMCreator.createElement("canvas");
+
+   const myChart = new Chart(canvas, config);
+
+   DOMCreator.appendElements(canvas, parent);
+
+   return parent;
+};
+
+const tmp = (hourly, timeData) => {
+   const parent = DOMCreator.createElement("div");
+   const a = createHoursElement(hourly, timeData);
+   const g = createGraphElement();
+
+   DOMCreator.appendElements([a, g], parent);
+   return parent;
+};
+
 const createHourlyElement = (hourly, timeData) => {
    const parent = DOMCreator.createElement(
       "div",
@@ -173,8 +212,8 @@ const createHourlyElement = (hourly, timeData) => {
    );
 
    // hour elements
-   const hoursElement = createHoursElement(hourly, timeData);
-   // graph
+   // const hoursElement = createHoursElement(hourly, timeData);
+   const hoursElement = tmp(hourly, timeData);
 
    DOMCreator.appendElements([hoursElement], parent);
    return parent;
