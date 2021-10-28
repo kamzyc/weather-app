@@ -1,0 +1,48 @@
+.daily {
+   width: 100%;
+
+   .daily__panel {
+   }
+
+   &__list {
+      list-style: none;
+      @include flexCenter(column);
+      align-items: stretch;
+   }
+
+   &__item {
+      --border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
+      @include flexCenter;
+      justify-content: space-between;
+      border-bottom: var(--border);
+      padding: 1rem 0;
+   }
+
+   &__item:first-child {
+      border-top: var(--border);
+   }
+
+   &__time {
+      font-size: 1.25rem;
+   }
+
+   &__icon {
+      img {
+         width: 4rem;
+         height: 4rem;
+         max-width: 100%;
+      }
+   }
+
+   &__min-max {
+      font-size: 1.25rem;
+
+      .max {
+         font-weight: 400;
+      }
+
+      .min {
+         font-weight: 200;
+      }
+   }
+}

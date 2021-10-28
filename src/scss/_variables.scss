@@ -48,3 +48,9 @@
       @content;
    }
 }
+
+@mixin soft-line() {
+   width: 100%;
+   background: red;
+   height: 1px;
+}

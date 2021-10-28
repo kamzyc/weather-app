@@ -187,6 +187,7 @@ body {
 
 .hourly {
   width: 100%;
+  margin-bottom: 2rem;
 }
 .hourly .hourly__panel {
   text-align: center;
@@ -222,6 +223,48 @@ body {
 }
 .hourly__temp {
   font-size: 1.25rem;
+  font-weight: 200;
+}
+
+.daily {
+  width: 100%;
+}
+.daily__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: stretch;
+}
+.daily__item {
+  --border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  border-bottom: var(--border);
+  padding: 1rem 0;
+}
+.daily__item:first-child {
+  border-top: var(--border);
+}
+.daily__time {
+  font-size: 1.25rem;
+}
+.daily__icon img {
+  width: 4rem;
+  height: 4rem;
+  max-width: 100%;
+}
+.daily__min-max {
+  font-size: 1.25rem;
+}
+.daily__min-max .max {
+  font-weight: 400;
+}
+.daily__min-max .min {
   font-weight: 200;
 }
 
