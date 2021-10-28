@@ -29,24 +29,25 @@
          </form>
       </header>
 
-      <main class="current-weather">
+      <section class="current-weather">
+         <main class="current-weather__panel">
+            <h2 class="current-weather__location">Current location</h2>
+            <div class="current-weather__date">Thu, 5 Decenver 10:51 am</div>
 
-         <h2 class="current-weather__location">Current location</h2>
-         <div class="current-weather__date">Thu, 5 Decenver 10:51 am</div>
-
-         <section class="current-weather__content">
-            <div class="current-weather__temp">14&deg;</div>
-            <div class="current-weather__icon">
-               <img src="./src/imgs/icons/200_201_202_231_232.svg" alt="">
+            <div class="current-weather__content">
+               <div class="current-weather__temp">14&deg;</div>
+               <div class="current-weather__icon">
+                  <img src="./src/imgs/icons/200_201_202_231_232.svg" alt="">
+               </div>
+               <div class="current-weather__description">Clear sky</div>
+               <div class="current-weather__min-max">
+                  <span class="max">22</span>
+                  /
+                  <span class="min">6</span>
+               </div>
             </div>
-            <div class="current-weather__description">Clear sky</div>
-            <div class="current-weather__min-max">
-               <span class="max">22</span>
-               /
-               <span class="min">6</span>
-            </div>
-         </section>
-      </main>
+         </main>
+      </section>
 
       <div class="line"></div>
 
@@ -73,13 +74,15 @@
       <div class="line"></div>
 
       <section class="hourly">
-         <ul class="hourly__list">
-            <li class="hourly__item">
-               <div class="hourly__time">20:00</div>
-               <div class="hourly__icon">X</div>
-               <div class="hourly__temp">8&deg;</div>
-            </li>
-         </ul>
+         <div class="hourly__panel">
+            <ul class="hourly__list">
+               <li class="hourly__item">
+                  <div class="hourly__time">20:00</div>
+                  <div class="hourly__icon">X</div>
+                  <div class="hourly__temp">8&deg;</div>
+               </li>
+            </ul>
+         </div>
       </section>
 
 

@@ -107,14 +107,14 @@ body {
 .current-weather {
   width: 100%;
   height: 20rem;
+}
+.current-weather .current-weather__panel {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-}
-.current-weather > * {
   animation: fadeIn 1s;
 }
 .current-weather .error {

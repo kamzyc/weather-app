@@ -9,7 +9,9 @@ export const syncBtn = document.querySelector(".navbar__sync");
 export const geoBtn = document.querySelector(".navbar__geo");
 export const pinBtn = document.querySelector(".navbar__pin");
 
-const mainWeatherContainer = document.querySelector(".current-weather");
+const mainWeatherContainer = document.querySelector(
+   `.${CLASSNAMES.CURRENT_WEATHER}`
+);
 const hourlyContainer = document.querySelector(".hourly");
 
 // //^ hOURLY ELEMENT
@@ -133,13 +135,16 @@ const createContentElement = (
 };
 
 const createMainWeatherElement = ({ name, lat, lon }, timeData, weather) => {
-   const parent = DOMCreator.createElement("main", CLASSNAMES.CURRENT_WEATHER);
+   const parent = DOMCreator.createElement(
+      "main",
+      `${CLASSNAMES.CURRENT_WEATHER}__panel`
+   );
 
    // title
    const locationElement = DOMCreator.createElement(
       "h2",
       `${CLASSNAMES.CURRENT_WEATHER}__location`,
-      `${name} ${lat.toFixed()} ${lon.toFixed()}` //! to update
+      `${name}`
    );
 
    // time and date
@@ -173,7 +178,6 @@ const createHourlyElement = () => {};
 
 export const updateView = (location, timeData, weather, hourly) => {
    console.log("Updating view...");
-   console.log(weather);
 
    // create elements
    const mainWeatherElement = createMainWeatherElement(
