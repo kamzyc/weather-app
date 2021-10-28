@@ -28,8 +28,7 @@
 }
 
 .line {
-   @include margin(top, small);
-   @include margin(bottom, small);
+   @include margin(bottom, medium);
    height: 1px;
    width: 100%;
    background: var(--clr-main-2);

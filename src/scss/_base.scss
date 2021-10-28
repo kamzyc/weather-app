@@ -21,8 +21,8 @@ body {
 }
 
 .container {
-   @include flexCenter(column);
-   gap: 2rem;
+   // @include flexCenter(column);
+   // gap: 2rem;
    padding: 1.5rem 2rem;
    max-width: 50rem;
    margin: 0 auto;

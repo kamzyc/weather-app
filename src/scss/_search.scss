@@ -1,5 +1,6 @@
 .search {
    width: 100%;
+   @include margin(bottom, small);
    &__form {
       @include flexCenter;
       justify-content: space-between;
