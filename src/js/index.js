@@ -33,6 +33,9 @@ const searchHandler = async (event) => {
 
       // update view
       view.updateView(currentLocation, timeData, weather, hourly);
+
+      // clear input
+      view.searchInput.value = "";
    } catch (error) {
       console.error(error);
    }

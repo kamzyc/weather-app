@@ -12,7 +12,7 @@ export const pinBtn = document.querySelector(".navbar__pin");
 const mainWeatherContainer = document.querySelector(
    `.${CLASSNAMES.CURRENT_WEATHER}`
 );
-const hourlyContainer = document.querySelector(".hourly");
+const hourlyContainer = document.querySelector(`.${CLASSNAMES.HOURLY}`);
 
 // //^ hOURLY ELEMENT
 // const createHourElem = ({ time, id, temp }) => {
@@ -44,30 +44,9 @@ const hourlyContainer = document.querySelector(".hourly");
 //    return listElem;
 // };
 
-// export const updateView = (location, currentWeather, hourly) => {
-//    console.log("Updating view...");
-
-//    const sunrise = currentWeather.sunrise;
-//    const sunset = currentWeather.sunset;
-
-//    // create views
-//    const mainElem = createMainElem(location, currentWeather);
-//    const hourlyElem = createHourlyElem(hourly.slice(1, NUM_HOURS));
-
-//    // clear containers
-//    DOMCreator.clearElement(weatherContainer);
-//    DOMCreator.clearElement(hourlyContainer);
-
-//    // append elements
-//    DOMCreator.appendElements(mainElem, weatherContainer);
-//    DOMCreator.appendElements(hourlyElem, hourlyContainer);
-// };
-
-// new version
-
 //////////////////////////////////////////////////////////////////////////////////////////
 //? Main weather element
-const createIconElem = (
+const createIconElement = (
    id,
    sunrise,
    sunset,
@@ -114,7 +93,7 @@ const createContentElement = (
    );
 
    // icon
-   const iconElement = createIconElem(id, sunrise, sunset);
+   const iconElement = createIconElement(id, sunrise, sunset);
 
    // description
    const descriptionElement = DOMCreator.createElement(
@@ -134,7 +113,7 @@ const createContentElement = (
    return parent;
 };
 
-const createMainWeatherElement = ({ name, lat, lon }, timeData, weather) => {
+const createMainWeatherElement = ({ name }, timeData, weather) => {
    const parent = DOMCreator.createElement(
       "main",
       `${CLASSNAMES.CURRENT_WEATHER}__panel`
@@ -173,9 +152,64 @@ const createMainWeatherElement = ({ name, lat, lon }, timeData, weather) => {
 
 //? Hourly element
 //////////////////////////////////////////////////////////////////////////////////////////
-const createHourlyElement = () => {};
-//////////////////////////////////////////////////////////////////////////////////////////
+const createHourElement = (
+   { time, id, temp },
+   { timezone, sunrise, sunset }
+) => {
+   const parent = DOMCreator.createElement("li", `${CLASSNAMES.HOURLY}__item`);
 
+   // time
+   const timeElement = DOMCreator.createElement(
+      "div",
+      `${CLASSNAMES.HOURLY}__time`,
+      convertDate(time, DATE_OPTIONS.ONLY_TIME, timezone)
+   );
+
+   // icon
+   const iconElement = createIconElement(
+      id,
+      sunrise,
+      sunset,
+      CLASSNAMES.HOURLY
+   );
+
+   // temp
+   const tempElement = DOMCreator.createElement(
+      "div",
+      `${CLASSNAMES.HOURLY}__temp`,
+      `${temp}°`
+   );
+
+   DOMCreator.appendElements([timeElement, iconElement, tempElement], parent);
+   return parent;
+};
+
+const createHoursElement = (hourly, timeData) => {
+   console.log(hourly);
+   const parent = DOMCreator.createElement("ul", `${CLASSNAMES.HOURLY}__list`);
+   const hoursElement = hourly.map((hour) => {
+      return createHourElement(hour, timeData);
+   });
+
+   DOMCreator.appendElements(hoursElement, parent);
+   return parent;
+};
+
+const createHourlyElement = (hourly, timeData) => {
+   const parent = DOMCreator.createElement(
+      "div",
+      `${CLASSNAMES.HOURLY}__panel`
+   );
+
+   // hour elements
+   const hoursElement = createHoursElement(hourly, timeData);
+   // graph
+
+   DOMCreator.appendElements([hoursElement], parent);
+   return parent;
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////
 export const updateView = (location, timeData, weather, hourly) => {
    console.log("Updating view...");
 
@@ -186,7 +220,7 @@ export const updateView = (location, timeData, weather, hourly) => {
       weather
    );
 
-   const hourlyElement = createHourlyElement(hourly);
+   const hourlyElement = createHourlyElement(hourly, timeData);
 
    // clear containers
    DOMCreator.clearElement(mainWeatherContainer);

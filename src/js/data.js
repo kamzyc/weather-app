@@ -41,11 +41,10 @@ const convertToWeatherObject = (data) => {
 };
 
 const convertToHourlyObject = (data) => {
-   const hourly = data.slice(0, NUM_HOURS).map((hour) => {
+   const hourly = data.slice(1, NUM_HOURS).map((hour) => {
       return {
          time: new Date(hour.dt * 1000),
          temp: Math.round(hour.temp),
-         description: hour.weather[0].description,
          id: hour.weather[0].id,
       };
    });
@@ -75,6 +74,7 @@ const getWeatherData = async (response) => {
       const data = await response.json();
       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
       const weatherData = convertToWeatherObject(data);
+      console.log(weatherData);
       return weatherData;
    } catch (error) {
       throw error;
