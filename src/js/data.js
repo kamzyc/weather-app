@@ -74,7 +74,6 @@ const getWeatherData = async (response) => {
       const data = await response.json();
       if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
       const weatherData = convertToWeatherObject(data);
-      console.log(weatherData);
       return weatherData;
    } catch (error) {
       throw error;

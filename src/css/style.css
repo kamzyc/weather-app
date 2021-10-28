@@ -201,6 +201,7 @@ body {
   gap: 1.5rem;
   overflow-x: auto;
   overscroll-behavior-x: contain;
+  padding-bottom: 1.25rem;
 }
 .hourly__item {
   min-width: 5rem;

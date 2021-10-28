@@ -40,6 +40,7 @@ export const API_URL = process.env.API_URL;
 export const CLASSNAMES = {
    CURRENT_WEATHER: "current-weather",
    HOURLY: "hourly",
+   DAILY: "daily",
 };
 
 export const NUM_HOURS = 24; // max 48

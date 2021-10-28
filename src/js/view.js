@@ -13,36 +13,7 @@ const mainWeatherContainer = document.querySelector(
    `.${CLASSNAMES.CURRENT_WEATHER}`
 );
 const hourlyContainer = document.querySelector(`.${CLASSNAMES.HOURLY}`);
-
-// //^ hOURLY ELEMENT
-// const createHourElem = ({ time, id, temp }) => {
-//    const timeElem = DOMCreator.createElement(
-//       "div",
-//       "hourly__time",
-//       convertDate(time, DATE_OPTIONS.ONLY_TIME)
-//    );
-//    const iconElem = DOMCreator.createElement("div", "hourly__icon", "X");
-
-//    const tempElem = DOMCreator.createElement("div", "hourly__temp", temp);
-
-//    const hourElem = DOMCreator.createElement("li", "hourly__item");
-//    DOMCreator.appendElements([timeElem, iconElem, tempElem], hourElem);
-//    return hourElem;
-// };
-
-// const createHoursElem = (hourly) => {
-//    const hoursElem = hourly.map(createHourElem);
-//    return hoursElem;
-// };
-
-// const createHourlyElem = (hourly) => {
-//    const listElem = DOMCreator.createElement("ul", "hourly__list");
-//    const hoursElem = createHoursElem(hourly);
-
-//    DOMCreator.appendElements(hoursElem, listElem);
-
-//    return listElem;
-// };
+const dailyContainer = document.querySelector(`.${CLASSNAMES.DAILY}`);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //? Main weather element
@@ -159,6 +130,7 @@ const createHourElement = (
    const parent = DOMCreator.createElement("li", `${CLASSNAMES.HOURLY}__item`);
 
    // time
+   //! fix issue with time
    const timeElement = DOMCreator.createElement(
       "div",
       `${CLASSNAMES.HOURLY}__time`,
@@ -185,7 +157,6 @@ const createHourElement = (
 };
 
 const createHoursElement = (hourly, timeData) => {
-   console.log(hourly);
    const parent = DOMCreator.createElement("ul", `${CLASSNAMES.HOURLY}__list`);
    const hoursElement = hourly.map((hour) => {
       return createHourElement(hour, timeData);
@@ -210,7 +181,18 @@ const createHourlyElement = (hourly, timeData) => {
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////
-export const updateView = (location, timeData, weather, hourly) => {
+
+//? Daily element
+//////////////////////////////////////////////////////////////////////////////////////////
+const createDailyElement = (daily) => {
+   const parent = DOMCreator.createElement("div", `${CLASSNAMES.DAILY}__panel`);
+
+   console.log(daily);
+   DOMCreator.appendElements([], parent);
+   return parent;
+};
+//////////////////////////////////////////////////////////////////////////////////////////
+export const updateView = (location, timeData, weather, hourly, daily) => {
    console.log("Updating view...");
 
    // create elements
@@ -221,12 +203,15 @@ export const updateView = (location, timeData, weather, hourly) => {
    );
 
    const hourlyElement = createHourlyElement(hourly, timeData);
+   const dailyElement = createDailyElement(daily, timeData);
 
    // clear containers
    DOMCreator.clearElement(mainWeatherContainer);
    DOMCreator.clearElement(hourlyContainer);
+   DOMCreator.clearElement(dailyContainer);
 
    // add elements to containers
    DOMCreator.appendElements(mainWeatherElement, mainWeatherContainer);
    DOMCreator.appendElements(hourlyElement, hourlyContainer);
+   DOMCreator.appendElements(dailyElement, dailyContainer);
 };

@@ -32,7 +32,7 @@ const searchHandler = async (event) => {
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      view.updateView(currentLocation, timeData, weather, hourly);
+      view.updateView(currentLocation, timeData, weather, hourly, daily);
 
       // clear input
       view.searchInput.value = "";
@@ -52,7 +52,7 @@ const syncHandler = async () => {
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      view.updateView(currentLocation, timeData, weather, hourly);
+      view.updateView(currentLocation, timeData, weather, hourly, daily);
    } catch (error) {
       console.error(error);
    }
@@ -80,7 +80,7 @@ const geoHandler = async () => {
       const { hourly, daily } = await getHourlyAndDailyWeather(currentLocation);
 
       // update view
-      view.updateView(currentLocation, timeData, weather, hourly);
+      view.updateView(currentLocation, timeData, weather, hourly, daily);
    } catch (error) {
       console.error(error);
    }
