@@ -33,6 +33,9 @@ import i210_211_230 from "url:../imgs/icons/210_211_230.svg";
 import i200_201_202_231_232 from "url:../imgs/icons/200_201_202_231_232.svg";
 import i212_221 from "url:../imgs/icons/212_221.svg";
 
+// wind
+import iWind from "url:../imgs/icons/wind.svg";
+
 dotenv.config();
 export const API_KEY = process.env.API_KEY;
 export const API_URL = process.env.API_URL;
@@ -41,6 +44,7 @@ export const CLASSNAMES = {
    CURRENT_WEATHER: "current-weather",
    HOURLY: "hourly",
    DAILY: "daily",
+   WIND: "wind",
 };
 
 export const NUM_HOURS = 24; // max 48
@@ -81,6 +85,7 @@ export const ICONS = {
    "210_211_230dn": i210_211_230,
    "200_201_202_231_232dn": i200_201_202_231_232,
    "212_221dn": i212_221,
+   wind: iWind,
 };
 
 /*

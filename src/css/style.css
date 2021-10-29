@@ -304,6 +304,7 @@ body {
 .wind__text .name {
   font-weight: 300;
   width: 16ch;
+  text-transform: capitalize;
 }
 .wind__text .value {
   font-weight: 200;

@@ -14,10 +14,11 @@ const mainWeatherContainer = document.querySelector(
 );
 const hourlyContainer = document.querySelector(`.${CLASSNAMES.HOURLY}`);
 const dailyContainer = document.querySelector(`.${CLASSNAMES.DAILY}`);
+const windContainer = document.querySelector(`.${CLASSNAMES.WIND}`);
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //? Main weather element
-const createIconElement = (
+const createWeatherIconElement = (
    id,
    sunrise,
    sunset,
@@ -64,7 +65,7 @@ const createContentElement = (
    );
 
    // icon
-   const iconElement = createIconElement(id, sunrise, sunset);
+   const iconElement = createWeatherIconElement(id, sunrise, sunset);
 
    // description
    const descriptionElement = DOMCreator.createElement(
@@ -138,7 +139,7 @@ const createHourElement = (
    );
 
    // icon
-   const iconElement = createIconElement(
+   const iconElement = createWeatherIconElement(
       id,
       sunrise,
       sunset,
@@ -199,7 +200,12 @@ const createDayElement = (
    );
 
    // icon
-   const iconElement = createIconElement(id, sunrise, sunset, CLASSNAMES.DAILY);
+   const iconElement = createWeatherIconElement(
+      id,
+      sunrise,
+      sunset,
+      CLASSNAMES.DAILY
+   );
 
    //temp (max / min)
    const maxMinElement = createMaxMinElement(temp, CLASSNAMES.DAILY);
@@ -221,8 +227,6 @@ const createDaysElement = (daily, timeData) => {
 const createDailyElement = (daily, timeData) => {
    const parent = DOMCreator.createElement("div", `${CLASSNAMES.DAILY}__panel`);
 
-   console.log(daily);
-
    // day elements
    const daysElement = createDaysElement(daily, timeData);
 
@@ -230,26 +234,106 @@ const createDailyElement = (daily, timeData) => {
    return parent;
 };
 //////////////////////////////////////////////////////////////////////////////////////////
-export const updateView = (location, timeData, weather, hourly, daily) => {
-   console.log("Updating view...");
 
+//? Wind element
+//////////////////////////////////////////////////////////////////////////////////////////
+const createIconElement = (className, iconName) => {
+   const parent = DOMCreator.createElement("div", `${className}__icon`);
+
+   const icon = DOMCreator.createElement("img");
+   DOMCreator.addAttribute(icon, "src", iconName);
+
+   DOMCreator.appendElements(icon, parent);
+   return parent;
+};
+
+const createArrowElement = (angle) => {
+   const arrow = DOMCreator.createElement("i", [
+      "fas",
+      "fa-location-arrow",
+      `${CLASSNAMES.WIND}__arrow`,
+   ]);
+
+   return arrow;
+};
+
+const createWindTextElement = (name, value, units = null) => {
+   const parent = DOMCreator.createElement("div", `${CLASSNAMES.WIND}__text`);
+   const nameElement = DOMCreator.createElement("span", "name", name);
+
+   // const unitsValue = units && (units === "metric" ? "m/s" : "miles/hour");
+   let unitsValue = "°";
+   if (units) unitsValue = units === "metric" ? " m/s" : " mph";
+
+   const valueElement = DOMCreator.createElement(
+      "span",
+      "value",
+      `${Math.round(value)}${unitsValue}`
+   );
+
+   DOMCreator.appendElements([nameElement, valueElement], parent);
+   return parent;
+};
+
+const createWindDescriptionElement = ({ angle, speed }, units) => {
+   const parent = DOMCreator.createElement(
+      "div",
+      `${CLASSNAMES.WIND}__description`
+   );
+
+   const angleElement = createWindTextElement("angle", angle);
+   const speedElement = createWindTextElement("speed", speed, units);
+
+   DOMCreator.appendElements([angleElement, speedElement], parent);
+   return parent;
+};
+
+const createWindElement = ({ wind }, { units }) => {
+   const parent = DOMCreator.createElement("div", `${CLASSNAMES.WIND}__panel`);
+
+   // title
+   const titleElement = DOMCreator.createElement(
+      "h3",
+      `${CLASSNAMES.WIND}__title`,
+      "Wind"
+   );
+
+   // icon
+   const iconElement = createIconElement(CLASSNAMES.WIND, ICONS.wind);
+
+   // arrow
+   const arrowElement = createArrowElement(wind.angle);
+
+   // description
+   const descriptionElement = createWindDescriptionElement(wind, units);
+
+   DOMCreator.appendElements(
+      [titleElement, iconElement, arrowElement, descriptionElement],
+      parent
+   );
+   return parent;
+};
+//////////////////////////////////////////////////////////////////////////////////////////
+export const updateView = (location, timeData, weather, hourly, daily) => {
    // create elements
    const mainWeatherElement = createMainWeatherElement(
       location,
       timeData,
       weather
    );
-
    const hourlyElement = createHourlyElement(hourly, timeData);
    const dailyElement = createDailyElement(daily, timeData);
+   const windElement = createWindElement(weather, location);
 
    // clear containers
    DOMCreator.clearElement(mainWeatherContainer);
    DOMCreator.clearElement(hourlyContainer);
    DOMCreator.clearElement(dailyContainer);
+   DOMCreator.clearElement(windContainer);
 
    // add elements to containers
    DOMCreator.appendElements(mainWeatherElement, mainWeatherContainer);
    DOMCreator.appendElements(hourlyElement, hourlyContainer);
    DOMCreator.appendElements(dailyElement, dailyContainer);
+   DOMCreator.appendElements(windElement, windContainer);
 };
