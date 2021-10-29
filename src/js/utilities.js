@@ -10,8 +10,6 @@ export const convertDate = (date, options, timezone) => {
    return date.toLocaleString("en-US", options);
 };
 
-export const isArray = (value) => Array.isArray(value);
-
 export const checkIcon = (id, dayTime) => {
    let iconName;
    for (const [key] of Object.entries(ICONS)) {
