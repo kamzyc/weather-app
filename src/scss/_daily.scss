@@ -1,5 +1,6 @@
 .daily {
    width: 100%;
+   @include margin(bottom, small);
 
    &__list {
       list-style: none;

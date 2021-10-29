@@ -60,10 +60,10 @@ export const DATE_OPTIONS = {
       month: "short",
       hour: "2-digit",
       minute: "2-digit",
-      hour12: true,
+      hour12: false,
    },
    SHORT: { day: "numeric", weekday: "short", month: "short" },
-   ONLY_TIME: { hour: "2-digit", minute: "2-digit", hour12: "true" },
+   ONLY_TIME: { hour: "2-digit", minute: "2-digit", hour12: false },
 };
 
 export const ICONS = {

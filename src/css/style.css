@@ -229,6 +229,7 @@ body {
 
 .daily {
   width: 100%;
+  margin-bottom: 2rem;
 }
 .daily__list {
   list-style: none;
@@ -271,6 +272,9 @@ body {
   font-weight: 200;
 }
 
+.wind {
+  margin-bottom: 2rem;
+}
 .wind__panel {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -279,7 +283,7 @@ body {
   align-items: center;
 }
 .wind__title {
-  font-size: 1.85rem;
+  font-size: 1.5rem;
   font-weight: 300;
   grid-row: 1/1;
   grid-column: 1/-1;
@@ -293,7 +297,7 @@ body {
   font-size: 5rem;
 }
 .wind__description {
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   display: flex;
   flex-direction: column;
   align-items: center;

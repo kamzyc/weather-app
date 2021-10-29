@@ -260,7 +260,6 @@ const createArrowElement = (angle) => {
       `${CLASSNAMES.WIND}__arrow`,
    ]);
 
-   // arrow.style.transform = "rotate(-45deg)";
    DOMCreator.addStyles(arrow, {
       transform: `rotate(${BASE_ICON_ROTATION}deg) rotate(${angle}deg)`,
    });
@@ -272,7 +271,6 @@ const createWindTextElement = (name, value, units = null) => {
    const parent = DOMCreator.createElement("div", `${CLASSNAMES.WIND}__text`);
    const nameElement = DOMCreator.createElement("span", "name", name);
 
-   // const unitsValue = units && (units === "metric" ? "m/s" : "miles/hour");
    let unitsValue = "°";
    if (units) unitsValue = units === "metric" ? " m/s" : " mph";
 
