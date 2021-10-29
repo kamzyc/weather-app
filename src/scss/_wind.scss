@@ -1,0 +1,47 @@
+.wind {
+   &__panel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 3rem 6rem;
+      justify-items: center;
+      align-items: center;
+   }
+
+   &__title {
+      font-size: 1.85rem;
+      font-weight: 300;
+      grid-row: 1 / 1;
+      grid-column: 1 / -1;
+      justify-self: start;
+   }
+
+   &__icon {
+      img {
+         width: 6rem;
+         height: 6rem;
+      }
+   }
+
+   &__arrow {
+      font-size: 5rem;
+   }
+
+   &__description {
+      font-size: 1.35rem;
+      @include flexCenter(column);
+      align-items: start;
+      gap: 0.5rem;
+   }
+
+   &__text {
+      .name {
+         font-weight: 300;
+         width: 16ch;
+      }
+
+      .value {
+         font-weight: 200;
+         margin-left: 1rem;
+      }
+   }
+}

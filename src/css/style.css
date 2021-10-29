@@ -271,4 +271,43 @@ body {
   font-weight: 200;
 }
 
+.wind__panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 3rem 6rem;
+  justify-items: center;
+  align-items: center;
+}
+.wind__title {
+  font-size: 1.85rem;
+  font-weight: 300;
+  grid-row: 1/1;
+  grid-column: 1/-1;
+  justify-self: start;
+}
+.wind__icon img {
+  width: 6rem;
+  height: 6rem;
+}
+.wind__arrow {
+  font-size: 5rem;
+}
+.wind__description {
+  font-size: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: start;
+  gap: 0.5rem;
+}
+.wind__text .name {
+  font-weight: 300;
+  width: 16ch;
+}
+.wind__text .value {
+  font-weight: 200;
+  margin-left: 1rem;
+}
+
 /*# sourceMappingURL=style.css.map */
