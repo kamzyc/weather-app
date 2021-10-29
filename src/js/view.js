@@ -1,4 +1,10 @@
-import { NUM_HOURS, DATE_OPTIONS, ICONS, CLASSNAMES } from "./config";
+import {
+   NUM_HOURS,
+   DATE_OPTIONS,
+   ICONS,
+   CLASSNAMES,
+   BASE_ICON_ROTATION,
+} from "./config";
 import { convertDate, checkIcon, checkDayTime } from "./utilities";
 import DOMCreator from "./DOMCreator";
 
@@ -253,6 +259,11 @@ const createArrowElement = (angle) => {
       "fa-location-arrow",
       `${CLASSNAMES.WIND}__arrow`,
    ]);
+
+   // arrow.style.transform = "rotate(-45deg)";
+   DOMCreator.addStyles(arrow, {
+      transform: `rotate(${BASE_ICON_ROTATION}deg) rotate(${angle}deg)`,
+   });
 
    return arrow;
 };

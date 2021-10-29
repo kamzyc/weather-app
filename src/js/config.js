@@ -51,6 +51,7 @@ export const NUM_HOURS = 24; // max 48
 export const NUM_DAYS = 8; // max 8
 export const MIN_IN_HOUR = 60;
 export const SEC_IN_MIN = 60;
+export const BASE_ICON_ROTATION = -45;
 
 export const DATE_OPTIONS = {
    LONG: {
