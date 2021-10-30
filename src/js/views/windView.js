@@ -1,6 +1,6 @@
 import { ICONS, CLASSNAMES, BASE_ICON_ROTATION } from "../config";
 import DOMCreator from "../DOMCreator";
-import { createIconElement } from "./view";
+import { createIconElement, createTextElement } from "./view";
 
 const createArrowElement = (angle) => {
    const arrow = DOMCreator.createElement("i", [
@@ -17,20 +17,14 @@ const createArrowElement = (angle) => {
 };
 
 const createWindTextElement = (name, value, units = null) => {
-   const parent = DOMCreator.createElement("div", `${CLASSNAMES.WIND}__text`);
-   const nameElement = DOMCreator.createElement("span", "name", name);
-
    let unitsValue = "°";
    if (units) unitsValue = units === "metric" ? " m/s" : " mph";
 
-   const valueElement = DOMCreator.createElement(
-      "span",
-      "value",
-      `${Math.round(value)}${unitsValue}`
+   return createTextElement(
+      name,
+      `${Math.round(value)}${unitsValue}`,
+      CLASSNAMES.WIND
    );
-
-   DOMCreator.appendElements([nameElement, valueElement], parent);
-   return parent;
 };
 
 const createWindDescriptionElement = ({ angle, speed }, units) => {
@@ -57,7 +51,7 @@ export const createWindElement = ({ wind }, { units }) => {
    );
 
    // icon
-   const iconElement = createIconElement(CLASSNAMES.WIND, ICONS.wind);
+   const iconElement = createIconElement(ICONS.wind, CLASSNAMES.WIND);
 
    // arrow
    const arrowElement = createArrowElement(wind.angle);

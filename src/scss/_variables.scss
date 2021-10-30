@@ -17,6 +17,7 @@
    --icon-size: 1rem;
 
    --soft-border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
+   --hard-border: 1px solid var(--clr-main-2);
 }
 
 @mixin flexCenter($direction: row) {
@@ -45,14 +46,12 @@
    height: $value;
 }
 
+@mixin border($type, $side) {
+   border-#{$side}: $type;
+}
+
 @mixin mq($breakpoint) {
    @media only screen and (max-width: $breakpoint) {
       @content;
    }
-}
-
-@mixin soft-line() {
-   width: 100%;
-   background: red;
-   height: 1px;
 }

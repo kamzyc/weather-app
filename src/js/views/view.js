@@ -1,16 +1,10 @@
-import {
-   NUM_HOURS,
-   DATE_OPTIONS,
-   ICONS,
-   CLASSNAMES,
-   BASE_ICON_ROTATION,
-} from "../config";
-import { convertDate, checkIcon, checkDayTime } from "../utilities";
+import { ICONS, CLASSNAMES } from "../config";
+import { checkIcon, checkDayTime } from "../utilities";
 import DOMCreator from "../DOMCreator";
 import { createMainWeatherElement } from "./mainWeatherView";
 import { createHourlyElement } from "./hourlyView";
 import { createDailyElement } from "./dailyView";
-import { createWindElement } from "./windElement";
+import { createWindElement } from "./windView";
 
 // DOM elements
 export const searchForm = document.querySelector(".search");
@@ -26,24 +20,6 @@ const hourlyContainer = document.querySelector(`.${CLASSNAMES.HOURLY}`);
 const dailyContainer = document.querySelector(`.${CLASSNAMES.DAILY}`);
 const windContainer = document.querySelector(`.${CLASSNAMES.WIND}`);
 
-export const createWeatherIconElement = (
-   id,
-   sunrise,
-   sunset,
-   className = CLASSNAMES.CURRENT_WEATHER
-) => {
-   const parent = DOMCreator.createElement("div", `${className}__icon`);
-   const icon = DOMCreator.createElement("img");
-
-   const dayTime = checkDayTime(sunrise, sunset);
-   const iconType = checkIcon(id, dayTime);
-
-   DOMCreator.addAttribute(icon, "src", ICONS[`${iconType}`]);
-
-   DOMCreator.appendElements(icon, parent);
-   return parent;
-};
-
 export const createMaxMinElement = (
    { min, max },
    className = CLASSNAMES.CURRENT_WEATHER
@@ -56,13 +32,33 @@ export const createMaxMinElement = (
    return parent;
 };
 
-export const createIconElement = (className, iconName) => {
+export const createIconElement = (iconName, className) => {
    const parent = DOMCreator.createElement("div", `${className}__icon`);
 
    const icon = DOMCreator.createElement("img");
    DOMCreator.addAttribute(icon, "src", iconName);
 
    DOMCreator.appendElements(icon, parent);
+   return parent;
+};
+
+export const createWeatherIconElement = (
+   id,
+   sunrise,
+   sunset,
+   className = CLASSNAMES.CURRENT_WEATHER
+) => {
+   const dayTime = checkDayTime(sunrise, sunset);
+   const iconType = checkIcon(id, dayTime);
+
+   return createIconElement(ICONS[`${iconType}`], className);
+};
+
+export const createTextElement = (name, value, className) => {
+   const parent = DOMCreator.createElement("div", `${className}__text`);
+   const nameElement = DOMCreator.createElement("span", "name", name);
+   const valueElement = DOMCreator.createElement("span", "value", value);
+   DOMCreator.appendElements([nameElement, valueElement], parent);
    return parent;
 };
 

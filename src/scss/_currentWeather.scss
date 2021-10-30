@@ -6,7 +6,6 @@
    .current-weather__panel {
       text-align: center;
       @include flexCenter(column);
-      animation: fadeIn 1s;
    }
 
    &__location {
@@ -42,8 +41,7 @@
       @include flexCenter;
 
       img {
-         width: 10rem;
-         height: 10rem;
+         @include boxSize(10rem);
          max-width: 100%;
       }
    }

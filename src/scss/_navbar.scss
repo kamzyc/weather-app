@@ -1,6 +1,10 @@
 .navbar {
    width: 100%;
+   padding: 2rem 0;
    @include margin(bottom, medium);
+   @include border(var(--hard-border), top);
+   @include border(var(--hard-border), bottom);
+
    &__list {
       @include flexCenter();
       justify-content: space-around;

@@ -11,12 +11,12 @@
    &__item {
       @include flexCenter;
       justify-content: space-between;
-      border-bottom: var(--soft-border);
+      @include border(var(--soft-border), bottom);
       padding: 1rem 0;
    }
 
    &__item:first-child {
-      border-top: var(--soft-border);
+      @include border(var(--soft-border), top);
    }
 
    &__time {
@@ -26,8 +26,7 @@
 
    &__icon {
       img {
-         width: 4rem;
-         height: 4rem;
+         @include boxSize(4rem);
          max-width: 100%;
       }
    }

@@ -29,8 +29,7 @@
 
    &__icon {
       img {
-         width: 4rem;
-         height: 4rem;
+         @include boxSize(3.5rem);
          max-width: 100%;
       }
    }
