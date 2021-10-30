@@ -6,7 +6,7 @@ import {
    getCurrentPosition,
    getHourlyAndDailyWeather,
 } from "./data";
-import * as view from "./view";
+import * as view from "./views/view";
 
 const init = () => {
    // add handlers

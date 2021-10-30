@@ -1,12 +1,3 @@
-/*
-city name : api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-zip code : api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={API key}
-lat and lon : api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
-one call : https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-daily : api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
-hourly : pro.openweathermap.org/data/2.5/forecast/hourly?lat={lat}&lon={lon}&appid={API key}
-*/
-
 import {
    API_URL,
    API_KEY,
