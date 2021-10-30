@@ -4,6 +4,7 @@
    // @include margin(bottom, small);
 
    .current-weather__panel {
+      padding: 0 2rem;
       text-align: center;
       @include flexCenter(column);
    }

@@ -8,6 +8,7 @@
       justify-items: center;
       align-items: center;
       @include border(var(--soft-border), top);
+      margin: 0 1rem;
    }
 
    &__title {
