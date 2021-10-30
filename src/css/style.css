@@ -6,8 +6,7 @@
   --clr-bg-2: hsl(var(--hue) 44% 22% / 1);
   --clr-main-1: hsl(var(--hue) 5% 95% / 1);
   --clr-main-2: hsl(var(--hue) 20% 85% / 1);
-  --c: rgb(242, 243, 243);
-  --c: rgba(242, 243, 243, 0.2);
+  --clr-dark-fade: hsl(var(--hue) 20% 10% / 0.3);
   --clr-error: hsl(359 68% 36% / 1);
   --btn-size: 3rem;
   --icon-size: 1rem;
@@ -28,6 +27,17 @@ body {
   color: var(--clr-main-1);
   font-family: var(--ff-main);
   font-weight: 400;
+  background: black;
+}
+body::-webkit-scrollbar {
+  width: 10px;
+}
+body::-webkit-scrollbar-track {
+  background: var(--clr-main-2);
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--clr-dark-fade);
+  border-radius: 100vmin;
 }
 
 .container {
@@ -178,6 +188,7 @@ body {
 .navbar {
   width: 100%;
   padding: 2rem 0;
+  background-color: var(--clr-dark-fade);
   border-top: var(--hard-border);
   border-bottom: var(--hard-border);
 }
@@ -192,6 +203,18 @@ body {
 
 .hourly {
   width: 100%;
+}
+.hourly ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.hourly ::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 0 1rem;
+}
+.hourly ::-webkit-scrollbar-thumb {
+  background-color: var(--clr-dark-fade);
+  border-radius: 100vmin;
 }
 .hourly .hourly__panel {
   text-align: center;

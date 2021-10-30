@@ -1,8 +1,8 @@
 .navbar {
    width: 100%;
    padding: 2rem 0;
+   background-color: var(--clr-dark-fade);
 
-   // @include margin(bottom, medium);
    @include border(var(--hard-border), top);
    @include border(var(--hard-border), bottom);
 

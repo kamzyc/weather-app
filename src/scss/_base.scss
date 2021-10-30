@@ -12,6 +12,20 @@ body {
    color: var(--clr-main-1);
    font-family: var(--ff-main);
    font-weight: 400;
+   background: black;
+
+   &::-webkit-scrollbar {
+      width: 10px;
+
+      &-track {
+         background: var(--clr-main-2);
+      }
+
+      &-thumb {
+         background-color: var(--clr-dark-fade);
+         border-radius: 100vmin;
+      }
+   }
 }
 
 .container {

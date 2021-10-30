@@ -1,6 +1,20 @@
 .hourly {
    width: 100%;
-   // @include margin(bottom, small);
+
+   ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+
+      &-track {
+         background: transparent;
+         margin: 0 1rem;
+      }
+
+      &-thumb {
+         background-color: var(--clr-dark-fade);
+         border-radius: 100vmin;
+      }
+   }
 
    .hourly__panel {
       text-align: center;
