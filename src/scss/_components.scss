@@ -26,10 +26,3 @@
       transform: scale(1.05);
    }
 }
-
-.line {
-   @include margin(bottom, medium);
-   height: 1px;
-   width: 100%;
-   background: var(--clr-main-2);
-}

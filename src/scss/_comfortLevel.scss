@@ -1,9 +1,8 @@
-.wind {
+.comfort-level {
    @include margin(bottom, small);
-
    &__panel {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       grid-template-rows: 3rem 6rem;
       justify-items: center;
       align-items: center;
@@ -15,16 +14,6 @@
       grid-row: 1 / 1;
       grid-column: 1 / -1;
       justify-self: start;
-   }
-
-   &__icon {
-      img {
-         @include boxSize(6rem);
-      }
-   }
-
-   &__arrow {
-      font-size: 5rem;
    }
 
    &__description {

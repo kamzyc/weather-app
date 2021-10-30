@@ -21,7 +21,7 @@ const hourlyContainer = document.querySelector(`.${CLASSNAMES.HOURLY}`);
 const dailyContainer = document.querySelector(`.${CLASSNAMES.DAILY}`);
 const windContainer = document.querySelector(`.${CLASSNAMES.WIND}`);
 const comfortLevelContainer = document.querySelector(
-   `${CLASSNAMES.COMFORT_LEVEL}`
+   `.${CLASSNAMES.COMFORT_LEVEL}`
 );
 
 export const createMaxMinElement = (
@@ -77,6 +77,7 @@ export const updateView = (location, timeData, weather, hourly, daily) => {
    const hourlyElement = createHourlyElement(hourly, timeData);
    const dailyElement = createDailyElement(daily, timeData);
    const windElement = createWindElement(weather, location);
+   const comfortLevelElement = createComfortLevelElement(weather);
 
    console.log(weather);
 
@@ -85,10 +86,12 @@ export const updateView = (location, timeData, weather, hourly, daily) => {
    DOMCreator.clearElement(hourlyContainer);
    DOMCreator.clearElement(dailyContainer);
    DOMCreator.clearElement(windContainer);
+   DOMCreator.clearElement(comfortLevelContainer);
 
    // add elements to containers
    DOMCreator.appendElements(mainWeatherElement, mainWeatherContainer);
    DOMCreator.appendElements(hourlyElement, hourlyContainer);
    DOMCreator.appendElements(dailyElement, dailyContainer);
    DOMCreator.appendElements(windElement, windContainer);
+   DOMCreator.appendElements(comfortLevelElement, comfortLevelContainer);
 };

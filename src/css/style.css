@@ -62,13 +62,6 @@ body {
   transform: scale(1.05);
 }
 
-.line {
-  margin-bottom: 3rem;
-  height: 1px;
-  width: 100%;
-  background: var(--clr-main-2);
-}
-
 .search {
   width: 100%;
   margin-bottom: 2rem;
@@ -300,7 +293,6 @@ body {
   font-size: 5rem;
 }
 .wind__description {
-  font-size: 1.15rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -308,12 +300,53 @@ body {
   align-items: start;
   gap: 0.5rem;
 }
+.wind__text {
+  font-size: 1.15rem;
+}
 .wind__text .name {
   font-weight: 300;
   width: 16ch;
   text-transform: capitalize;
 }
 .wind__text .value {
+  font-weight: 200;
+  margin-left: 1rem;
+}
+
+.comfort-level {
+  margin-bottom: 2rem;
+}
+.comfort-level__panel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 3rem 6rem;
+  justify-items: center;
+  align-items: center;
+}
+.comfort-level__title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  grid-row: 1/1;
+  grid-column: 1/-1;
+  justify-self: start;
+}
+.comfort-level__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: start;
+  gap: 0.5rem;
+}
+.comfort-level__text {
+  font-size: 1.15rem;
+}
+.comfort-level__text .name {
+  font-weight: 300;
+  width: 16ch;
+  text-transform: capitalize;
+}
+.comfort-level__text .value {
   font-weight: 200;
   margin-left: 1rem;
 }
