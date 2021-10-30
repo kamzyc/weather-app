@@ -13,6 +13,28 @@ const init = () => {
    view.searchForm.addEventListener("submit", searchHandler);
    view.geoBtn.addEventListener("click", geoHandler);
    view.syncBtn.addEventListener("click", syncHandler);
+
+   //! chart test
+
+   const labels = [];
+   const data = {
+      labels: labels,
+      datasets: [
+         {
+            backgroundColor: ["rgb(242, 243, 243)", "rgba(0, 0, 0, 0)"],
+            borderWidth: "5px",
+            data: [88, 12],
+         },
+      ],
+   };
+
+   const config = {
+      type: "doughnut",
+      data: data,
+      options: {},
+   };
+
+   const myChart = new Chart(document.getElementById("chart"), config);
 };
 
 const searchHandler = async (event) => {

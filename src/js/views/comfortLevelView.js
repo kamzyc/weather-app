@@ -2,7 +2,44 @@ import { CLASSNAMES } from "../config";
 import { createTextElement } from "./view";
 import DOMCreator from "../DOMCreator";
 
-const createHumidityElement = (humidity) => {};
+const createChart = (humidity) => {
+   const ctx = DOMCreator.createElement("canvas");
+   DOMCreator.addAttribute(ctx, "id", "humidity-chart");
+
+   const labels = ["Humidity"];
+   const data = {
+      labels: labels,
+      datasets: [
+         {
+            label: "My First dataset",
+            backgroundColor: "rgb(255, 99, 132)",
+            borderColor: "rgb(255, 99, 132)",
+            data: [humidity],
+         },
+      ],
+   };
+
+   const config = {
+      type: "doughnut",
+      data: data,
+      options: {},
+   };
+
+   const myChart = new Chart(document.getElementById("humidity-chart"), config);
+   return ctx;
+};
+
+const createHumidityElement = (humidity) => {
+   const parent = DOMCreator.createElement(
+      "div",
+      `${CLASSNAMES.COMFORT_LEVEL}__chart`
+   );
+
+   const chart = createChart(humidity);
+
+   DOMCreator.appendElements([chart], parent);
+   return parent;
+};
 
 const createComfortLevelTextElement = (name, value, units = null) => {
    let unitsValue = "°";
