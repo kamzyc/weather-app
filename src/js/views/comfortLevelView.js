@@ -13,6 +13,7 @@ const createChart = (humidity) => {
             borderColor: ["rgb(242, 243, 243)", "rgba(242, 243, 243, 0.1)"],
             borderWidth: 0,
             borderRadius: [10, 0],
+            spacing: -5,
          },
       ],
    };
@@ -21,7 +22,7 @@ const createChart = (humidity) => {
       type: "doughnut",
       data: data,
       options: {
-         cutout: "85%",
+         cutout: "88%",
          events: [],
       },
    };

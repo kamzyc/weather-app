@@ -1,6 +1,6 @@
 .daily {
    width: 100%;
-   @include margin(bottom, small);
+   // @include margin(bottom, small);
 
    &__list {
       list-style: none;
@@ -15,8 +15,8 @@
       padding: 1rem 0;
    }
 
-   &__item:first-child {
-      @include border(var(--soft-border), top);
+   &__item:last-child {
+      border: none;
    }
 
    &__time {

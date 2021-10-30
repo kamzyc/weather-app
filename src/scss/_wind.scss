@@ -1,5 +1,5 @@
 .wind {
-   @include margin(bottom, small);
+   // @include margin(bottom, small);
 
    &__panel {
       display: grid;
@@ -7,6 +7,7 @@
       grid-template-rows: 3rem 6rem;
       justify-items: center;
       align-items: center;
+      @include border(var(--soft-border), top);
    }
 
    &__title {

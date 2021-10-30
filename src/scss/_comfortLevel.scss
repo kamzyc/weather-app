@@ -1,11 +1,12 @@
 .comfort-level {
-   @include margin(bottom, small);
+   // @include margin(bottom, small);
    &__panel {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: 3rem 10rem;
       justify-items: center;
       align-items: center;
+      @include border(var(--soft-border), top);
    }
 
    &__title {
@@ -59,9 +60,4 @@
          }
       }
    }
-}
-
-.test {
-   width: 500px;
-   height: 500px;
 }
