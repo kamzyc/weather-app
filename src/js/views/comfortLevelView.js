@@ -3,18 +3,16 @@ import { createTextElement } from "./view";
 import DOMCreator from "../DOMCreator";
 
 const createChart = (humidity) => {
-   const ctx = DOMCreator.createElement("canvas");
-   DOMCreator.addAttribute(ctx, "id", "humidity-chart");
+   const canvasElement = DOMCreator.createElement("canvas");
 
-   const labels = ["Humidity"];
    const data = {
-      labels: labels,
       datasets: [
          {
-            label: "My First dataset",
-            backgroundColor: "rgb(255, 99, 132)",
-            borderColor: "rgb(255, 99, 132)",
-            data: [humidity],
+            data: [humidity, 100 - humidity],
+            backgroundColor: ["rgb(242, 243, 243)", "rgba(242, 243, 243, 0.1)"],
+            borderColor: ["rgb(242, 243, 243)", "rgba(242, 243, 243, 0.1)"],
+            borderWidth: 0,
+            borderRadius: [10, 0],
          },
       ],
    };
@@ -22,22 +20,31 @@ const createChart = (humidity) => {
    const config = {
       type: "doughnut",
       data: data,
-      options: {},
+      options: {
+         cutout: "85%",
+         events: [],
+      },
    };
 
-   const myChart = new Chart(document.getElementById("humidity-chart"), config);
-   return ctx;
+   const myChart = new Chart(canvasElement, config);
+   return canvasElement;
 };
 
-const createHumidityElement = (humidity) => {
+const createHumidityElement = ({ humidity }) => {
    const parent = DOMCreator.createElement(
       "div",
-      `${CLASSNAMES.COMFORT_LEVEL}__chart`
+      `${CLASSNAMES.COMFORT_LEVEL}__humidity`
    );
 
    const chart = createChart(humidity);
 
-   DOMCreator.appendElements([chart], parent);
+   const humidityTextElement = createTextElement(
+      "humidity",
+      `${humidity}%`,
+      CLASSNAMES.COMFORT_LEVEL
+   );
+
+   DOMCreator.appendElements([chart, humidityTextElement], parent);
    return parent;
 };
 
@@ -51,7 +58,7 @@ const createComfortLevelTextElement = (name, value, units = null) => {
    );
 };
 
-const createComfortLevelDescriptionElement = ({ pressure, temp }) => {
+const createPressureAndFeelsLikeElement = ({ pressure, temp }) => {
    const parent = DOMCreator.createElement(
       "div",
       `${CLASSNAMES.COMFORT_LEVEL}__description`
@@ -88,13 +95,8 @@ export const createComfortLevelElement = (weather) => {
    const humidityElement = createHumidityElement(weather);
 
    // pressure and feels like
-   // const pressureElement = createTextElement(
-   //    "pressure",
-   //    `${pressure} hPa`,
-   //    CLASSNAMES.COMFORT_LEVEL
-   // );
    const pressureAndFeelsLikeElement =
-      createComfortLevelDescriptionElement(weather);
+      createPressureAndFeelsLikeElement(weather);
 
    DOMCreator.appendElements(
       [titleElement, humidityElement, pressureAndFeelsLikeElement],
