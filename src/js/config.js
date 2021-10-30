@@ -45,6 +45,7 @@ export const CLASSNAMES = {
    HOURLY: "hourly",
    DAILY: "daily",
    WIND: "wind",
+   COMFORT_LEVEL: "comfort-level",
 };
 
 export const NUM_HOURS = 24; // max 48

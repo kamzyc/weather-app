@@ -5,6 +5,7 @@ import { createMainWeatherElement } from "./mainWeatherView";
 import { createHourlyElement } from "./hourlyView";
 import { createDailyElement } from "./dailyView";
 import { createWindElement } from "./windView";
+import { createComfortLevelElement } from "./comfortLevelView";
 
 // DOM elements
 export const searchForm = document.querySelector(".search");
@@ -19,6 +20,9 @@ const mainWeatherContainer = document.querySelector(
 const hourlyContainer = document.querySelector(`.${CLASSNAMES.HOURLY}`);
 const dailyContainer = document.querySelector(`.${CLASSNAMES.DAILY}`);
 const windContainer = document.querySelector(`.${CLASSNAMES.WIND}`);
+const comfortLevelContainer = document.querySelector(
+   `${CLASSNAMES.COMFORT_LEVEL}`
+);
 
 export const createMaxMinElement = (
    { min, max },
