@@ -75,21 +75,23 @@ export const updateView = (location, timeData, weather, hourly, daily) => {
       timeData,
       weather
    );
-   // const hourlyElement = createHourlyElement(hourly, timeData);
+   // console.log(hourly);
+
+   const hourlyElement = createHourlyElement(hourly, timeData);
    // const dailyElement = createDailyElement(daily, timeData);
    // const windElement = createWindElement(weather, location);
    // const comfortLevelElement = createComfortLevelElement(weather);
 
    // clear containers
    DOMCreator.clearElement(mainWeatherContainer);
-   // DOMCreator.clearElement(hourlyContainer);
+   DOMCreator.clearElement(hourlyContainer);
    // DOMCreator.clearElement(dailyContainer);
    // DOMCreator.clearElement(windContainer);
    // DOMCreator.clearElement(comfortLevelContainer);
 
    // add elements to containers
    DOMCreator.appendElements(mainWeatherElement, mainWeatherContainer);
-   // DOMCreator.appendElements(hourlyElement, hourlyContainer);
+   DOMCreator.appendElements(hourlyElement, hourlyContainer);
    // DOMCreator.appendElements(dailyElement, dailyContainer);
    // DOMCreator.appendElements(windElement, windContainer);
    // DOMCreator.appendElements(comfortLevelElement, comfortLevelContainer);

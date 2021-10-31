@@ -1,27 +1,31 @@
 import { DATE_OPTIONS, CLASSNAMES } from "../config";
-import { convertDate } from "../utilities";
+import { checkDayTime, convertDate, convertDateFormat } from "../utilities";
 import DOMCreator from "../DOMCreator";
 import { createWeatherIconElement } from "./view";
 
 const createHourElement = (
-   { time, id, temp },
+   { currentTime, id, temp },
    { timezone, sunrise, sunset }
 ) => {
    // time
    //! fix issue with time
+   const convertedTime = convertDate(currentTime, timezone);
    const timeElement = DOMCreator.createElement(
       "div",
       `${CLASSNAMES.HOURLY}__time`,
-      convertDate(time, DATE_OPTIONS.ONLY_TIME, timezone)
+      convertDateFormat(convertedTime, DATE_OPTIONS.ONLY_TIME)
    );
 
    // icon
    const iconElement = createWeatherIconElement(
       id,
+      convertedTime,
       sunrise,
       sunset,
       CLASSNAMES.HOURLY
    );
+
+   const daytime = checkDayTime(convertedTime, sunrise, sunset);
 
    // temp
    const tempElement = DOMCreator.createElement(
@@ -29,6 +33,7 @@ const createHourElement = (
       `${CLASSNAMES.HOURLY}__temp`,
       `${temp}°`
    );
+
    return DOMCreator.createParentElement("li", `${CLASSNAMES.HOURLY}__item`, [
       timeElement,
       iconElement,

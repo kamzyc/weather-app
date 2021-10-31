@@ -1,5 +1,5 @@
 import { DATE_OPTIONS, CLASSNAMES } from "../config";
-import { convertDateFormat } from "../utilities";
+import { convertDate, convertDateFormat } from "../utilities";
 import DOMCreator from "../DOMCreator";
 import { createWeatherIconElement, createMaxMinElement } from "./view";
 
@@ -49,10 +49,11 @@ export const createMainWeatherElement = ({ name }, timeData, weather) => {
    );
 
    // time and date
+   const convertedDate = convertDate(timeData.currentDate, timeData.timezone);
    const dateElement = DOMCreator.createElement(
       "div",
       `${CLASSNAMES.CURRENT_WEATHER}__date`,
-      convertDateFormat(timeData.currentDate, DATE_OPTIONS.LONG)
+      convertDateFormat(convertedDate, DATE_OPTIONS.LONG)
    );
 
    // content

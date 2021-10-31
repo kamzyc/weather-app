@@ -25,6 +25,10 @@ export const checkIcon = (id, dayTime) => {
 };
 
 export const checkDayTime = (currentDate, sunrise, sunset) => {
-   if (currentDate > sunrise && currentDate < sunset) return "d";
+   if (
+      currentDate.getHours() > sunrise.getHours() &&
+      currentDate.getHours() < sunset.getHours()
+   )
+      return "d";
    return "n";
 };

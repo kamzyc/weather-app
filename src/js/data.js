@@ -31,16 +31,12 @@ const convertToWeatherObject = (data) => {
          currentDate: new Date(),
       },
    };
-
-   // conver dates
-   weatherObject.timeData.currentDate = convertDate(
-      weatherObject.timeData.currentDate,
-      weatherObject.timeData.timezone
-   );
+   // conver sunrise and sunset
    weatherObject.timeData.sunrise = convertDate(
       weatherObject.timeData.sunrise,
       weatherObject.timeData.timezone
    );
+
    weatherObject.timeData.sunset = convertDate(
       weatherObject.timeData.sunset,
       weatherObject.timeData.timezone
@@ -52,7 +48,7 @@ const convertToWeatherObject = (data) => {
 const convertToHourlyObject = (data) => {
    const hourly = data.slice(1, NUM_HOURS).map((hour) => {
       return {
-         time: new Date(hour.dt * 1000),
+         currentTime: new Date(hour.dt * 1000),
          temp: Math.round(hour.temp),
          id: hour.weather[0].id,
       };
