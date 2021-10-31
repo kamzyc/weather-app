@@ -1,5 +1,5 @@
 class CurrentLocation {
-   _name = "Current location";
+   _name = "";
    _lat = null;
    _lon = null;
    _units = "metric";

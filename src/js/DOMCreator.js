@@ -24,6 +24,12 @@ class DOMCreator {
       element.querySelectorAll("*").forEach((children) => children.remove());
    };
 
+   static clearElements = (elements) => {
+      if (Array.isArray(elements))
+         elements.forEach((element) => this.clearElement(element));
+      else this.clearElement(elements);
+   };
+
    static appendElements = (elements, parent) => {
       if (Array.isArray(elements))
          elements.forEach((element) => parent.append(element));
