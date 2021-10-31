@@ -5,9 +5,13 @@ export const setFlag = (query) => {
    return regex.test(query) ? "zip" : "q";
 };
 
-export const convertDate = (date, options, timezone) => {
-   date.setHours(date.getUTCHours() + timezone);
+export const convertDateFormat = (date, options) => {
    return date.toLocaleString("en-US", options);
+};
+
+export const convertDate = (date, timezone) => {
+   date.setHours(date.getUTCHours() + timezone);
+   return date;
 };
 
 export const checkIcon = (id, dayTime) => {
@@ -17,14 +21,10 @@ export const checkIcon = (id, dayTime) => {
          iconName = key;
       }
    }
-
    return iconName;
 };
 
-export const checkDayTime = (sunrise, sunset) => {
-   const currentTime = new Date().getTime();
-   if (currentTime < sunrise.getTime()) return "n";
-   if (currentTime > sunrise.getTime() && currentTime < sunset.getTime())
-      return "d";
+export const checkDayTime = (currentDate, sunrise, sunset) => {
+   if (currentDate > sunrise && currentDate < sunset) return "d";
    return "n";
 };

@@ -46,11 +46,12 @@ export const createIconElement = (iconName, className) => {
 
 export const createWeatherIconElement = (
    id,
+   currentDate,
    sunrise,
    sunset,
-   className = CLASSNAMES.CURRENT_WEATHER
+   className
 ) => {
-   const dayTime = checkDayTime(sunrise, sunset);
+   const dayTime = checkDayTime(currentDate, sunrise, sunset);
    const iconType = checkIcon(id, dayTime);
 
    return createIconElement(ICONS[`${iconType}`], className);
@@ -74,24 +75,22 @@ export const updateView = (location, timeData, weather, hourly, daily) => {
       timeData,
       weather
    );
-   const hourlyElement = createHourlyElement(hourly, timeData);
-   const dailyElement = createDailyElement(daily, timeData);
-   const windElement = createWindElement(weather, location);
-   const comfortLevelElement = createComfortLevelElement(weather);
-
-   console.log(weather);
+   // const hourlyElement = createHourlyElement(hourly, timeData);
+   // const dailyElement = createDailyElement(daily, timeData);
+   // const windElement = createWindElement(weather, location);
+   // const comfortLevelElement = createComfortLevelElement(weather);
 
    // clear containers
    DOMCreator.clearElement(mainWeatherContainer);
-   DOMCreator.clearElement(hourlyContainer);
-   DOMCreator.clearElement(dailyContainer);
-   DOMCreator.clearElement(windContainer);
-   DOMCreator.clearElement(comfortLevelContainer);
+   // DOMCreator.clearElement(hourlyContainer);
+   // DOMCreator.clearElement(dailyContainer);
+   // DOMCreator.clearElement(windContainer);
+   // DOMCreator.clearElement(comfortLevelContainer);
 
    // add elements to containers
    DOMCreator.appendElements(mainWeatherElement, mainWeatherContainer);
-   DOMCreator.appendElements(hourlyElement, hourlyContainer);
-   DOMCreator.appendElements(dailyElement, dailyContainer);
-   DOMCreator.appendElements(windElement, windContainer);
-   DOMCreator.appendElements(comfortLevelElement, comfortLevelContainer);
+   // DOMCreator.appendElements(hourlyElement, hourlyContainer);
+   // DOMCreator.appendElements(dailyElement, dailyContainer);
+   // DOMCreator.appendElements(windElement, windContainer);
+   // DOMCreator.appendElements(comfortLevelElement, comfortLevelContainer);
 };

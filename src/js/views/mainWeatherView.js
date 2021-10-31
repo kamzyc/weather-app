@@ -1,11 +1,11 @@
 import { DATE_OPTIONS, CLASSNAMES } from "../config";
-import { convertDate } from "../utilities";
+import { convertDateFormat } from "../utilities";
 import DOMCreator from "../DOMCreator";
 import { createWeatherIconElement, createMaxMinElement } from "./view";
 
 const createContentElement = (
    { temp, id, description },
-   { sunrise, sunset }
+   { currentDate, sunrise, sunset }
 ) => {
    // temp
    const tempElement = DOMCreator.createElement(
@@ -15,7 +15,13 @@ const createContentElement = (
    );
 
    // icon
-   const iconElement = createWeatherIconElement(id, sunrise, sunset);
+   const iconElement = createWeatherIconElement(
+      id,
+      currentDate,
+      sunrise,
+      sunset,
+      CLASSNAMES.CURRENT_WEATHER
+   );
 
    // description
    const descriptionElement = DOMCreator.createElement(
@@ -43,15 +49,10 @@ export const createMainWeatherElement = ({ name }, timeData, weather) => {
    );
 
    // time and date
-   const currentDate = convertDate(
-      new Date(),
-      DATE_OPTIONS.LONG,
-      timeData.timezone
-   );
    const dateElement = DOMCreator.createElement(
       "div",
       `${CLASSNAMES.CURRENT_WEATHER}__date`,
-      currentDate
+      convertDateFormat(timeData.currentDate, DATE_OPTIONS.LONG)
    );
 
    // content

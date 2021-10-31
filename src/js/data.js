@@ -6,10 +6,10 @@ import {
    MIN_IN_HOUR,
    SEC_IN_MIN,
 } from "./config";
-import { setFlag } from "./utilities";
+import { convertDate, setFlag } from "./utilities";
 
 const convertToWeatherObject = (data) => {
-   return {
+   const weatherObject = {
       coords: { ...data.coord, name: data.name },
       weather: {
          temp: {
@@ -28,8 +28,25 @@ const convertToWeatherObject = (data) => {
          timezone: data.timezone / MIN_IN_HOUR / SEC_IN_MIN,
          sunrise: new Date(data.sys.sunrise * 1000),
          sunset: new Date(data.sys.sunset * 1000),
+         currentDate: new Date(),
       },
    };
+
+   // conver dates
+   weatherObject.timeData.currentDate = convertDate(
+      weatherObject.timeData.currentDate,
+      weatherObject.timeData.timezone
+   );
+   weatherObject.timeData.sunrise = convertDate(
+      weatherObject.timeData.sunrise,
+      weatherObject.timeData.timezone
+   );
+   weatherObject.timeData.sunset = convertDate(
+      weatherObject.timeData.sunset,
+      weatherObject.timeData.timezone
+   );
+
+   return weatherObject;
 };
 
 const convertToHourlyObject = (data) => {
