@@ -18,6 +18,9 @@ function init() {
    if (!currentLocation.lon && !currentLocation.lat) {
       view.syncBtn.classList.add("btn--disabled");
    }
+
+   // simulate click on geoBtn
+   view.geoBtn.click();
 }
 
 const searchHandler = async (event) => {

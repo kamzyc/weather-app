@@ -7,6 +7,7 @@
       padding: 0 2rem;
       text-align: center;
       @include flexCenter(column);
+      @include entryAnimation;
    }
 
    &__location {
@@ -66,14 +67,5 @@
       .min {
          font-weight: 200;
       }
-   }
-}
-
-@keyframes fadeIn {
-   from {
-      opacity: 0;
-   }
-   to {
-      opacity: 1;
    }
 }

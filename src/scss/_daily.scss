@@ -3,6 +3,7 @@
 
    &__panel {
       padding: 0 1rem;
+      @include entryAnimation;
    }
 
    &__list {

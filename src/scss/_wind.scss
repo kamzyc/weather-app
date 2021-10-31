@@ -12,6 +12,7 @@
       align-items: center;
       @include border(var(--soft-border), top);
       margin: 0 1rem;
+      @include entryAnimation;
    }
 
    &__title {

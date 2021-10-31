@@ -18,6 +18,7 @@
 
    .hourly__panel {
       text-align: center;
+      @include entryAnimation;
    }
 
    &__list {
