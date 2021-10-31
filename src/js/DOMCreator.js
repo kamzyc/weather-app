@@ -30,9 +30,15 @@ class DOMCreator {
       else parent.append(elements);
    };
 
-   static addStyles(element, style) {
+   static addStyles = (element, style) => {
       for (const property in style) element.style[property] = style[property];
-   }
+   };
+
+   static createParentElement = (tag, classes, children) => {
+      const parent = this.createElement(tag, classes);
+      this.appendElements(children, parent);
+      return parent;
+   };
 }
 
 export default DOMCreator;

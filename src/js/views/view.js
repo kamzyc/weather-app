@@ -28,22 +28,20 @@ export const createMaxMinElement = (
    { min, max },
    className = CLASSNAMES.CURRENT_WEATHER
 ) => {
-   const parent = DOMCreator.createElement("div", `${className}__min-max`);
    const maxElemement = DOMCreator.createElement("span", "max", `${max}°`);
    const minElement = DOMCreator.createElement("span", "min", ` / ${min}°`);
 
-   DOMCreator.appendElements([maxElemement, minElement], parent);
-   return parent;
+   return DOMCreator.createParentElement("div", `${className}__min-max`, [
+      maxElemement,
+      minElement,
+   ]);
 };
 
 export const createIconElement = (iconName, className) => {
-   const parent = DOMCreator.createElement("div", `${className}__icon`);
-
    const icon = DOMCreator.createElement("img");
    DOMCreator.addAttribute(icon, "src", iconName);
 
-   DOMCreator.appendElements(icon, parent);
-   return parent;
+   return DOMCreator.createParentElement("div", `${className}__icon`, icon);
 };
 
 export const createWeatherIconElement = (
@@ -59,11 +57,13 @@ export const createWeatherIconElement = (
 };
 
 export const createTextElement = (name, value, className) => {
-   const parent = DOMCreator.createElement("div", `${className}__text`);
    const nameElement = DOMCreator.createElement("span", "name", name);
    const valueElement = DOMCreator.createElement("span", "value", value);
-   DOMCreator.appendElements([nameElement, valueElement], parent);
-   return parent;
+
+   return DOMCreator.createParentElement("div", `${className}__text`, [
+      nameElement,
+      valueElement,
+   ]);
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////

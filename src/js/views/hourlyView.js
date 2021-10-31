@@ -7,8 +7,6 @@ const createHourElement = (
    { time, id, temp },
    { timezone, sunrise, sunset }
 ) => {
-   const parent = DOMCreator.createElement("li", `${CLASSNAMES.HOURLY}__item`);
-
    // time
    //! fix issue with time
    const timeElement = DOMCreator.createElement(
@@ -31,29 +29,31 @@ const createHourElement = (
       `${CLASSNAMES.HOURLY}__temp`,
       `${temp}°`
    );
-
-   DOMCreator.appendElements([timeElement, iconElement, tempElement], parent);
-   return parent;
+   return DOMCreator.createParentElement("li", `${CLASSNAMES.HOURLY}__item`, [
+      timeElement,
+      iconElement,
+      tempElement,
+   ]);
 };
 
 const createHoursElement = (hourly, timeData) => {
-   const parent = DOMCreator.createElement("ul", `${CLASSNAMES.HOURLY}__list`);
    const hoursElement = hourly.map((hour) => {
       return createHourElement(hour, timeData);
    });
 
-   DOMCreator.appendElements(hoursElement, parent);
-   return parent;
+   return DOMCreator.createParentElement(
+      "ul",
+      `${CLASSNAMES.HOURLY}__list`,
+      hoursElement
+   );
 };
 
 export const createHourlyElement = (hourly, timeData) => {
-   const parent = DOMCreator.createElement(
-      "div",
-      `${CLASSNAMES.HOURLY}__panel`
-   );
-
    const hoursElement = createHoursElement(hourly, timeData);
 
-   DOMCreator.appendElements([hoursElement], parent);
-   return parent;
+   return DOMCreator.createParentElement(
+      "div",
+      `${CLASSNAMES.HOURLY}__panel`,
+      hoursElement
+   );
 };

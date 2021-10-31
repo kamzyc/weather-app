@@ -32,11 +32,6 @@ const createChart = (humidity) => {
 };
 
 const createHumidityElement = ({ humidity }) => {
-   const parent = DOMCreator.createElement(
-      "div",
-      `${CLASSNAMES.COMFORT_LEVEL}__humidity`
-   );
-
    const chart = createChart(humidity);
 
    const humidityTextElement = createTextElement(
@@ -45,8 +40,11 @@ const createHumidityElement = ({ humidity }) => {
       CLASSNAMES.COMFORT_LEVEL
    );
 
-   DOMCreator.appendElements([chart, humidityTextElement], parent);
-   return parent;
+   return DOMCreator.createParentElement(
+      "div",
+      `${CLASSNAMES.COMFORT_LEVEL}__humidity`,
+      [chart, humidityTextElement]
+   );
 };
 
 const createComfortLevelTextElement = (name, value, units = null) => {
@@ -60,11 +58,6 @@ const createComfortLevelTextElement = (name, value, units = null) => {
 };
 
 const createPressureAndFeelsLikeElement = ({ pressure, temp }) => {
-   const parent = DOMCreator.createElement(
-      "div",
-      `${CLASSNAMES.COMFORT_LEVEL}__description`
-   );
-
    const feelsLikeElement = createComfortLevelTextElement(
       "feels like",
       temp.feelsLike
@@ -75,16 +68,14 @@ const createPressureAndFeelsLikeElement = ({ pressure, temp }) => {
       " hPa"
    );
 
-   DOMCreator.appendElements([feelsLikeElement, pressureElement], parent);
-   return parent;
+   return DOMCreator.createParentElement(
+      "div",
+      `${CLASSNAMES.COMFORT_LEVEL}__description`,
+      [feelsLikeElement, pressureElement]
+   );
 };
 
 export const createComfortLevelElement = (weather) => {
-   const parent = DOMCreator.createElement(
-      "div",
-      `${CLASSNAMES.COMFORT_LEVEL}__panel`
-   );
-
    // title
    const titleElement = DOMCreator.createElement(
       "h3",
@@ -99,9 +90,9 @@ export const createComfortLevelElement = (weather) => {
    const pressureAndFeelsLikeElement =
       createPressureAndFeelsLikeElement(weather);
 
-   DOMCreator.appendElements(
-      [titleElement, humidityElement, pressureAndFeelsLikeElement],
-      parent
+   return DOMCreator.createParentElement(
+      "div",
+      `${CLASSNAMES.COMFORT_LEVEL}__panel`,
+      [titleElement, humidityElement, pressureAndFeelsLikeElement]
    );
-   return parent;
 };

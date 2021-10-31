@@ -7,11 +7,6 @@ const createContentElement = (
    { temp, id, description },
    { sunrise, sunset }
 ) => {
-   const parent = DOMCreator.createElement(
-      "section",
-      `${CLASSNAMES.CURRENT_WEATHER}__content`
-   );
-
    // temp
    const tempElement = DOMCreator.createElement(
       "div",
@@ -32,20 +27,14 @@ const createContentElement = (
    // min-max
    const maxMinElement = createMaxMinElement(temp);
 
-   // add to parent
-   DOMCreator.appendElements(
-      [tempElement, iconElement, descriptionElement, maxMinElement],
-      parent
+   return DOMCreator.createParentElement(
+      "div",
+      `${CLASSNAMES.CURRENT_WEATHER}__content`,
+      [tempElement, iconElement, descriptionElement, maxMinElement]
    );
-   return parent;
 };
 
 export const createMainWeatherElement = ({ name }, timeData, weather) => {
-   const parent = DOMCreator.createElement(
-      "main",
-      `${CLASSNAMES.CURRENT_WEATHER}__panel`
-   );
-
    // title
    const locationElement = DOMCreator.createElement(
       "h2",
@@ -68,10 +57,9 @@ export const createMainWeatherElement = ({ name }, timeData, weather) => {
    // content
    const contentElement = createContentElement(weather, timeData);
 
-   // add to parent
-   DOMCreator.appendElements(
-      [locationElement, dateElement, contentElement],
-      parent
+   return DOMCreator.createParentElement(
+      "main",
+      `${CLASSNAMES.CURRENT_WEATHER}__panel`,
+      [locationElement, dateElement, contentElement]
    );
-   return parent;
 };

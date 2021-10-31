@@ -7,8 +7,6 @@ const createDayElement = (
    { time, temp, id },
    { timezone, sunrise, sunset }
 ) => {
-   const parent = DOMCreator.createElement("li", `${CLASSNAMES.DAILY}__item`);
-
    // date
    const dateElement = DOMCreator.createElement(
       "div",
@@ -27,26 +25,31 @@ const createDayElement = (
    //temp (max / min)
    const maxMinElement = createMaxMinElement(temp, CLASSNAMES.DAILY);
 
-   DOMCreator.appendElements([dateElement, iconElement, maxMinElement], parent);
-   return parent;
+   return DOMCreator.createParentElement("li", `${CLASSNAMES.DAILY}__item`, [
+      dateElement,
+      iconElement,
+      maxMinElement,
+   ]);
 };
 
 const createDaysElement = (daily, timeData) => {
-   const parent = DOMCreator.createElement("ul", `${CLASSNAMES.DAILY}__list`);
    const daysElement = daily.map((day) => {
       return createDayElement(day, timeData);
    });
 
-   DOMCreator.appendElements(daysElement, parent);
-   return parent;
+   return DOMCreator.createParentElement(
+      "ul",
+      `${CLASSNAMES.DAILY}__list`,
+      daysElement
+   );
 };
 
 export const createDailyElement = (daily, timeData) => {
-   const parent = DOMCreator.createElement("div", `${CLASSNAMES.DAILY}__panel`);
-
-   // day elements
    const daysElement = createDaysElement(daily, timeData);
 
-   DOMCreator.appendElements(daysElement, parent);
-   return parent;
+   return DOMCreator.createParentElement(
+      "div",
+      `${CLASSNAMES.DAILY}__panel`,
+      daysElement
+   );
 };

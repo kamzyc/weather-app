@@ -28,21 +28,17 @@ const createWindTextElement = (name, value, units = null) => {
 };
 
 const createWindDescriptionElement = ({ angle, speed }, units) => {
-   const parent = DOMCreator.createElement(
-      "div",
-      `${CLASSNAMES.WIND}__description`
-   );
-
    const angleElement = createWindTextElement("angle", angle);
    const speedElement = createWindTextElement("speed", speed, units);
 
-   DOMCreator.appendElements([angleElement, speedElement], parent);
-   return parent;
+   return DOMCreator.createParentElement(
+      "div",
+      `${CLASSNAMES.WIND}__description`,
+      [angleElement, speedElement]
+   );
 };
 
 export const createWindElement = ({ wind }, { units }) => {
-   const parent = DOMCreator.createElement("div", `${CLASSNAMES.WIND}__panel`);
-
    // title
    const titleElement = DOMCreator.createElement(
       "h3",
@@ -59,9 +55,10 @@ export const createWindElement = ({ wind }, { units }) => {
    // description
    const descriptionElement = createWindDescriptionElement(wind, units);
 
-   DOMCreator.appendElements(
-      [titleElement, iconElement, arrowElement, descriptionElement],
-      parent
-   );
-   return parent;
+   return DOMCreator.createParentElement("div", `${CLASSNAMES.WIND}__panel`, [
+      titleElement,
+      iconElement,
+      arrowElement,
+      descriptionElement,
+   ]);
 };
