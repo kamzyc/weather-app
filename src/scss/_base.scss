@@ -33,11 +33,7 @@ body {
 }
 
 .container {
-   background: linear-gradient(
-      to bottom,
-      var(--clr-bg-1) 0%,
-      var(--clr-bg-2) 100%
-   );
+   background: var(--clr-bg-gradient);
    max-width: 50rem;
    min-height: 100vh;
    margin: 0 auto;
@@ -50,6 +46,20 @@ body {
    @include mq($bp-xs) {
       margin: 3rem auto;
       border-radius: 20px;
-      border: 1px solid var(--clr-bg-2);
    }
+}
+
+.bg-clouds {
+   background: var(--clr-bg-gradient), url("../imgs/bg/clouds.jpg") no-repeat;
+   background-size: cover;
+}
+
+.bg-rain {
+   background: var(--clr-bg-gradient), url("../imgs/bg/rain.jpg") no-repeat;
+   background-size: cover;
+}
+
+.bg-night {
+   background: var(--clr-bg-gradient), url("../imgs/bg/night.jpg") no-repeat;
+   background-size: cover;
 }

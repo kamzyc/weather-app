@@ -2,13 +2,21 @@
 :root {
   --ff-main: "Titillium Web", sans-serif;
   --hue: 192;
-  --clr-bg-1: hsl(var(--hue) 44% 35% / 1);
-  --clr-bg-2: hsl(var(--hue) 44% 22% / 1);
+  --clr-bg-1: hsl(var(--hue) 44% 35% / 0.8);
+  --clr-bg-2: hsl(var(--hue) 44% 24% / 1);
+  --clr-bg-3: hsl(var(--hue) 44% 18% / 1);
+  --clr-bg-gradient: linear-gradient(
+     to bottom,
+     var(--clr-bg-1) 0%,
+     var(--clr-bg-2) 40%,
+     var(--clr-bg-3) 80%
+  );
   --clr-bg-dark-1: hsl(var(--hue) 5% 10% / 1);
   --clr-bg-dark-2: hsl(var(--hue) 5% 5% / 1);
   --clr-main-1: hsl(var(--hue) 5% 90% / 1);
   --clr-main-2: hsl(var(--hue) 5% 95% / 1);
-  --clr-dark-fade: hsl(var(--hue) 20% 10% / 0.3);
+  --clr-dark-fade: hsl(var(--hue) 20% 10% / 0.5);
+  --clr-light-fade: hsl(var(--hue) 20% 10% / 0.3);
   --clr-error: hsl(10 90% 35% / 1);
   --btn-size: 3rem;
   --icon-size: 1rem;
@@ -53,7 +61,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .container {
-  background: linear-gradient(to bottom, var(--clr-bg-1) 0%, var(--clr-bg-2) 100%);
+  background: var(--clr-bg-gradient);
   max-width: 50rem;
   min-height: 100vh;
   margin: 0 auto;
@@ -70,8 +78,22 @@ body::-webkit-scrollbar-thumb {
   .container {
     margin: 3rem auto;
     border-radius: 20px;
-    border: 1px solid var(--clr-bg-2);
   }
+}
+
+.bg-clouds {
+  background: var(--clr-bg-gradient), url("../imgs/bg/clouds.jpg") no-repeat;
+  background-size: cover;
+}
+
+.bg-rain {
+  background: var(--clr-bg-gradient), url("../imgs/bg/rain.jpg") no-repeat;
+  background-size: cover;
+}
+
+.bg-night {
+  background: var(--clr-bg-gradient), url("../imgs/bg/night.jpg") no-repeat;
+  background-size: cover;
 }
 
 .btn {
@@ -124,17 +146,21 @@ body::-webkit-scrollbar-thumb {
   margin: 1rem 2rem 0;
 }
 .search__input {
-  border: 1px solid var(--clr-main-2);
+  border: 1px solid var(--clr-main-1);
+  background: var(--clr-light-fade);
   border-radius: 100vmin;
   padding: 0 calc(var(--btn-size) / 2);
   outline: none;
-  background: transparent;
   height: var(--btn-size);
   color: var(--clr-main-1);
   font-size: 1.25rem;
   font-weight: 400;
   flex: 1;
   width: 10rem;
+  transition: background 0.2s;
+}
+.search__input:focus {
+  background: var(--clr-dark-fade);
 }
 .search__input::-webkit-input-placeholder {
   color: var(--clr-main-2);

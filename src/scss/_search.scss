@@ -13,17 +13,22 @@
    }
 
    &__input {
-      border: 1px solid var(--clr-main-2);
+      border: 1px solid var(--clr-main-1);
+      background: var(--clr-light-fade);
       border-radius: 100vmin;
       padding: 0 calc(var(--btn-size) / 2);
       outline: none;
-      background: transparent;
       height: var(--btn-size);
       color: var(--clr-main-1);
       font-size: 1.25rem;
       font-weight: 400;
       flex: 1;
       width: 10rem;
+      transition: background 0.2s;
+
+      &:focus {
+         background: var(--clr-dark-fade);
+      }
 
       &::-webkit-input-placeholder {
          color: var(--clr-main-2);
