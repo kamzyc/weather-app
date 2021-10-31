@@ -1,0 +1,13 @@
+.error {
+   position: absolute;
+   top: calc(100% + 10px);
+   left: 50%;
+   border-radius: 100vmin;
+   padding: 0.25em 1em;
+   transform: translateX(-50%);
+   background: var(--clr-error);
+   color: var(--clr-main-1);
+   font-weight: 300;
+   font-size: 1rem;
+   text-align: center;
+}

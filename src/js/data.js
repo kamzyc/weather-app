@@ -76,7 +76,7 @@ const convertToDailyObject = (data) => {
 const getWeatherData = async (response) => {
    try {
       const data = await response.json();
-      if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
+      if (!response.ok) throw new Error(`${data.message}`);
       const weatherData = convertToWeatherObject(data);
       return weatherData;
    } catch (error) {
@@ -120,7 +120,7 @@ export const getHourlyAndDailyWeather = async ({ lat, lon, units }) => {
       );
 
       const data = await response.json();
-      if (!response.ok) throw new Error(`❌ ${data.message} ❌`);
+      if (!response.ok) throw new Error(`${data.message}`);
 
       const hourly = convertToHourlyObject(data.hourly);
       const daily = convertToDailyObject(data.daily);

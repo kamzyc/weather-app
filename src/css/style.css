@@ -7,7 +7,7 @@
   --clr-main-1: hsl(var(--hue) 5% 95% / 1);
   --clr-main-2: hsl(var(--hue) 20% 85% / 1);
   --clr-dark-fade: hsl(var(--hue) 20% 10% / 0.3);
-  --clr-error: hsl(359 68% 36% / 1);
+  --clr-error: #960200;
   --btn-size: 3rem;
   --icon-size: 1rem;
   --soft-border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
@@ -80,8 +80,13 @@ body::-webkit-scrollbar-thumb {
   transform: scale(1.05);
 }
 
+.hidden {
+  display: none;
+}
+
 .search {
   width: 100%;
+  position: relative;
 }
 .search__form {
   display: flex;
@@ -403,6 +408,20 @@ body::-webkit-scrollbar-thumb {
   font-size: 1.25rem;
   margin-left: 0;
   width: max-content;
+}
+
+.error {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  border-radius: 100vmin;
+  padding: 0.25em 1em;
+  transform: translateX(-50%);
+  background: var(--clr-error);
+  color: var(--clr-main-1);
+  font-weight: 300;
+  font-size: 1rem;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

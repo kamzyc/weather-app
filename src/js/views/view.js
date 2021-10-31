@@ -2,7 +2,6 @@ import { ICONS, CLASSNAMES } from "../config";
 import { checkIcon, checkDayTime } from "../utilities";
 import DOMCreator from "../DOMCreator";
 import { createMainWeatherElement } from "./mainWeatherView";
-import { createMapElement } from "./mapView";
 import { createHourlyElement } from "./hourlyView";
 import { createDailyElement } from "./dailyView";
 import { createWindElement } from "./windView";
@@ -18,13 +17,13 @@ export const pinBtn = document.querySelector(".navbar__pin");
 const mainWeatherContainer = document.querySelector(
    `.${CLASSNAMES.CURRENT_WEATHER}`
 );
-const mapContainer = document.querySelector(`.${CLASSNAMES.MAP}`);
 const hourlyContainer = document.querySelector(`.${CLASSNAMES.HOURLY}`);
 const dailyContainer = document.querySelector(`.${CLASSNAMES.DAILY}`);
 const windContainer = document.querySelector(`.${CLASSNAMES.WIND}`);
 const comfortLevelContainer = document.querySelector(
    `.${CLASSNAMES.COMFORT_LEVEL}`
 );
+const errorContainer = document.querySelector(`.${CLASSNAMES.ERROR}`);
 
 export const createMaxMinElement = (
    { min, max },
@@ -69,6 +68,17 @@ export const createTextElement = (name, value, className) => {
    ]);
 };
 
+export const showError = (message) => {
+   DOMCreator.addContent(errorContainer, message);
+   if (errorContainer.classList.contains("hidden"))
+      errorContainer.classList.remove("hidden");
+};
+
+export const hideError = () => {
+   if (!errorContainer.classList.contains("hidden"))
+      errorContainer.classList.add("hidden");
+};
+
 //////////////////////////////////////////////////////////////////////////////////////////
 export const updateView = (location, timeData, weather, hourly, daily) => {
    // create elements
@@ -78,7 +88,6 @@ export const updateView = (location, timeData, weather, hourly, daily) => {
       weather
    );
 
-   const mapElement = createMapElement(location);
    const hourlyElement = createHourlyElement(hourly, timeData);
    const dailyElement = createDailyElement(daily, timeData);
    const windElement = createWindElement(weather, location);

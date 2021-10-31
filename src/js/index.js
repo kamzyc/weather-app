@@ -13,11 +13,15 @@ const init = () => {
    view.searchForm.addEventListener("submit", searchHandler);
    view.geoBtn.addEventListener("click", geoHandler);
    view.syncBtn.addEventListener("click", syncHandler);
+
+   if (!currentLocation.lon && !currentLocation.lat) {
+      view.syncBtn.disabled = true;
+   }
 };
 
 const searchHandler = async (event) => {
    event.preventDefault();
-
+   view.hideError();
    try {
       // get coords, time and current weather
       const { coords, weather, timeData } = await getCurrentWeatherFromSearch(
@@ -37,11 +41,13 @@ const searchHandler = async (event) => {
       // clear input
       view.searchInput.value = "";
    } catch (error) {
-      console.error(error);
+      console.error(error.message);
+      view.showError(error.message);
    }
 };
 
 const syncHandler = async () => {
+   view.hideError();
    try {
       // get current weather and time
       const { weather, timeData } = await getCurrentWeatherFromCoords(
@@ -55,10 +61,12 @@ const syncHandler = async () => {
       view.updateView(currentLocation, timeData, weather, hourly, daily);
    } catch (error) {
       console.error(error);
+      view.showError(error.message);
    }
 };
 
 const geoHandler = async () => {
+   view.hideError();
    try {
       // get current coords
       const { coords } = await getCurrentPosition();
@@ -83,6 +91,7 @@ const geoHandler = async () => {
       view.updateView(currentLocation, timeData, weather, hourly, daily);
    } catch (error) {
       console.error(error);
+      view.showError(error.message);
    }
 };
 
