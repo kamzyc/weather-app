@@ -1,5 +1,5 @@
 import { DATE_OPTIONS, CLASSNAMES } from "../config";
-import { checkDayTime, convertDate, convertDateFormat } from "../utilities";
+import { convertDate, convertDateFormat } from "../utilities";
 import DOMCreator from "../DOMCreator";
 import { createWeatherIconElement } from "./view";
 
@@ -8,7 +8,6 @@ const createHourElement = (
    { timezone, sunrise, sunset }
 ) => {
    // time
-   //! fix issue with time
    const convertedTime = convertDate(currentTime, timezone);
    const timeElement = DOMCreator.createElement(
       "div",
@@ -24,8 +23,6 @@ const createHourElement = (
       sunset,
       CLASSNAMES.HOURLY
    );
-
-   const daytime = checkDayTime(convertedTime, sunrise, sunset);
 
    // temp
    const tempElement = DOMCreator.createElement(

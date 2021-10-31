@@ -1,22 +1,25 @@
 import { DATE_OPTIONS, CLASSNAMES } from "../config";
-import { convertDate } from "../utilities";
+import { convertDate, convertDateFormat } from "../utilities";
 import DOMCreator from "../DOMCreator";
 import { createWeatherIconElement, createMaxMinElement } from "./view";
 
 const createDayElement = (
-   { time, temp, id },
+   { currentDate, temp, id },
    { timezone, sunrise, sunset }
 ) => {
    // date
+   const convertedDate = convertDate(currentDate, timezone);
+
    const dateElement = DOMCreator.createElement(
       "div",
       `${CLASSNAMES.DAILY}__time`,
-      convertDate(time, DATE_OPTIONS.SHORT, timezone)
+      convertDateFormat(convertedDate, DATE_OPTIONS.SHORT)
    );
 
    // icon
    const iconElement = createWeatherIconElement(
       id,
+      convertedDate,
       sunrise,
       sunset,
       CLASSNAMES.DAILY

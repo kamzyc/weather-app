@@ -60,13 +60,12 @@ const convertToHourlyObject = (data) => {
 const convertToDailyObject = (data) => {
    const daily = data.slice(1, NUM_DAYS).map((day) => {
       return {
-         time: new Date(day.dt * 1000),
+         currentDate: new Date(day.dt * 1000),
          temp: {
             main: Math.round(day.temp.day),
             max: Math.round(day.temp.max),
             min: Math.round(day.temp.min),
          },
-         description: day.weather[0].description,
          id: day.weather[0].id,
       };
    });
