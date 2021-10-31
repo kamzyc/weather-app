@@ -25,6 +25,11 @@
       color: var(--clr-main-1);
       transform: scale(1.05);
    }
+
+   &--disabled {
+      pointer-events: none;
+      opacity: 0.5;
+   }
 }
 
 .hidden {

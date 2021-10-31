@@ -1,5 +1,8 @@
 .wind {
    // @include margin(bottom, small);
+   &:empty {
+      display: none;
+   }
 
    &__panel {
       display: grid;

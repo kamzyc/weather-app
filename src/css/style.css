@@ -43,14 +43,16 @@ body::-webkit-scrollbar-thumb {
 .container {
   background: linear-gradient(to bottom, var(--clr-bg-1) 0%, var(--clr-bg-2) 100%);
   max-width: 50rem;
+  min-height: 100vh;
   margin: 0 auto;
   padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  justify-content: start;
   align-items: stretch;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .btn {
@@ -78,6 +80,10 @@ body::-webkit-scrollbar-thumb {
 .btn:hover, .btn:focus, .btn:hover .btn__icon, .btn:focus .btn__icon {
   color: var(--clr-main-1);
   transform: scale(1.05);
+}
+.btn--disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .hidden {
@@ -305,6 +311,9 @@ body::-webkit-scrollbar-thumb {
   font-weight: 200;
 }
 
+.wind:empty {
+  display: none;
+}
 .wind__panel {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

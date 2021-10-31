@@ -35,9 +35,11 @@ body {
       var(--clr-bg-2) 100%
    );
    max-width: 50rem;
+   min-height: 100vh;
    margin: 0 auto;
    padding-bottom: 2rem;
    @include flexCenter(column);
+   justify-content: start;
    align-items: stretch;
-   gap: 3rem;
+   gap: 2rem;
 }

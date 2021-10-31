@@ -8,16 +8,17 @@ import {
 } from "./data";
 import * as view from "./views/view";
 
-const init = () => {
+function init() {
    // add handlers
    view.searchForm.addEventListener("submit", searchHandler);
    view.geoBtn.addEventListener("click", geoHandler);
    view.syncBtn.addEventListener("click", syncHandler);
 
+   // disable sync button at launch
    if (!currentLocation.lon && !currentLocation.lat) {
-      view.syncBtn.disabled = true;
+      view.syncBtn.classList.add("btn--disabled");
    }
-};
+}
 
 const searchHandler = async (event) => {
    event.preventDefault();
