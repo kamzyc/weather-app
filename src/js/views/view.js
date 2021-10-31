@@ -2,6 +2,7 @@ import { ICONS, CLASSNAMES } from "../config";
 import { checkIcon, checkDayTime } from "../utilities";
 import DOMCreator from "../DOMCreator";
 import { createMainWeatherElement } from "./mainWeatherView";
+import { createMapElement } from "./mapView";
 import { createHourlyElement } from "./hourlyView";
 import { createDailyElement } from "./dailyView";
 import { createWindElement } from "./windView";
@@ -17,6 +18,7 @@ export const pinBtn = document.querySelector(".navbar__pin");
 const mainWeatherContainer = document.querySelector(
    `.${CLASSNAMES.CURRENT_WEATHER}`
 );
+const mapContainer = document.querySelector(`.${CLASSNAMES.MAP}`);
 const hourlyContainer = document.querySelector(`.${CLASSNAMES.HOURLY}`);
 const dailyContainer = document.querySelector(`.${CLASSNAMES.DAILY}`);
 const windContainer = document.querySelector(`.${CLASSNAMES.WIND}`);
@@ -76,6 +78,7 @@ export const updateView = (location, timeData, weather, hourly, daily) => {
       weather
    );
 
+   const mapElement = createMapElement(location);
    const hourlyElement = createHourlyElement(hourly, timeData);
    const dailyElement = createDailyElement(daily, timeData);
    const windElement = createWindElement(weather, location);

@@ -46,6 +46,7 @@ export const CLASSNAMES = {
    DAILY: "daily",
    WIND: "wind",
    COMFORT_LEVEL: "comfort-level",
+   MAP: "map",
 };
 
 export const NUM_HOURS = 24; // max 48
