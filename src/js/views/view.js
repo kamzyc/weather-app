@@ -23,7 +23,7 @@ const windContainer = document.querySelector(`.${CLASSNAMES.WIND}`);
 const comfortLevelContainer = document.querySelector(
    `.${CLASSNAMES.COMFORT_LEVEL}`
 );
-const errorContainer = document.querySelector(`.${CLASSNAMES.ERROR}`);
+const statusContainer = document.querySelector(`.${CLASSNAMES.STATUS}`);
 
 export const createMaxMinElement = (
    { min, max },
@@ -68,19 +68,43 @@ export const createTextElement = (name, value, className) => {
    ]);
 };
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// error
 export const showError = (message) => {
-   DOMCreator.addContent(errorContainer, message);
-   if (errorContainer.classList.contains("hidden"))
-      errorContainer.classList.remove("hidden");
+   DOMCreator.clearElement(statusContainer);
+   const errorElement = DOMCreator.createElement(
+      "span",
+      `${CLASSNAMES.STATUS}__error`,
+      message
+   );
+
+   DOMCreator.appendElements(errorElement, statusContainer);
+   if (statusContainer.classList.contains("hidden"))
+      statusContainer.classList.remove("hidden");
 };
 
-export const hideError = () => {
-   if (!errorContainer.classList.contains("hidden"))
-      errorContainer.classList.add("hidden");
+export const clearStatus = () => {
+   if (!statusContainer.classList.contains("hidden"))
+      statusContainer.classList.add("hidden");
+   DOMCreator.clearElement(statusContainer);
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// spinner
+export const showSpinner = () => {
+   DOMCreator.clearElement(statusContainer);
+   const spinnerIcon = createIconElement(
+      ICONS.umbrella,
+      `${CLASSNAMES.STATUS}`
+   );
+   DOMCreator.appendElements(spinnerIcon, statusContainer);
+   if (statusContainer.classList.contains("hidden"))
+      statusContainer.classList.remove("hidden");
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////
 export const updateView = (location, timeData, weather, hourly, daily) => {
+   clearStatus();
    // create elements
    const mainWeatherElement = createMainWeatherElement(
       location,

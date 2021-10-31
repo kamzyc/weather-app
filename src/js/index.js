@@ -25,7 +25,7 @@ function init() {
 
 const searchHandler = async (event) => {
    event.preventDefault();
-   view.hideError();
+   view.showSpinner();
    try {
       // get coords, time and current weather
       const { coords, weather, timeData } = await getCurrentWeatherFromSearch(
@@ -51,7 +51,7 @@ const searchHandler = async (event) => {
 };
 
 const syncHandler = async () => {
-   view.hideError();
+   view.showSpinner();
    try {
       // get current weather and time
       const { weather, timeData } = await getCurrentWeatherFromCoords(
@@ -70,7 +70,7 @@ const syncHandler = async () => {
 };
 
 const geoHandler = async () => {
-   view.hideError();
+   view.showSpinner();
    try {
       // get current coords
       const { coords } = await getCurrentPosition();

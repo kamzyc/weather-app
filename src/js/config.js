@@ -33,8 +33,9 @@ import i210_211_230 from "url:../imgs/icons/210_211_230.svg";
 import i200_201_202_231_232 from "url:../imgs/icons/200_201_202_231_232.svg";
 import i212_221 from "url:../imgs/icons/212_221.svg";
 
-// wind
+// icons
 import iWind from "url:../imgs/icons/wind.svg";
+import iUmbrella from "url:../imgs/icons/umbrella.svg";
 
 dotenv.config();
 export const API_KEY = process.env.API_KEY;
@@ -46,7 +47,7 @@ export const CLASSNAMES = {
    DAILY: "daily",
    WIND: "wind",
    COMFORT_LEVEL: "comfort-level",
-   ERROR: "error",
+   STATUS: "status",
 };
 
 export const NUM_HOURS = 24; // max 48
@@ -89,6 +90,7 @@ export const ICONS = {
    "200_201_202_231_232dn": i200_201_202_231_232,
    "212_221dn": i212_221,
    wind: iWind,
+   umbrella: iUmbrella,
 };
 
 /*
