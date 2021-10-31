@@ -12,7 +12,11 @@ body {
    color: var(--clr-main-1);
    font-family: var(--ff-main);
    font-weight: 400;
-   background: black;
+   background: linear-gradient(
+      136deg,
+      var(--clr-bg-dark-1) 0%,
+      var(--clr-bg-dark-2) 100%
+   );
 
    &::-webkit-scrollbar {
       width: 10px;
@@ -42,4 +46,10 @@ body {
    justify-content: start;
    align-items: stretch;
    gap: 2rem;
+
+   @include mq($bp-xs) {
+      margin: 3rem auto;
+      border-radius: 20px;
+      border: 1px solid var(--clr-bg-2);
+   }
 }

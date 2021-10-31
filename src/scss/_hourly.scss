@@ -1,13 +1,13 @@
 .hourly {
    width: 100%;
-
+   --gap: 1.25rem;
    ::-webkit-scrollbar {
       width: 10px;
       height: 10px;
 
       &-track {
          background: transparent;
-         margin: 0 1rem;
+         margin: 0 var(--gap);
       }
 
       &-thumb {
@@ -25,7 +25,7 @@
       @include flexCenter();
       justify-content: start;
       list-style: none;
-      gap: 1.5rem;
+      gap: var(--gap);
       overflow-x: auto;
       overscroll-behavior-x: contain;
       padding-bottom: 1.25rem;
@@ -35,8 +35,29 @@
       min-width: 5rem;
       @include flexCenter(column);
       gap: 2rem;
+
+      &:first-child {
+         margin-left: var(--gap);
+      }
+
+      &:last-child {
+         margin-right: var(--gap);
+      }
    }
 
+   // &__item:first-child {
+   //    position: relative;
+   //    margin-left: 1.25rem;
+   //    &::before {
+   //       position: absolute;
+   //       content: "";
+   //       background-color: red;
+   //       height: 100%;
+   //       width: 1.25rem;
+   //       top: 0;
+   //       left: 0;
+   //    }
+   // }
    &__time {
       font-size: 1rem;
       font-weight: 200;

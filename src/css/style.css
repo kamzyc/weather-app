@@ -4,10 +4,12 @@
   --hue: 192;
   --clr-bg-1: hsl(var(--hue) 44% 35% / 1);
   --clr-bg-2: hsl(var(--hue) 44% 22% / 1);
-  --clr-main-1: hsl(var(--hue) 5% 95% / 1);
-  --clr-main-2: hsl(var(--hue) 20% 85% / 1);
+  --clr-bg-dark-1: hsl(var(--hue) 5% 10% / 1);
+  --clr-bg-dark-2: hsl(var(--hue) 5% 5% / 1);
+  --clr-main-1: hsl(var(--hue) 5% 90% / 1);
+  --clr-main-2: hsl(var(--hue) 5% 95% / 1);
   --clr-dark-fade: hsl(var(--hue) 20% 10% / 0.3);
-  --clr-error: #960200;
+  --clr-error: hsl(10 90% 35% / 1);
   --btn-size: 3rem;
   --icon-size: 1rem;
   --soft-border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
@@ -37,7 +39,7 @@ body {
   color: var(--clr-main-1);
   font-family: var(--ff-main);
   font-weight: 400;
-  background: black;
+  background: linear-gradient(136deg, var(--clr-bg-dark-1) 0%, var(--clr-bg-dark-2) 100%);
 }
 body::-webkit-scrollbar {
   width: 10px;
@@ -63,6 +65,13 @@ body::-webkit-scrollbar-thumb {
   justify-content: start;
   align-items: stretch;
   gap: 2rem;
+}
+@media only screen and (min-width: 800px) {
+  .container {
+    margin: 3rem auto;
+    border-radius: 20px;
+    border: 1px solid var(--clr-bg-2);
+  }
 }
 
 .btn {
@@ -217,6 +226,7 @@ body::-webkit-scrollbar-thumb {
 
 .hourly {
   width: 100%;
+  --gap: 1.25rem;
 }
 .hourly ::-webkit-scrollbar {
   width: 10px;
@@ -224,7 +234,7 @@ body::-webkit-scrollbar-thumb {
 }
 .hourly ::-webkit-scrollbar-track {
   background: transparent;
-  margin: 0 1rem;
+  margin: 0 var(--gap);
 }
 .hourly ::-webkit-scrollbar-thumb {
   background-color: var(--clr-dark-fade);
@@ -241,7 +251,7 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   justify-content: start;
   list-style: none;
-  gap: 1.5rem;
+  gap: var(--gap);
   overflow-x: auto;
   overscroll-behavior-x: contain;
   padding-bottom: 1.25rem;
@@ -253,6 +263,12 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+}
+.hourly__item:first-child {
+  margin-left: var(--gap);
+}
+.hourly__item:last-child {
+  margin-right: var(--gap);
 }
 .hourly__time {
   font-size: 1rem;
