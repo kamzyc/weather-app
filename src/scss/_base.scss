@@ -42,6 +42,7 @@ body {
    justify-content: start;
    align-items: stretch;
    gap: 2rem;
+   overflow: hidden;
 
    @include mq($bp-xs) {
       margin: 3rem auto;

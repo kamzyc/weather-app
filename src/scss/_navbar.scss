@@ -17,8 +17,8 @@
       --track-height: calc(2 * var(--btn-size));
       --track-width: var(--btn-size);
 
-      --thumb-offset: 16px;
-      --thumb-size: calc(var(--track-width) - var(--thumb-offset));
+      --thumb-offset: 8px;
+      --thumb-size: calc(var(--track-width) - 2 * var(--thumb-offset));
 
       --transition-time: 0.4s;
 
@@ -46,20 +46,18 @@
          inset: 0;
          transition: 0.4s;
          background-color: var(--clr-dark-fade);
-         @include border(var(--hard-border), top);
-         @include border(var(--hard-border), left);
-         @include border(var(--hard-border), bottom);
-
-         border-top-left-radius: 24px;
-         border-bottom-left-radius: 24px;
+         outline: var(--hard-border);
+         border-top-left-radius: calc(var(--track-width) / 2);
+         border-bottom-left-radius: calc(var(--track-width) / 2);
       }
 
       .slider:before {
          position: absolute;
          content: "";
          @include boxSize(var(--thumb-size));
-         left: calc(var(--thumb-offset) / 2);
-         bottom: calc(var(--thumb-offset) / 2);
+         left: calc(var(--thumb-offset));
+         bottom: calc(var(--thumb-offset));
+
          background-color: var(--clr-main-2);
          border-radius: 50%;
          transition: transform var(--transition-time),
@@ -82,20 +80,20 @@
          font-size: 1rem;
          display: inline-block;
          position: absolute;
-         left: calc(var(--thumb-offset) / 2 + 2px); // 2px from border
-         transition: color vaR(--transition-time);
+         left: calc(var(--thumb-offset));
+         transition: color vaR(--transition-time) 0.1s;
          @include boxSize(var(--thumb-size));
          @include flexCenter;
       }
 
       .c {
          color: var(--clr-dark);
-         bottom: calc(var(--thumb-offset) / 2 + 2px); // 2px from border
+         bottom: calc(var(--thumb-offset));
       }
 
       .f {
          color: var(--clr-main-2);
-         top: calc(var(--thumb-offset) / 2 - 2px); // 2px from border
+         top: calc(var(--thumb-offset));
       }
 
       input[type="checkbox"]:checked ~ .c {

@@ -74,6 +74,7 @@ body::-webkit-scrollbar-thumb {
   justify-content: start;
   align-items: stretch;
   gap: 2rem;
+  overflow: hidden;
 }
 @media only screen and (min-width: 800px) {
   .container {
@@ -253,8 +254,8 @@ body::-webkit-scrollbar-thumb {
 .navbar__item:last-child {
   --track-height: calc(2 * var(--btn-size));
   --track-width: var(--btn-size);
-  --thumb-offset: 16px;
-  --thumb-size: calc(var(--track-width) - var(--thumb-offset));
+  --thumb-offset: 8px;
+  --thumb-size: calc(var(--track-width) - 2 * var(--thumb-offset));
   --transition-time: 0.4s;
   position: absolute;
   top: calc(-1 * var(--track-height) - 1rem);
@@ -277,19 +278,17 @@ body::-webkit-scrollbar-thumb {
   inset: 0;
   transition: 0.4s;
   background-color: var(--clr-dark-fade);
-  border-top: var(--hard-border);
-  border-left: var(--hard-border);
-  border-bottom: var(--hard-border);
-  border-top-left-radius: 24px;
-  border-bottom-left-radius: 24px;
+  outline: var(--hard-border);
+  border-top-left-radius: calc(var(--track-width) / 2);
+  border-bottom-left-radius: calc(var(--track-width) / 2);
 }
 .navbar__units .slider:before {
   position: absolute;
   content: "";
   width: var(--thumb-size);
   height: var(--thumb-size);
-  left: calc(var(--thumb-offset) / 2);
-  bottom: calc(var(--thumb-offset) / 2);
+  left: calc(var(--thumb-offset));
+  bottom: calc(var(--thumb-offset));
   background-color: var(--clr-main-2);
   border-radius: 50%;
   transition: transform var(--transition-time), background-color var(--transition-time);
@@ -308,8 +307,8 @@ body::-webkit-scrollbar-thumb {
   font-size: 1rem;
   display: inline-block;
   position: absolute;
-  left: calc(var(--thumb-offset) / 2 + 2px);
-  transition: color vaR(--transition-time);
+  left: calc(var(--thumb-offset));
+  transition: color vaR(--transition-time) 0.1s;
   width: var(--thumb-size);
   height: var(--thumb-size);
   display: flex;
@@ -319,11 +318,11 @@ body::-webkit-scrollbar-thumb {
 }
 .navbar__units .c {
   color: var(--clr-dark);
-  bottom: calc(var(--thumb-offset) / 2 + 2px);
+  bottom: calc(var(--thumb-offset));
 }
 .navbar__units .f {
   color: var(--clr-main-2);
-  top: calc(var(--thumb-offset) / 2 - 2px);
+  top: calc(var(--thumb-offset));
 }
 .navbar__units input[type=checkbox]:checked ~ .c {
   color: var(--clr-main-2);
