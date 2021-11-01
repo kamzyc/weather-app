@@ -20,18 +20,19 @@
    --clr-bg-dark-2: hsl(var(--hue) 5% 5% / 1);
 
    --clr-main-1: hsl(var(--hue) 5% 90% / 1);
-   --clr-main-2: hsl(var(--hue) 5% 95% / 1);
+   --clr-main-2: hsl(var(--hue) 5% 80% / 1);
 
    --clr-dark-fade: hsl(var(--hue) 20% 10% / 0.5);
    --clr-light-fade: hsl(var(--hue) 20% 10% / 0.3);
 
+   --clr-dark: hsl(var(--hue) 10% 10% / 1);
    --clr-error: hsl(10 90% 35% / 1);
 
    --btn-size: 3rem;
    --icon-size: 1rem;
 
    --soft-border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
-   --hard-border: 1px solid var(--clr-main-2);
+   --hard-border: 2px solid var(--clr-main-2);
 }
 
 // breakpoints

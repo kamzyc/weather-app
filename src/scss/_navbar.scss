@@ -2,6 +2,7 @@
    width: 100%;
    padding: 2rem 0;
    background-color: var(--clr-dark-fade);
+   position: relative;
 
    @include border(var(--hard-border), top);
    @include border(var(--hard-border), bottom);
@@ -10,5 +11,99 @@
       @include flexCenter();
       justify-content: space-around;
       list-style: none;
+   }
+
+   &__item:last-child {
+      --track-height: calc(2 * var(--btn-size));
+      --track-width: var(--btn-size);
+
+      --thumb-offset: 16px;
+      --thumb-size: calc(var(--track-width) - var(--thumb-offset));
+
+      --transition-time: 0.4s;
+
+      position: absolute;
+      top: calc(-1 * var(--track-height) - 1rem);
+      right: 0;
+   }
+
+   &__units {
+      position: relative;
+      display: inline-block;
+      width: var(--track-width);
+      height: var(--track-height);
+      cursor: pointer;
+
+      input[type="checkbox"] {
+         opacity: 0;
+         width: 0;
+         height: 0;
+      }
+
+      .slider {
+         position: absolute;
+
+         inset: 0;
+         transition: 0.4s;
+         background-color: var(--clr-dark-fade);
+         @include border(var(--hard-border), top);
+         @include border(var(--hard-border), left);
+         @include border(var(--hard-border), bottom);
+
+         border-top-left-radius: 24px;
+         border-bottom-left-radius: 24px;
+      }
+
+      .slider:before {
+         position: absolute;
+         content: "";
+         @include boxSize(var(--thumb-size));
+         left: calc(var(--thumb-offset) / 2);
+         bottom: calc(var(--thumb-offset) / 2);
+         background-color: var(--clr-main-2);
+         border-radius: 50%;
+         transition: transform var(--transition-time),
+            background-color var(--transition-time);
+      }
+
+      input[type="checkbox"]:focus + .slider::before,
+      input[type="checkbox"]:hover + .slider::before {
+         background-color: var(--clr-main-1);
+      }
+
+      input[type="checkbox"]:checked + .slider:before {
+         transform: translateY(calc(-1 * var(--track-height) / 2));
+      }
+
+      .c,
+      .f {
+         user-select: none;
+         text-align: center;
+         font-size: 1rem;
+         display: inline-block;
+         position: absolute;
+         left: calc(var(--thumb-offset) / 2 + 2px); // 2px from border
+         transition: color vaR(--transition-time);
+         @include boxSize(var(--thumb-size));
+         @include flexCenter;
+      }
+
+      .c {
+         color: var(--clr-dark);
+         bottom: calc(var(--thumb-offset) / 2 + 2px); // 2px from border
+      }
+
+      .f {
+         color: var(--clr-main-2);
+         top: calc(var(--thumb-offset) / 2 - 2px); // 2px from border
+      }
+
+      input[type="checkbox"]:checked ~ .c {
+         color: var(--clr-main-2);
+      }
+
+      input[type="checkbox"]:checked ~ .f {
+         color: var(--clr-dark);
+      }
    }
 }

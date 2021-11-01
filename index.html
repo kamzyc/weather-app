@@ -42,22 +42,28 @@
       <nav class="navbar">
          <ul class="navbar__list">
             <li class="navbar__item">
-               <button class="btn navbar__sync">
+               <button class="btn navbar__sync" type="button">
                   <i class="fas fa-sync btn__icon"></i>
                </button>
             </li>
             <li class="navbar__item">
-               <button class="btn navbar__geo">
+               <button class="btn navbar__geo" type="button">
                   <i class="fas fa-map-marker-alt btn__icon"></i>
                </button>
             </li>
             <li class="navbar__item">
-               <button class="btn navbar__pin">
+               <button class="btn navbar__pin btn--disabled" type="button">
                   <i class="fas fa-thumbtack btn__icon"></i>
                </button>
             </li>
-
-
+            <li class="navbar__item">
+               <label class="navbar__units" for="units-checkbox">
+                  <input type="checkbox" id="units-checkbox">
+                  <span class="slider"></span>
+                  <span class="c">C</span>
+                  <span class="f">F</span>
+               </label>
+            </li>
          </ul>
       </nav>
 
