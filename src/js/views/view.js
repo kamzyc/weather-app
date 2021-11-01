@@ -13,6 +13,7 @@ export const searchInput = document.querySelector(".search__input");
 export const syncBtn = document.querySelector(".navbar__sync");
 export const geoBtn = document.querySelector(".navbar__geo");
 export const pinBtn = document.querySelector(".navbar__pin");
+export const unitsSwitcher = document.getElementById("units-checkbox");
 
 const mainWeatherContainer = document.querySelector(
    `.${CLASSNAMES.CURRENT_WEATHER}`
@@ -105,6 +106,8 @@ export const showSpinner = () => {
 //////////////////////////////////////////////////////////////////////////////////////////
 export const updateView = (location, timeData, weather, hourly, daily) => {
    clearStatus();
+   syncBtn.classList.remove("btn--disabled");
+   unitsSwitcher.parentElement.classList.remove("btn--disabled");
    // create elements
    const mainWeatherElement = createMainWeatherElement(
       location,

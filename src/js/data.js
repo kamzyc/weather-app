@@ -137,9 +137,6 @@ export const setLocation = (location, { name, lat, lon, units }) => {
    location.lat = lat;
    location.lon = lon;
    if (units) location.units = units;
-
-   // undisable sync button
-   syncBtn.classList.remove("btn--disabled");
 };
 
 export const getCurrentPosition = () => {

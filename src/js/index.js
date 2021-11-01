@@ -13,13 +13,15 @@ function init() {
    view.searchForm.addEventListener("submit", searchHandler);
    view.geoBtn.addEventListener("click", geoHandler);
    view.syncBtn.addEventListener("click", syncHandler);
+   view.unitsSwitcher.addEventListener("change", switchUnitsHandler);
 
-   // disable sync button at launch
+   // disable sync button at launch (when there is no location saved)
    if (!currentLocation.lon && !currentLocation.lat) {
       view.syncBtn.classList.add("btn--disabled");
+      view.unitsSwitcher.parentElement.classList.add("btn--disabled");
    }
 
-   // simulate click on geoBtn
+   // simulate click on geo btn
    view.geoBtn.click();
 }
 
@@ -97,6 +99,13 @@ const geoHandler = async () => {
       console.error(error);
       view.showError(error.message);
    }
+};
+
+const switchUnitsHandler = () => {
+   currentLocation.swapUnits();
+
+   // simulate click on sync btn
+   view.syncBtn.click();
 };
 
 init();
