@@ -17,18 +17,25 @@ body {
       var(--clr-bg-dark-1) 0%,
       var(--clr-bg-dark-2) 100%
    );
+}
 
-   &::-webkit-scrollbar {
-      width: 10px;
+::-webkit-scrollbar {
+   width: 10px;
 
-      &-track {
-         background: var(--clr-main-2);
-      }
+   &-track {
+      background: var(--clr-main-2);
+   }
 
-      &-thumb {
-         background-color: var(--clr-dark-fade);
-         border-radius: 100vmin;
-      }
+   &-thumb {
+      background-color: var(--clr-dark-fade);
+      border-radius: 100vmin;
+   }
+}
+
+@supports (scrollbar-color: white white) {
+   * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--clr-dark-fade) var(--clr-main-2);
    }
 }
 
@@ -48,19 +55,4 @@ body {
       margin: 3rem auto;
       border-radius: 20px;
    }
-}
-
-.bg-clouds {
-   background: var(--clr-bg-gradient), url("../imgs/bg/clouds.jpg") no-repeat;
-   background-size: cover;
-}
-
-.bg-rain {
-   background: var(--clr-bg-gradient), url("../imgs/bg/rain.jpg") no-repeat;
-   background-size: cover;
-}
-
-.bg-night {
-   background: var(--clr-bg-gradient), url("../imgs/bg/night.jpg") no-repeat;
-   background-size: cover;
 }

@@ -50,17 +50,24 @@ body {
   font-weight: 400;
   background: linear-gradient(136deg, var(--clr-bg-dark-1) 0%, var(--clr-bg-dark-2) 100%);
 }
-body::-webkit-scrollbar {
+
+::-webkit-scrollbar {
   width: 10px;
 }
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: var(--clr-main-2);
 }
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: var(--clr-dark-fade);
   border-radius: 100vmin;
 }
 
+@supports (scrollbar-color: white white) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--clr-dark-fade) var(--clr-main-2);
+  }
+}
 .container {
   background: var(--clr-bg-gradient);
   max-width: 50rem;
@@ -81,21 +88,6 @@ body::-webkit-scrollbar-thumb {
     margin: 3rem auto;
     border-radius: 20px;
   }
-}
-
-.bg-clouds {
-  background: var(--clr-bg-gradient), url("../imgs/bg/clouds.jpg") no-repeat;
-  background-size: cover;
-}
-
-.bg-rain {
-  background: var(--clr-bg-gradient), url("../imgs/bg/rain.jpg") no-repeat;
-  background-size: cover;
-}
-
-.bg-night {
-  background: var(--clr-bg-gradient), url("../imgs/bg/night.jpg") no-repeat;
-  background-size: cover;
 }
 
 .btn {
@@ -130,6 +122,21 @@ body::-webkit-scrollbar-thumb {
 
 .hidden {
   display: none;
+}
+
+.bg-clouds {
+  background: var(--clr-bg-gradient), url("../imgs/bg/clouds.jpg") no-repeat;
+  background-size: cover;
+}
+
+.bg-rain {
+  background: var(--clr-bg-gradient), url("../imgs/bg/rain.jpg") no-repeat;
+  background-size: cover;
+}
+
+.bg-night {
+  background: var(--clr-bg-gradient), url("../imgs/bg/night.jpg") no-repeat;
+  background-size: cover;
 }
 
 .search {

@@ -6,6 +6,7 @@ import {
    getCurrentPosition,
    getHourlyAndDailyWeather,
 } from "./data";
+import DOMCreator from "./DOMCreator";
 import * as view from "./views/view";
 
 function init() {
@@ -17,8 +18,8 @@ function init() {
 
    // disable sync button at launch (when there is no location saved)
    if (!currentLocation.lon && !currentLocation.lat) {
-      view.syncBtn.classList.add("btn--disabled");
-      view.unitsSwitcher.parentElement.classList.add("btn--disabled");
+      DOMCreator.addClasses(view.syncBtn, "btn--disabled");
+      DOMCreator.addClasses(view.unitsSwitcher, "btn--disabled");
    }
 
    // simulate click on geo btn
