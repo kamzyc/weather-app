@@ -139,6 +139,26 @@ body {
   background-size: cover;
 }
 
+.bg-day {
+  background: var(--clr-bg-gradient), url("../imgs/bg/day.jpg") no-repeat;
+  background-size: cover;
+}
+
+.bg-snow {
+  background: var(--clr-bg-gradient), url("../imgs/bg/snow.jpg") no-repeat;
+  background-size: cover;
+}
+
+.bg-thunderstorm {
+  background: var(--clr-bg-gradient), url("../imgs/bg/thunderstorm.jpg") no-repeat;
+  background-size: auto;
+}
+
+.bg-mist {
+  background: var(--clr-bg-gradient), url("../imgs/bg/mist.jpg") no-repeat;
+  background-size: auto;
+}
+
 .search {
   width: 100%;
   position: relative;
