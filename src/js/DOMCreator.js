@@ -12,6 +12,16 @@ class DOMCreator {
       else element.classList.add(classes);
    };
 
+   static removeClasses = (element, classes) => {
+      if (Array.isArray(classes))
+         classes.forEach(
+            (className) =>
+               element.classList.contains(className) &&
+               element.classList.remove(className)
+         );
+      else element.classList.remove(classes);
+   };
+
    static addContent = (element, content) => {
       element.innerText = content;
    };

@@ -54,7 +54,7 @@ export const NUM_HOURS = 24; // max 48
 export const NUM_DAYS = 8; // max 8
 export const MIN_IN_HOUR = 60;
 export const SEC_IN_MIN = 60;
-export const BASE_ICON_ROTATION = -45;
+export const BASE_ICON_ROTATION = -45; // base rotation of arrow (wind) icon
 
 export const DATE_OPTIONS = {
    LONG: {
@@ -69,6 +69,7 @@ export const DATE_OPTIONS = {
    ONLY_TIME: { hour: "2-digit", minute: "2-digit", hour12: false },
 };
 
+// each number (seperated by _) in key = id of weather conditions
 export const ICONS = {
    "800d": i800d,
    "800n": i800n,
@@ -85,12 +86,23 @@ export const ICONS = {
    "500_501_520_521n": i500_501_520_521n,
    "502_503_504_522_531dn": i502_503_504_522_531,
    "511dn": i511,
-   "300dn": i300,
+   "300_301_302_310_311_312_313_314_321dn": i300,
    "210_211_230dn": i210_211_230,
    "200_201_202_231_232dn": i200_201_202_231_232,
    "212_221dn": i212_221,
    wind: iWind,
    umbrella: iUmbrella,
+};
+
+export const BG = {
+   "800d": "day",
+   "800n": "night",
+   "801_902_803_804dn": "clouds",
+   "701_711_721_731_741_751_761_762_771_781dn": "mist",
+   "600_601_620_621_602_622_611_612_613_615_616dn": "snow",
+   "500_501_520_512_502_503_504_522_531_511dn": "rain",
+   "300_301_302_310_311_312_313_314_321dn": "rain",
+   "200_201_202_210_211_212_221_230_231_232dn": "thunderstorm",
 };
 
 /*

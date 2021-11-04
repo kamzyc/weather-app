@@ -1,4 +1,4 @@
-import { ICONS, CLASSNAMES } from "../config";
+import { ICONS, CLASSNAMES, BG } from "../config";
 import { checkIcon, checkDayTime } from "../utilities";
 import DOMCreator from "../DOMCreator";
 import { createMainWeatherElement } from "./mainWeatherView";
@@ -15,6 +15,7 @@ export const geoBtn = document.querySelector(".navbar__geo");
 export const pinBtn = document.querySelector(".navbar__pin");
 export const unitsSwitcher = document.getElementById("units-checkbox");
 
+const container = document.querySelector(".container");
 const mainWeatherContainer = document.querySelector(
    `.${CLASSNAMES.CURRENT_WEATHER}`
 );
@@ -104,10 +105,30 @@ export const showSpinner = () => {
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////
+// bg
+const setBg = ({ id }, { currentDate, sunrise, sunset }) => {
+   const dayTime = checkDayTime(currentDate, sunrise, sunset);
+   let bgName;
+   for (const [key] of Object.entries(BG)) {
+      if (key.includes(id) && key.includes(dayTime)) {
+         bgName = key;
+      }
+   }
+
+   // remove all bg classes
+   container.classList.forEach((className) => {
+      if (className.includes("bg"))
+         DOMCreator.removeClasses(container, className);
+   });
+   DOMCreator.addClasses(container, `bg-${BG[bgName]}`);
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////
 export const updateView = (location, timeData, weather, hourly, daily) => {
    clearStatus();
-   syncBtn.classList.remove("btn--disabled");
-   unitsSwitcher.parentElement.classList.remove("btn--disabled");
+   DOMCreator.removeClasses(syncBtn, "btn--disabled");
+   DOMCreator.removeClasses(unitsSwitcher, "btn--disabled");
+
    // create elements
    const mainWeatherElement = createMainWeatherElement(
       location,
@@ -127,6 +148,9 @@ export const updateView = (location, timeData, weather, hourly, daily) => {
       windContainer,
       comfortLevelContainer,
    ]);
+
+   // update bg
+   setBg(weather, timeData);
 
    // add elements to containers
    DOMCreator.appendElements(mainWeatherElement, mainWeatherContainer);
