@@ -34,7 +34,7 @@
       height: var(--track-height);
       cursor: pointer;
 
-      input[type="checkbox"] {
+      input {
          opacity: 0;
          width: 0;
          height: 0;
@@ -46,6 +46,7 @@
          transition: 0.4s;
          background-color: var(--clr-dark-fade);
          outline: var(--hard-border);
+         border-right: none;
          border-top-left-radius: calc(var(--track-width) / 2);
          border-bottom-left-radius: calc(var(--track-width) / 2);
       }
@@ -63,21 +64,42 @@
             background-color var(--transition-time);
       }
 
-      input[type="checkbox"]:focus + .slider::before,
-      input[type="checkbox"]:hover + .slider::before {
-         background-color: var(--clr-main-1);
+      input:focus + .slider::before,
+      input:hover + .slider::before {
+         background: var(--clr-main-1);
       }
 
-      input[type="checkbox"]:checked + .slider:before {
+      @supports selector(:focus-visible) {
+         input:focus + .slider::before {
+            background: var(--clr-main-2);
+         }
+
+         input:hover + .slider::before {
+            background: var(--clr-main-1);
+         }
+
+         input:focus-visible + .slider {
+            box-shadow: 0 0 0 2px var(--clr-main-1);
+            outline: var(--soft-border);
+            outline-offset: 0.4em;
+         }
+      }
+
+      input:checked + .slider:before {
          transform: translateY(calc(-1 * var(--track-height) / 2));
       }
+
+      // &:focus-within .slider {
+      //    outline: 2px solid var(--clr-main-1);
+      //    outline-offset: 0.4em;
+      // }
 
       .c,
       .f {
          user-select: none;
          text-align: center;
          position: absolute;
-         left: calc(var(--thumb-offset));
+         left: var(--thumb-offset);
          font-weight: 400;
          transition: color var(--transition-time) 0.1s;
          @include boxSize(var(--thumb-size));
@@ -91,14 +113,14 @@
 
       .f {
          color: var(--clr-main-2);
-         top: calc(var(--thumb-offset));
+         top: var(--thumb-offset);
       }
 
-      input[type="checkbox"]:checked ~ .c {
+      input:checked ~ .c {
          color: var(--clr-main-2);
       }
 
-      input[type="checkbox"]:checked ~ .f {
+      input:checked ~ .f {
          color: var(--clr-bg-dark-1);
       }
    }

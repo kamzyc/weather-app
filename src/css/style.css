@@ -136,7 +136,7 @@ body {
     border-color: var(--clr-main-1);
     color: var(--clr-main-1);
     transform: scale(1.1);
-    outline: 1px var(--clr-main-1) solid;
+    outline: var(--soft-border);
     outline-offset: 0.4em;
   }
   .btn--disabled:focus-visible {
@@ -337,7 +337,7 @@ body {
   height: var(--track-height);
   cursor: pointer;
 }
-.navbar__units input[type=checkbox] {
+.navbar__units input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -348,6 +348,7 @@ body {
   transition: 0.4s;
   background-color: var(--clr-dark-fade);
   outline: var(--hard-border);
+  border-right: none;
   border-top-left-radius: calc(var(--track-width) / 2);
   border-bottom-left-radius: calc(var(--track-width) / 2);
 }
@@ -362,11 +363,24 @@ body {
   border-radius: 50%;
   transition: transform var(--transition-time), background-color var(--transition-time);
 }
-.navbar__units input[type=checkbox]:focus + .slider::before,
-.navbar__units input[type=checkbox]:hover + .slider::before {
-  background-color: var(--clr-main-1);
+.navbar__units input:focus + .slider::before,
+.navbar__units input:hover + .slider::before {
+  background: var(--clr-main-1);
 }
-.navbar__units input[type=checkbox]:checked + .slider:before {
+@supports selector(:focus-visible) {
+  .navbar__units input:focus + .slider::before {
+    background: var(--clr-main-2);
+  }
+  .navbar__units input:hover + .slider::before {
+    background: var(--clr-main-1);
+  }
+  .navbar__units input:focus-visible + .slider {
+    box-shadow: 0 0 0 2px var(--clr-main-1);
+    outline: var(--soft-border);
+    outline-offset: 0.4em;
+  }
+}
+.navbar__units input:checked + .slider:before {
   transform: translateY(calc(-1 * var(--track-height) / 2));
 }
 .navbar__units .c,
@@ -374,7 +388,7 @@ body {
   user-select: none;
   text-align: center;
   position: absolute;
-  left: calc(var(--thumb-offset));
+  left: var(--thumb-offset);
   font-weight: 400;
   transition: color var(--transition-time) 0.1s;
   width: var(--thumb-size);
@@ -390,12 +404,12 @@ body {
 }
 .navbar__units .f {
   color: var(--clr-main-2);
-  top: calc(var(--thumb-offset));
+  top: var(--thumb-offset);
 }
-.navbar__units input[type=checkbox]:checked ~ .c {
+.navbar__units input:checked ~ .c {
   color: var(--clr-main-2);
 }
-.navbar__units input[type=checkbox]:checked ~ .f {
+.navbar__units input:checked ~ .f {
   color: var(--clr-bg-dark-1);
 }
 
