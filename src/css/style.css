@@ -5,7 +5,7 @@
   --clr-bg-1: hsl(var(--hue) 44% 35% / 0.8);
   --clr-bg-2: hsl(var(--hue) 44% 24% / 1);
   --clr-bg-3: hsl(var(--hue) 44% 18% / 1);
-  --clr-bg-gradient: linear-gradient(
+  --clr-bg-container: linear-gradient(
      to bottom,
      var(--clr-bg-1) 0%,
      var(--clr-bg-2) 40%,
@@ -13,6 +13,11 @@
   );
   --clr-bg-dark-1: hsl(var(--hue) 5% 10% / 1);
   --clr-bg-dark-2: hsl(var(--hue) 5% 5% / 1);
+  --clr-bg: linear-gradient(
+     136deg,
+     var(--clr-bg-dark-1) 0%,
+     var(--clr-bg-dark-2) 100%
+  );
   --clr-main-1: hsl(var(--hue) 5% 90% / 1);
   --clr-main-2: hsl(var(--hue) 5% 80% / 1);
   --clr-dark-fade: hsl(var(--hue) 20% 10% / 0.5);
@@ -48,7 +53,7 @@ body {
   color: var(--clr-main-1);
   font-family: var(--ff-main);
   font-weight: 400;
-  background: linear-gradient(136deg, var(--clr-bg-dark-1) 0%, var(--clr-bg-dark-2) 100%);
+  background: var(--clr-bg);
 }
 
 ::-webkit-scrollbar {
@@ -69,7 +74,7 @@ body {
   }
 }
 .container {
-  background: var(--clr-bg-gradient);
+  background: var(--clr-bg-container);
   max-width: 50rem;
   min-height: 100vh;
   margin: 0 auto;
@@ -98,22 +103,39 @@ body {
   align-items: center;
   justify-content: center;
   border: 1px solid var(--clr-main-2);
+  color: var(--clr-main-2);
   border-radius: 50%;
   outline: none;
   background: transparent;
   flex-shrink: 0;
   transform: scale(1);
-  transition: transform 0.1s;
+  transition: transform 0.2s;
 }
 .btn__icon {
   font-size: var(--icon-size);
-  color: var(--clr-main-2);
-  transition: transform 0.1s;
+  color: inherit;
 }
-.btn:hover, .btn:focus, .btn:hover .btn__icon, .btn:focus .btn__icon {
+.btn:hover, .btn:focus {
   border-color: var(--clr-main-1);
   color: var(--clr-main-1);
   transform: scale(1.1);
+}
+@supports selector(:focus-visible) {
+  .btn:focus {
+    border-color: var(--clr-main-2);
+    color: var(--clr-main-2);
+    transform: scale(1);
+  }
+  .btn:hover {
+    border-color: var(--clr-main-1);
+    color: var(--clr-main-1);
+    transform: scale(1.1);
+  }
+  .btn:focus-visible {
+    border-color: var(--clr-main-1);
+    color: var(--clr-main-1);
+    transform: scale(1.1);
+  }
 }
 .btn--disabled {
   pointer-events: none;
@@ -124,38 +146,45 @@ body {
   display: none;
 }
 
-.bg-clouds {
-  background: var(--clr-bg-gradient), url("../imgs/bg/clouds.jpg") no-repeat;
+.bg-clouds,
+.bg-rain,
+.bg-night,
+.bg-day,
+.bg-snow,
+.bg-thunderstorm,
+.bg-mist {
+  --img-name: url("../imgs/bg/clouds.jpg");
+  background: var(--clr-bg-container), var(--img-name) no-repeat;
   background-size: cover;
+}
+
+.bg-clouds {
+  --img-name: url("../imgs/bg/clouds.jpg");
 }
 
 .bg-rain {
-  background: var(--clr-bg-gradient), url("../imgs/bg/rain.jpg") no-repeat;
-  background-size: cover;
+  --img-name: url("../imgs/bg/rain.jpg");
 }
 
 .bg-night {
-  background: var(--clr-bg-gradient), url("../imgs/bg/night.jpg") no-repeat;
-  background-size: cover;
+  --img-name: url("../imgs/bg/night.jpg");
 }
 
 .bg-day {
-  background: var(--clr-bg-gradient), url("../imgs/bg/day.jpg") no-repeat;
-  background-size: cover;
+  --img-name: url("../imgs/bg/day.jpg");
 }
 
 .bg-snow {
-  background: var(--clr-bg-gradient), url("../imgs/bg/snow.jpg") no-repeat;
-  background-size: cover;
+  --img-name: url("../imgs/bg/snow.jpg");
 }
 
 .bg-thunderstorm {
-  background: var(--clr-bg-gradient), url("../imgs/bg/thunderstorm.jpg") no-repeat;
+  --img-name: url("../imgs/bg/thunderstorm.jpg");
   background-size: auto;
 }
 
 .bg-mist {
-  background: var(--clr-bg-gradient), url("../imgs/bg/mist.jpg") no-repeat;
+  --img-name: url("../imgs/bg/mist.jpg");
   background-size: auto;
 }
 
@@ -207,7 +236,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: entry 0.6s ease;
+  animation: entry 0.5s ease-out;
 }
 .current-weather__location {
   font-size: 1.5rem;
@@ -331,11 +360,10 @@ body {
 .navbar__units .f {
   user-select: none;
   text-align: center;
-  font-size: 1rem;
-  display: inline-block;
   position: absolute;
   left: calc(var(--thumb-offset));
-  transition: color vaR(--transition-time) 0.1s;
+  font-weight: 400;
+  transition: color var(--transition-time) 0.1s;
   width: var(--thumb-size);
   height: var(--thumb-size);
   display: flex;
@@ -344,7 +372,7 @@ body {
   justify-content: center;
 }
 .navbar__units .c {
-  color: var(--clr-dark);
+  color: var(--clr-bg-dark-1);
   bottom: calc(var(--thumb-offset));
 }
 .navbar__units .f {
@@ -355,7 +383,7 @@ body {
   color: var(--clr-main-2);
 }
 .navbar__units input[type=checkbox]:checked ~ .f {
-  color: var(--clr-dark);
+  color: var(--clr-bg-dark-1);
 }
 
 .hourly {
@@ -376,7 +404,7 @@ body {
 }
 .hourly .hourly__panel {
   text-align: center;
-  animation: entry 0.6s ease;
+  animation: entry 0.5s ease-out;
 }
 .hourly__list {
   display: flex;
@@ -423,7 +451,7 @@ body {
 }
 .daily__panel {
   padding: 0 1rem;
-  animation: entry 0.6s ease;
+  animation: entry 0.5s ease-out;
 }
 .daily__list {
   list-style: none;
@@ -477,7 +505,7 @@ body {
   align-items: center;
   border-top: var(--soft-border);
   margin: 0 1rem;
-  animation: entry 0.6s ease;
+  animation: entry 0.5s ease-out;
 }
 .wind__title {
   font-size: 1.5rem;
@@ -522,7 +550,7 @@ body {
   align-items: center;
   border-top: var(--soft-border);
   margin: 0 1rem;
-  animation: entry 0.6s ease;
+  animation: entry 0.5s ease-out;
 }
 .comfort-level__title {
   font-size: 1.5rem;
@@ -591,11 +619,13 @@ body {
   border-radius: 100vmin;
   padding: 0.25em 1em;
 }
+.status__icon {
+  animation: rotation 0.5s alternate infinite;
+}
 .status__icon img {
   width: 1.5rem;
   height: 1.5rem;
   max-width: 100%;
-  animation: rotation 0.5s alternate infinite;
 }
 @keyframes rotation {
   0% {

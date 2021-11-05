@@ -12,11 +12,7 @@ body {
    color: var(--clr-main-1);
    font-family: var(--ff-main);
    font-weight: 400;
-   background: linear-gradient(
-      136deg,
-      var(--clr-bg-dark-1) 0%,
-      var(--clr-bg-dark-2) 100%
-   );
+   background: var(--clr-bg);
 }
 
 ::-webkit-scrollbar {
@@ -40,7 +36,7 @@ body {
 }
 
 .container {
-   background: var(--clr-bg-gradient);
+   background: var(--clr-bg-container);
    max-width: 50rem;
    min-height: 100vh;
    margin: 0 auto;

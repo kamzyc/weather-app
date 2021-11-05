@@ -15,10 +15,10 @@
    }
 
    &__icon {
+      animation: rotation 0.5s alternate infinite;
       img {
          @include boxSize(1.5rem);
          max-width: 100%;
-         animation: rotation 0.5s alternate infinite;
       }
    }
 
