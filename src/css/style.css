@@ -96,6 +96,7 @@ body {
 }
 
 .btn {
+  --transition-time: 0.2s;
   width: var(--btn-size);
   height: var(--btn-size);
   display: flex;
@@ -109,7 +110,7 @@ body {
   background: transparent;
   flex-shrink: 0;
   transform: scale(1);
-  transition: transform 0.2s;
+  transition: all var(--transition-time);
 }
 .btn__icon {
   font-size: var(--icon-size);
@@ -135,7 +136,18 @@ body {
     border-color: var(--clr-main-1);
     color: var(--clr-main-1);
     transform: scale(1.1);
+    outline: 1px var(--clr-main-1) solid;
+    outline-offset: 0.4em;
   }
+  .btn--disabled:focus-visible {
+    outline: none;
+    transform: scale(1);
+    color: var(--clr-main-2);
+    border-color: var(--clr-main-2);
+  }
+}
+.btn:active {
+  transform: scale(1.1) translateY(3px);
 }
 .btn--disabled {
   pointer-events: none;

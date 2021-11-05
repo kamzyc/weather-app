@@ -1,4 +1,5 @@
 .btn {
+   --transition-time: 0.2s;
    @include boxSize(var(--btn-size));
    @include flexCenter;
    border: 1px solid var(--clr-main-2);
@@ -8,8 +9,7 @@
    background: transparent;
    flex-shrink: 0;
    transform: scale(1);
-
-   transition: transform 0.2s;
+   transition: all var(--transition-time);
 
    &__icon {
       font-size: var(--icon-size);
@@ -40,7 +40,20 @@
          border-color: var(--clr-main-1);
          color: var(--clr-main-1);
          transform: scale(1.1);
+         outline: 1px var(--clr-main-1) solid;
+         outline-offset: 0.4em;
       }
+
+      &--disabled:focus-visible {
+         outline: none;
+         transform: scale(1);
+         color: var(--clr-main-2);
+         border-color: var(--clr-main-2);
+      }
+   }
+
+   &:active {
+      transform: scale(1.1) translateY(3px);
    }
 
    &--disabled {
