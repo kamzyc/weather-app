@@ -2,27 +2,45 @@
    @include boxSize(var(--btn-size));
    @include flexCenter;
    border: 1px solid var(--clr-main-2);
+   color: var(--clr-main-2);
    border-radius: 50%;
    outline: none;
    background: transparent;
    flex-shrink: 0;
    transform: scale(1);
 
-   transition: transform 0.1s;
+   transition: transform 0.2s;
 
    &__icon {
       font-size: var(--icon-size);
-      color: var(--clr-main-2);
-      transition: transform 0.1s;
+      color: inherit;
    }
 
    &:hover,
-   &:focus,
-   &:hover &__icon,
-   &:focus &__icon {
+   &:focus {
       border-color: var(--clr-main-1);
       color: var(--clr-main-1);
       transform: scale(1.1);
+   }
+
+   @supports selector(:focus-visible) {
+      &:focus {
+         border-color: var(--clr-main-2);
+         color: var(--clr-main-2);
+         transform: scale(1);
+      }
+
+      &:hover {
+         border-color: var(--clr-main-1);
+         color: var(--clr-main-1);
+         transform: scale(1.1);
+      }
+
+      &:focus-visible {
+         border-color: var(--clr-main-1);
+         color: var(--clr-main-1);
+         transform: scale(1.1);
+      }
    }
 
    &--disabled {
@@ -34,39 +52,44 @@
 .hidden {
    display: none;
 }
+.bg-clouds,
+.bg-rain,
+.bg-night,
+.bg-day,
+.bg-snow,
+.bg-thunderstorm,
+.bg-mist {
+   --img-name: url("../imgs/bg/clouds.jpg");
+   background: var(--clr-bg-container), var(--img-name) no-repeat;
+   background-size: cover;
+}
 
 .bg-clouds {
-   background: var(--clr-bg-gradient), url("../imgs/bg/clouds.jpg") no-repeat;
-   background-size: cover;
+   --img-name: url("../imgs/bg/clouds.jpg");
 }
 
 .bg-rain {
-   background: var(--clr-bg-gradient), url("../imgs/bg/rain.jpg") no-repeat;
-   background-size: cover;
+   --img-name: url("../imgs/bg/rain.jpg");
 }
 
 .bg-night {
-   background: var(--clr-bg-gradient), url("../imgs/bg/night.jpg") no-repeat;
-   background-size: cover;
+   --img-name: url("../imgs/bg/night.jpg");
 }
 
 .bg-day {
-   background: var(--clr-bg-gradient), url("../imgs/bg/day.jpg") no-repeat;
-   background-size: cover;
+   --img-name: url("../imgs/bg/day.jpg");
 }
 
 .bg-snow {
-   background: var(--clr-bg-gradient), url("../imgs/bg/snow.jpg") no-repeat;
-   background-size: cover;
+   --img-name: url("../imgs/bg/snow.jpg");
 }
 
 .bg-thunderstorm {
-   background: var(--clr-bg-gradient),
-      url("../imgs/bg/thunderstorm.jpg") no-repeat;
+   --img-name: url("../imgs/bg/thunderstorm.jpg");
    background-size: auto;
 }
 
 .bg-mist {
-   background: var(--clr-bg-gradient), url("../imgs/bg/mist.jpg") no-repeat;
+   --img-name: url("../imgs/bg/mist.jpg");
    background-size: auto;
 }
