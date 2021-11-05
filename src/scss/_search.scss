@@ -1,9 +1,7 @@
 .search {
    width: 100%;
    position: relative;
-   // margin: 2rem;
 
-   // @include margin(bottom, small);
    &__form {
       @include flexCenter;
       justify-content: space-between;
@@ -13,6 +11,7 @@
    }
 
    &__input {
+      font-family: inherit;
       border: 1px solid var(--clr-main-1);
       background: var(--clr-light-fade);
       border-radius: 100vmin;
@@ -26,14 +25,15 @@
       width: 10rem;
       transition: background 0.2s;
 
+      &:hover,
       &:focus {
          background: var(--clr-dark-fade);
       }
 
-      &::-webkit-input-placeholder {
+      &::placeholder {
          color: var(--clr-main-2);
          opacity: 0.6;
-         font-size: 0.8rem;
+         font-size: 1rem;
       }
    }
 }
