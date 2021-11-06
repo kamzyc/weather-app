@@ -73,7 +73,7 @@ export const createTextElement = (name, value, className) => {
 //////////////////////////////////////////////////////////////////////////////////////////
 // error
 export const showError = (message) => {
-   DOMCreator.clearElement(statusContainer);
+   DOMCreator.clearElements(statusContainer);
    const errorElement = DOMCreator.createElement(
       "span",
       `${CLASSNAMES.STATUS}__error`,
@@ -88,13 +88,13 @@ export const showError = (message) => {
 export const clearStatus = () => {
    if (!statusContainer.classList.contains("hidden"))
       statusContainer.classList.add("hidden");
-   DOMCreator.clearElement(statusContainer);
+   DOMCreator.clearElements(statusContainer);
 };
 
 //////////////////////////////////////////////////////////////////////////////////////////
 // spinner
 export const showSpinner = () => {
-   DOMCreator.clearElement(statusContainer);
+   DOMCreator.clearElements(statusContainer);
    const spinnerIcon = createIconElement(
       ICONS.umbrella,
       `${CLASSNAMES.STATUS}`

@@ -30,14 +30,17 @@ class DOMCreator {
       element.setAttribute(attrName, attrValue);
    };
 
-   static clearElement = (element) => {
-      element.querySelectorAll("*").forEach((children) => children.remove());
-   };
-
    static clearElements = (elements) => {
       if (Array.isArray(elements))
-         elements.forEach((element) => this.clearElement(element));
-      else this.clearElement(elements);
+         elements.forEach((element) =>
+            element
+               .querySelectorAll("*")
+               .forEach((children) => children.remove())
+         );
+      else
+         elements
+            .querySelectorAll("*")
+            .forEach((children) => children.remove());
    };
 
    static appendElements = (elements, parent) => {
