@@ -31,7 +31,6 @@
    &__icon {
       img {
          @include boxSize(4rem);
-         max-width: 100%;
       }
    }
 

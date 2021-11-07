@@ -83,6 +83,12 @@ body {
     scroll-behavior: auto;
   }
 }
+img {
+  max-width: 100%;
+  display: block;
+  user-select: none;
+}
+
 .container {
   background: var(--clr-bg-container);
   max-width: 50rem;
@@ -106,7 +112,7 @@ body {
 }
 
 .btn {
-  --transition-time: 0.2s;
+  --transition-time: 0.1s;
   width: var(--btn-size);
   height: var(--btn-size);
   display: flex;
@@ -120,7 +126,7 @@ body {
   background: transparent;
   flex-shrink: 0;
   transform: scale(1);
-  transition: all var(--transition-time);
+  transition: all var(--transition-time) linear;
 }
 .btn__icon {
   font-size: var(--icon-size);
@@ -157,11 +163,23 @@ body {
   }
 }
 .btn:active {
-  transform: scale(1.1) translateY(3px);
+  transform: scale(1.1) translateY(2px);
 }
 .btn--disabled {
   pointer-events: none;
   opacity: 0.5;
+}
+@media (hover: none) {
+  .btn {
+    border-color: var(--clr-main-1);
+    color: var(--clr-main-1);
+  }
+  .btn:hover, .btn:focus {
+    transform: none;
+  }
+  .btn:active {
+    transform: translateY(2px);
+  }
 }
 
 .panel {
@@ -269,7 +287,6 @@ body {
 .status__icon img {
   width: 1.5rem;
   height: 1.5rem;
-  max-width: 100%;
 }
 @keyframes rotation {
   0% {
@@ -375,7 +392,6 @@ body {
 .current-weather__icon img {
   width: 10rem;
   height: 10rem;
-  max-width: 100%;
 }
 .current-weather__description {
   grid-column: 1/-1;
@@ -427,6 +443,8 @@ body {
   width: var(--track-width);
   height: var(--track-height);
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: pan-x;
 }
 .navbar__units input {
   opacity: 0;
@@ -453,6 +471,11 @@ body {
   background-color: var(--clr-main-2);
   border-radius: 50%;
   transition: transform var(--transition-time), background-color var(--transition-time);
+}
+@media (hover: none) {
+  .navbar__units .slider:before {
+    background-color: var(--clr-main-1);
+  }
 }
 .navbar__units input:focus + .slider::before,
 .navbar__units input:hover + .slider::before {
@@ -556,7 +579,6 @@ body {
 .hourly__icon img {
   width: 3.5rem;
   height: 3.5rem;
-  max-width: 100%;
 }
 .hourly__temp {
   font-size: 1.25rem;
@@ -597,7 +619,6 @@ body {
 .daily__icon img {
   width: 4rem;
   height: 4rem;
-  max-width: 100%;
 }
 .daily__min-max {
   font-size: 1.25rem;

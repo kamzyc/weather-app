@@ -45,6 +45,12 @@ body {
    }
 }
 
+img {
+   max-width: 100%;
+   display: block;
+   user-select: none;
+}
+
 .container {
    background: var(--clr-bg-container);
    max-width: 50rem;

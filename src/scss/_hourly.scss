@@ -52,7 +52,6 @@
    &__icon {
       img {
          @include boxSize(3.5rem);
-         max-width: 100%;
       }
    }
 
