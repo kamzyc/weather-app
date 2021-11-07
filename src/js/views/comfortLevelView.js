@@ -34,11 +34,7 @@ const createChart = (humidity) => {
 const createHumidityElement = ({ humidity }) => {
    const chart = createChart(humidity);
 
-   const humidityTextElement = createTextElement(
-      "humidity",
-      `${humidity}%`,
-      CLASSNAMES.COMFORT_LEVEL
-   );
+   const humidityTextElement = createTextElement("humidity", `${humidity}%`);
 
    return DOMCreator.createParentElement(
       "div",
@@ -50,14 +46,10 @@ const createHumidityElement = ({ humidity }) => {
 const createComfortLevelTextElement = (name, value, units = null) => {
    let unitsValue = "°";
    if (units) unitsValue = units;
-   return createTextElement(
-      name,
-      `${value}${unitsValue}`,
-      CLASSNAMES.COMFORT_LEVEL
-   );
+   return createTextElement(name, `${value}${unitsValue}`);
 };
 
-const createPressureAndFeelsLikeElement = ({ pressure, temp }) => {
+const createComfortLevelDescriptionElement = ({ pressure, temp }) => {
    const feelsLikeElement = createComfortLevelTextElement(
       "feels like",
       temp.feelsLike
@@ -70,7 +62,7 @@ const createPressureAndFeelsLikeElement = ({ pressure, temp }) => {
 
    return DOMCreator.createParentElement(
       "div",
-      `${CLASSNAMES.COMFORT_LEVEL}__description`,
+      `${CLASSNAMES.PANEL}__description`,
       [feelsLikeElement, pressureElement]
    );
 };
@@ -79,7 +71,7 @@ export const createComfortLevelElement = (weather) => {
    // title
    const titleElement = DOMCreator.createElement(
       "h3",
-      `${CLASSNAMES.COMFORT_LEVEL}__title`,
+      `${CLASSNAMES.PANEL}__title`,
       "Comfort level"
    );
 
@@ -87,12 +79,11 @@ export const createComfortLevelElement = (weather) => {
    const humidityElement = createHumidityElement(weather);
 
    // pressure and feels like
-   const pressureAndFeelsLikeElement =
-      createPressureAndFeelsLikeElement(weather);
+   const descriptionElement = createComfortLevelDescriptionElement(weather);
 
    return DOMCreator.createParentElement(
       "div",
-      `${CLASSNAMES.COMFORT_LEVEL}__panel`,
-      [titleElement, humidityElement, pressureAndFeelsLikeElement]
+      [`${CLASSNAMES.COMFORT_LEVEL}__panel`, `${CLASSNAMES.PANEL}`],
+      [titleElement, humidityElement, descriptionElement]
    );
 };

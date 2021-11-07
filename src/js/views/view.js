@@ -60,11 +60,11 @@ export const createWeatherIconElement = (
    return createIconElement(ICONS[`${iconType}`], className);
 };
 
-export const createTextElement = (name, value, className) => {
+export const createTextElement = (name, value) => {
    const nameElement = DOMCreator.createElement("span", "name", name);
    const valueElement = DOMCreator.createElement("span", "value", value);
 
-   return DOMCreator.createParentElement("div", `${className}__text`, [
+   return DOMCreator.createParentElement("div", `${CLASSNAMES.PANEL}__text`, [
       nameElement,
       valueElement,
    ]);

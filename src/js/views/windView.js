@@ -1,6 +1,6 @@
-import { ICONS, CLASSNAMES, BASE_ICON_ROTATION } from "../config";
+import { CLASSNAMES, BASE_ICON_ROTATION } from "../config";
 import DOMCreator from "../DOMCreator";
-import { createIconElement, createTextElement } from "./view";
+import { createTextElement } from "./view";
 
 const createArrowElement = (angle) => {
    const arrow = DOMCreator.createElement("i", [
@@ -20,11 +20,7 @@ const createWindTextElement = (name, value, units = null) => {
    let unitsValue = "°";
    if (units) unitsValue = units === "metric" ? " m/s" : " mph";
 
-   return createTextElement(
-      name,
-      `${Math.round(value)}${unitsValue}`,
-      CLASSNAMES.WIND
-   );
+   return createTextElement(name, `${Math.round(value)}${unitsValue}`);
 };
 
 const createWindDescriptionElement = ({ angle, speed }, units) => {
@@ -33,7 +29,7 @@ const createWindDescriptionElement = ({ angle, speed }, units) => {
 
    return DOMCreator.createParentElement(
       "div",
-      `${CLASSNAMES.WIND}__description`,
+      `${CLASSNAMES.PANEL}__description`,
       [angleElement, speedElement]
    );
 };
@@ -42,12 +38,9 @@ export const createWindElement = ({ wind }, { units }) => {
    // title
    const titleElement = DOMCreator.createElement(
       "h3",
-      `${CLASSNAMES.WIND}__title`,
+      `${CLASSNAMES.PANEL}__title`,
       "Wind"
    );
-
-   // icon
-   const iconElement = createIconElement(ICONS.wind, CLASSNAMES.WIND);
 
    // arrow
    const arrowElement = createArrowElement(wind.angle);
@@ -55,10 +48,9 @@ export const createWindElement = ({ wind }, { units }) => {
    // description
    const descriptionElement = createWindDescriptionElement(wind, units);
 
-   return DOMCreator.createParentElement("div", `${CLASSNAMES.WIND}__panel`, [
-      titleElement,
-      iconElement,
-      arrowElement,
-      descriptionElement,
-   ]);
+   return DOMCreator.createParentElement(
+      "div",
+      [`${CLASSNAMES.WIND}__panel`, `${CLASSNAMES.PANEL}`],
+      [titleElement, arrowElement, descriptionElement]
+   );
 };

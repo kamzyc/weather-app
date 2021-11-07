@@ -34,7 +34,6 @@ import i200_201_202_231_232 from "url:../imgs/icons/200_201_202_231_232.svg";
 import i212_221 from "url:../imgs/icons/212_221.svg";
 
 // icons
-import iWind from "url:../imgs/icons/wind.svg";
 import iUmbrella from "url:../imgs/icons/umbrella.svg";
 
 dotenv.config();
@@ -48,6 +47,7 @@ export const CLASSNAMES = {
    WIND: "wind",
    COMFORT_LEVEL: "comfort-level",
    STATUS: "status",
+   PANEL: "panel",
 };
 
 export const NUM_HOURS = 24; // max 48
@@ -90,7 +90,6 @@ export const ICONS = {
    "210_211_230dn": i210_211_230,
    "200_201_202_231_232dn": i200_201_202_231_232,
    "212_221dn": i212_221,
-   wind: iWind,
    umbrella: iUmbrella,
 };
 

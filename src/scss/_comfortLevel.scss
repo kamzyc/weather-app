@@ -1,54 +1,15 @@
 .comfort-level {
-   // @include margin(bottom, small);
+   --heigth: 10rem;
    &__panel {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 3rem 10rem;
-      justify-items: center;
-      align-items: center;
-      @include border(var(--soft-border), top);
-      margin: 0 1rem;
-      @include entryAnimation;
-   }
-
-   &__title {
-      font-size: 1.5rem;
-      font-weight: 300;
-      grid-row: 1 / 1;
-      grid-column: 1 / -1;
-      justify-self: start;
-   }
-
-   &__description {
-      @include flexCenter(column);
-      align-items: start;
-      gap: 0.5rem;
-      grid-row: 2 / span 1;
-      grid-column: 3 / span 1;
-   }
-
-   &__text {
-      font-size: 1.15rem;
-      .name {
-         font-weight: 300;
-         width: 16ch;
-         text-transform: capitalize;
-      }
-
-      .value {
-         font-weight: 200;
-         margin-left: 1rem;
-      }
+      grid-template-rows: max-content var(--heigth);
    }
 
    &__humidity {
-      grid-row: 2 / span 1;
-      grid-column: 1 / span 2;
-      height: 10rem;
-      width: 10rem;
+      @include boxSize(var(--heigth));
       position: relative;
+      justify-self: center;
 
-      .comfort-level__text {
+      .panel__text {
          @include flexCenter(column);
          position: absolute;
          top: 50%;

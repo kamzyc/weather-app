@@ -1,55 +1,10 @@
 .wind {
-   // @include margin(bottom, small);
-   &:empty {
-      display: none;
-   }
-
    &__panel {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 3rem 6rem;
-      justify-items: center;
-      align-items: center;
-      @include border(var(--soft-border), top);
-      margin: 0 1rem;
-      @include entryAnimation;
-   }
-
-   &__title {
-      font-size: 1.5rem;
-      font-weight: 300;
-      grid-row: 1 / 1;
-      grid-column: 1 / -1;
-      justify-self: start;
-   }
-
-   &__icon {
-      img {
-         @include boxSize(6rem);
-      }
+      grid-template-rows: max-content 6rem;
    }
 
    &__arrow {
       font-size: 5rem;
-   }
-
-   &__description {
-      @include flexCenter(column);
-      align-items: start;
-      gap: 0.5rem;
-   }
-
-   &__text {
-      font-size: 1.15rem;
-      .name {
-         font-weight: 300;
-         width: 16ch;
-         text-transform: capitalize;
-      }
-
-      .value {
-         font-weight: 200;
-         margin-left: 1rem;
-      }
+      justify-self: center;
    }
 }

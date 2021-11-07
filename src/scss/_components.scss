@@ -62,6 +62,45 @@
    }
 }
 
+.panel {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   justify-content: center;
+   align-items: center;
+   gap: 0.5rem 1rem;
+   @include border(var(--soft-border), top);
+   @include entryAnimation;
+   @include margin(left, small);
+   @include margin(right, small);
+
+   &__title {
+      font-size: 1.5rem;
+      font-weight: 300;
+      grid-row: 1 / 1;
+      grid-column: 1 / -1;
+      justify-self: start;
+   }
+
+   &__description {
+      @include flexCenter(column);
+      justify-self: center;
+      gap: 0.5rem;
+   }
+
+   &__text {
+      font-size: 1.15rem;
+      .name {
+         font-weight: 300;
+         text-transform: capitalize;
+      }
+
+      .value {
+         font-weight: 200;
+         margin-left: 1rem;
+      }
+   }
+}
+
 .hidden {
    display: none;
 }

@@ -54,7 +54,7 @@ $bp-xs: 800px;
 
 @mixin margin($side: bottom, $size: medium) {
    @if $size == small {
-      margin-#{$side}: 2rem;
+      margin-#{$side}: 1.5rem;
    }
 
    @if $size == medium {
