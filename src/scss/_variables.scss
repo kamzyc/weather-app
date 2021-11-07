@@ -52,20 +52,6 @@ $bp-xs: 800px;
    justify-content: center;
 }
 
-@mixin margin($side: bottom, $size: medium) {
-   @if $size == small {
-      margin-#{$side}: 1.5rem;
-   }
-
-   @if $size == medium {
-      margin-#{$side}: 3rem;
-   }
-
-   @if $size == big {
-      margin-#{$side}: 4rem;
-   }
-}
-
 @mixin boxSize($value) {
    width: $value;
    height: $value;

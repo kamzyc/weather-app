@@ -2,7 +2,7 @@
    width: 100%;
 
    &__panel {
-      padding: 0 1rem;
+      padding-inline: 1rem;
       @include entryAnimation;
    }
 
@@ -16,7 +16,7 @@
       @include flexCenter;
       justify-content: space-between;
       @include border(var(--soft-border), bottom);
-      padding: 1rem 0;
+      padding-block: 1rem;
    }
 
    &__item:last-child {

@@ -159,11 +159,10 @@ body {
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
-  gap: 0.5rem 1rem;
+  gap: 0.75rem 1rem;
   border-top: var(--soft-border);
   animation: entry 0.5s ease-out;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  padding-inline: 1rem;
 }
 .panel__title {
   font-size: 1.5rem;
@@ -182,6 +181,7 @@ body {
 }
 .panel__text {
   font-size: 1.15rem;
+  white-space: nowrap;
 }
 .panel__text .name {
   font-weight: 300;
@@ -238,6 +238,50 @@ body {
   background-size: auto;
 }
 
+.status {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.status__error {
+  background: var(--clr-error);
+  color: var(--clr-main-1);
+  font-weight: 300;
+  font-size: 0.85rem;
+  text-align: center;
+  border-radius: 100vmin;
+  padding: 0.25em 1em;
+}
+.status__icon {
+  animation: rotation 0.5s alternate infinite;
+}
+.status__icon img {
+  width: 1.5rem;
+  height: 1.5rem;
+  max-width: 100%;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .search {
   width: 100%;
   position: relative;
@@ -281,7 +325,7 @@ body {
   height: 23rem;
 }
 .current-weather .current-weather__panel {
-  padding: 0 2rem;
+  padding-inline: 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -296,7 +340,6 @@ body {
 .current-weather__date {
   font-size: 1rem;
   font-weight: 200;
-  margin-bottom: 1.5rem;
 }
 .current-weather__content {
   width: 100%;
@@ -344,7 +387,7 @@ body {
 
 .navbar {
   width: 100%;
-  padding: 2rem 0;
+  padding-block: 2rem;
   background-color: var(--clr-dark-fade);
   position: relative;
   border-top: var(--hard-border);
@@ -456,12 +499,11 @@ body {
   --gap: 1.25rem;
 }
 .hourly ::-webkit-scrollbar {
-  width: 10px;
   height: 10px;
 }
 .hourly ::-webkit-scrollbar-track {
   background: transparent;
-  margin: 0 var(--gap);
+  margin-inline: var(--gap);
 }
 .hourly ::-webkit-scrollbar-thumb {
   background-color: var(--clr-dark-fade);
@@ -515,7 +557,7 @@ body {
   width: 100%;
 }
 .daily__panel {
-  padding: 0 1rem;
+  padding-inline: 1rem;
   animation: entry 0.5s ease-out;
 }
 .daily__list {
@@ -533,7 +575,7 @@ body {
   justify-content: center;
   justify-content: space-between;
   border-bottom: var(--soft-border);
-  padding: 1rem 0;
+  padding-block: 1rem;
 }
 .daily__item:last-child {
   border: none;
@@ -592,38 +634,6 @@ body {
 .comfort-level__humidity .panel__text span {
   font-size: 1.25rem;
   margin-left: 0;
-}
-
-.status {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
-}
-.status__error {
-  background: var(--clr-error);
-  color: var(--clr-main-1);
-  font-weight: 300;
-  font-size: 0.85rem;
-  text-align: center;
-  border-radius: 100vmin;
-  padding: 0.25em 1em;
-}
-.status__icon {
-  animation: rotation 0.5s alternate infinite;
-}
-.status__icon img {
-  width: 1.5rem;
-  height: 1.5rem;
-  max-width: 100%;
-}
-@keyframes rotation {
-  0% {
-    transform: rotate(-45deg);
-  }
-  100% {
-    transform: rotate(45deg);
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -3,7 +3,7 @@
    height: 23rem;
 
    .current-weather__panel {
-      padding: 0 2rem;
+      padding-inline: 2rem;
       text-align: center;
       @include flexCenter(column);
       @include entryAnimation;
@@ -17,7 +17,6 @@
    &__date {
       font-size: 1rem;
       font-weight: 200;
-      @include margin(bottom, small);
    }
 
    &__content {
@@ -31,7 +30,6 @@
    &__temp {
       grid-column: 1 / span 1;
       grid-row: 1 / span 1;
-
       font-size: 7rem;
       font-weight: 700;
    }

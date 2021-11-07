@@ -1,9 +1,8 @@
 .navbar {
    width: 100%;
-   padding: 2rem 0;
+   padding-block: 2rem;
    background-color: var(--clr-dark-fade);
    position: relative;
-
    @include border(var(--hard-border), top);
    @include border(var(--hard-border), bottom);
 
@@ -57,7 +56,6 @@
          @include boxSize(var(--thumb-size));
          left: calc(var(--thumb-offset));
          bottom: calc(var(--thumb-offset));
-
          background-color: var(--clr-main-2);
          border-radius: 50%;
          transition: transform var(--transition-time),
@@ -88,11 +86,6 @@
       input:checked + .slider:before {
          transform: translateY(calc(-1 * var(--track-height) / 2));
       }
-
-      // &:focus-within .slider {
-      //    outline: 2px solid var(--clr-main-1);
-      //    outline-offset: 0.4em;
-      // }
 
       .c,
       .f {
