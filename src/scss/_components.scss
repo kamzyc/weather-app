@@ -86,7 +86,7 @@
    gap: 0.75rem 1rem;
    @include border(var(--soft-border), top);
    @include entryAnimation;
-   padding-inline: 1rem;
+   margin-inline: 1rem;
 
    &__title {
       font-size: 1.5rem;
@@ -99,6 +99,8 @@
    &__description {
       @include flexCenter(column);
       justify-self: center;
+      align-items: start;
+
       gap: 0.5rem;
    }
 

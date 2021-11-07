@@ -12,6 +12,7 @@
       list-style: none;
    }
 
+   // units switcher
    &__item:last-child {
       --track-height: calc(2 * var(--btn-size));
       --track-width: var(--btn-size);

@@ -1,0 +1,48 @@
+.saved {
+   --width: 0rem;
+   position: absolute;
+
+   width: var(--width);
+   height: 100vh;
+   background-color: var(--clr-main-1);
+
+   &__btn {
+      position: absolute;
+      top: 10%;
+      left: var(--width);
+
+      border-left: none;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+
+      &:hover,
+      &:focus {
+         transform: scale(1) translateX(5px);
+      }
+
+      @supports selector(:focus-visible) {
+         &:focus {
+            transform: scale(1);
+         }
+
+         &:hover {
+            transform: scale(1) translateX(5px);
+         }
+
+         &:focus-visible {
+            transform: scale(1) translateX(5px);
+         }
+      }
+
+      @media (hover: none) {
+         &:hover,
+         &:focus {
+            transform: none;
+         }
+
+         &:active {
+            transform: translateX(5px);
+         }
+      }
+   }
+}
