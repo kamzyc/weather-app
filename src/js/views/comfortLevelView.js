@@ -1,4 +1,4 @@
-import { CLASSNAMES } from "../config";
+import { CLASSNAMES, CHART_CONFIG } from "../config";
 import { createTextElement } from "./view";
 import DOMCreator from "../DOMCreator";
 
@@ -9,20 +9,26 @@ const createChart = (humidity) => {
       datasets: [
          {
             data: [humidity, 100 - humidity],
-            backgroundColor: ["rgb(242, 243, 243)", "rgba(242, 243, 243, 0.1)"],
-            borderColor: ["rgb(242, 243, 243)", "rgba(242, 243, 243, 0.1)"],
+            backgroundColor: [
+               CHART_CONFIG.BG_COLOR_DATA,
+               CHART_CONFIG.BG_COLOR_FREE,
+            ],
+            borderColor: [
+               CHART_CONFIG.BG_COLOR_DATA,
+               CHART_CONFIG.BG_COLOR_FREE,
+            ],
             borderWidth: 0,
-            borderRadius: [10, 0],
+            borderRadius: [CHART_CONFIG.BORDER_RADIUS, 0],
             spacing: -5,
          },
       ],
    };
 
    const config = {
-      type: "doughnut",
+      type: CHART_CONFIG.TYPE,
       data: data,
       options: {
-         cutout: "88%",
+         cutout: CHART_CONFIG.CUTOUT,
          events: [],
       },
    };

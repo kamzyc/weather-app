@@ -592,7 +592,6 @@ body {
 .comfort-level__humidity .panel__text span {
   font-size: 1.25rem;
   margin-left: 0;
-  width: max-content;
 }
 
 .status {

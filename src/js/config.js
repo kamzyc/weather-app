@@ -104,6 +104,14 @@ export const BG = {
    "200_201_202_210_211_212_221_230_231_232dn": "thunderstorm",
 };
 
+export const CHART_CONFIG = {
+   TYPE: "doughnut",
+   CUTOUT: "90%",
+   BG_COLOR_DATA: "rgb(242, 243, 243)",
+   BG_COLOR_FREE: "rgba(242, 243, 243, 0.1)",
+   BORDER_RADIUS: 5,
+};
+
 /*
 800: d n
 8xx:  
