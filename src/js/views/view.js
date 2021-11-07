@@ -1,6 +1,6 @@
-import { ICONS, CLASSNAMES, BG } from "../config";
-import { checkIcon, checkDayTime } from "../utilities";
 import DOMCreator from "../DOMCreator";
+import { ICONS, CLASSNAMES, BG } from "../config";
+import { checkDayTime, searchInObject } from "../utilities";
 import { createMainWeatherElement } from "./mainWeatherView";
 import { createHourlyElement } from "./hourlyView";
 import { createDailyElement } from "./dailyView";
@@ -43,6 +43,7 @@ export const createMaxMinElement = (
 export const createIconElement = (iconName, className) => {
    const icon = DOMCreator.createElement("img");
    DOMCreator.addAttribute(icon, "src", iconName);
+   DOMCreator.addAttribute(icon, "alt", "weather condition");
 
    return DOMCreator.createParentElement("div", `${className}__icon`, icon);
 };
@@ -55,7 +56,7 @@ export const createWeatherIconElement = (
    className
 ) => {
    const dayTime = checkDayTime(currentDate, sunrise, sunset);
-   const iconType = checkIcon(id, dayTime);
+   const iconType = searchInObject(id, dayTime, ICONS);
 
    return createIconElement(ICONS[`${iconType}`], className);
 };
@@ -108,12 +109,7 @@ export const showSpinner = () => {
 // bg
 const setBg = ({ id }, { currentDate, sunrise, sunset }) => {
    const dayTime = checkDayTime(currentDate, sunrise, sunset);
-   let bgName;
-   for (const [key] of Object.entries(BG)) {
-      if (key.includes(id) && key.includes(dayTime)) {
-         bgName = key;
-      }
-   }
+   const bgName = searchInObject(id, dayTime, BG);
 
    // remove all bg classes
    container.classList.forEach((className) => {

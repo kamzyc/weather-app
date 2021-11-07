@@ -1,5 +1,3 @@
-import { ICONS } from "./config";
-
 export const setFlag = (query) => {
    const regex = /^\d+$/g;
    return regex.test(query) ? "zip" : "q";
@@ -14,14 +12,12 @@ export const convertDate = (date, timezone) => {
    return date;
 };
 
-export const checkIcon = (id, dayTime) => {
-   let iconName;
-   for (const [key] of Object.entries(ICONS)) {
-      if (key.includes(id) && key.includes(dayTime)) {
-         iconName = key;
+export const searchInObject = (value1, value2, object) => {
+   for (const [key] of Object.entries(object)) {
+      if (key.includes(value1) && key.includes(value2)) {
+         return key;
       }
    }
-   return iconName;
 };
 
 export const checkDayTime = (currentDate, sunrise, sunset) => {
