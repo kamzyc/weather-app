@@ -62,6 +62,7 @@ img {
    align-items: stretch;
    gap: 2rem;
    overflow: hidden;
+   position: relative;
 
    @include mq($bp-xs) {
       margin: 3rem auto;

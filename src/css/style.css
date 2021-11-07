@@ -103,6 +103,7 @@ img {
   align-items: stretch;
   gap: 2rem;
   overflow: hidden;
+  position: relative;
 }
 @media only screen and (min-width: 800px) {
   .container {
@@ -669,11 +670,16 @@ img {
 }
 
 .saved {
-  --width: 0rem;
+  --width: 30rem;
   position: absolute;
+  left: -30rem;
   width: var(--width);
   height: 100vh;
+  background-color: red;
+  border: 1px solid var(--clr-main-1);
   background-color: var(--clr-main-1);
+  z-index: 99;
+  transition: all 1s;
 }
 .saved__btn {
   position: absolute;
@@ -682,6 +688,14 @@ img {
   border-left: none;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+.saved__btn::before {
+  content: "";
+  position: absolute;
+  background-color: red;
+  width: 5px;
+  top: 0;
+  height: var(--btn-size);
 }
 .saved__btn:hover, .saved__btn:focus {
   transform: scale(1) translateX(5px);

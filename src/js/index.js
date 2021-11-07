@@ -9,6 +9,9 @@ import {
 import DOMCreator from "./DOMCreator";
 import * as view from "./views/view";
 
+//!
+const savedPanel = document.querySelector(".saved");
+
 function init() {
    // add handlers
    view.searchForm.addEventListener("submit", searchHandler);
@@ -24,7 +27,18 @@ function init() {
 
    // simulate click on geo btn
    view.geoBtn.click();
+
+   //! saved panel test
+   const savedBtn = document.querySelector(".saved__btn");
+   savedBtn.addEventListener("click", savedPanelHandler);
 }
+
+const savedPanelHandler = () => {
+   console.log("CLicked!");
+   DOMCreator.addStyles(savedPanel, {
+      transform: `translateX(30rem)`,
+   });
+};
 
 const searchHandler = async (event) => {
    event.preventDefault();
