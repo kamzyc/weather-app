@@ -2,7 +2,7 @@
    width: 100%;
    height: 23rem;
 
-   .current-weather__panel {
+   &__panel {
       padding-inline: 2rem;
       text-align: center;
       @include flexCenter(column);
@@ -11,12 +11,12 @@
 
    &__location {
       font-size: 1.5rem;
-      font-weight: 400;
+      font-weight: inherit;
    }
 
    &__date {
       font-size: 1rem;
-      font-weight: 200;
+      font-weight: var(--fw-s);
    }
 
    &__content {
@@ -31,7 +31,7 @@
       grid-column: 1 / span 1;
       grid-row: 1 / span 1;
       font-size: 7rem;
-      font-weight: 700;
+      font-weight: var(--fw-l);
    }
 
    &__icon {
@@ -48,7 +48,6 @@
       grid-column: 1 / -1;
       grid-row: 2 / span 1;
       font-size: 1.75rem;
-      font-weight: 300;
    }
 
    &__min-max {
@@ -56,12 +55,8 @@
       grid-row: 3 / span 1;
       font-size: 1.25rem;
 
-      .max {
-         font-weight: 400;
-      }
-
       .min {
-         font-weight: 200;
+         font-weight: var(--fw-s);
       }
    }
 }

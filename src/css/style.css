@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap");
 :root {
   --ff-main: "Titillium Web", sans-serif;
+  --fw-l: 700;
+  --fw-m: 400;
+  --fw-s: 200;
   --hue: 192;
   --clr-bg-1: hsl(var(--hue) 45% 35% / 0.8);
   --clr-bg-2: hsl(var(--hue) 45% 24% / 1);
@@ -48,7 +51,7 @@ body {
   min-height: 100vh;
   color: var(--clr-light-1);
   font-family: var(--ff-main);
-  font-weight: 400;
+  font-weight: var(--fw-m);
   background: linear-gradient(135deg, var(--clr-bg-dark-1) 0%, var(--clr-bg-dark-2) 100%);
 }
 
@@ -191,7 +194,7 @@ img {
 }
 .panel__title {
   font-size: 1.5rem;
-  font-weight: 300;
+  font-weight: var(--fw-s);
   grid-row: 1/1;
   grid-column: 1/-1;
   justify-self: start;
@@ -207,14 +210,12 @@ img {
 }
 .panel__text {
   font-size: 1.15rem;
-  white-space: nowrap;
 }
 .panel__text .name {
-  font-weight: 300;
   text-transform: capitalize;
 }
 .panel__text .value {
-  font-weight: 200;
+  font-weight: var(--fw-s);
   margin-left: 1rem;
 }
 
@@ -256,7 +257,6 @@ img {
 .status__error {
   background: linear-gradient(to bottom, var(--clr-error-1) 0%, var(--clr-error-2) 100%);
   color: var(--clr-light-1);
-  font-weight: 300;
   font-size: 0.85rem;
   text-align: center;
   border-radius: 100vmin;
@@ -356,7 +356,6 @@ img {
   height: var(--btn-size);
   color: var(--clr-light-1);
   font-size: 1.25rem;
-  font-weight: 400;
   flex: 1;
   width: 10rem;
   transition: background 0.2s;
@@ -368,13 +367,14 @@ img {
   color: var(--clr-light-2);
   opacity: 0.6;
   font-size: 1rem;
+  font-weight: var(--fw-s);
 }
 
 .current-weather {
   width: 100%;
   height: 23rem;
 }
-.current-weather .current-weather__panel {
+.current-weather__panel {
   padding-inline: 2rem;
   text-align: center;
   display: flex;
@@ -385,11 +385,11 @@ img {
 }
 .current-weather__location {
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: inherit;
 }
 .current-weather__date {
   font-size: 1rem;
-  font-weight: 200;
+  font-weight: var(--fw-s);
 }
 .current-weather__content {
   width: 100%;
@@ -402,7 +402,7 @@ img {
   grid-column: 1/span 1;
   grid-row: 1/span 1;
   font-size: 7rem;
-  font-weight: 700;
+  font-weight: var(--fw-l);
 }
 .current-weather__icon {
   grid-column: 2/span 1;
@@ -420,18 +420,14 @@ img {
   grid-column: 1/-1;
   grid-row: 2/span 1;
   font-size: 1.75rem;
-  font-weight: 300;
 }
 .current-weather__min-max {
   grid-column: 1/-1;
   grid-row: 3/span 1;
   font-size: 1.25rem;
 }
-.current-weather__min-max .max {
-  font-weight: 400;
-}
 .current-weather__min-max .min {
-  font-weight: 200;
+  font-weight: var(--fw-s);
 }
 
 .navbar {
@@ -526,7 +522,6 @@ img {
   text-align: center;
   position: absolute;
   left: var(--thumb-offset);
-  font-weight: 400;
   transition: color var(--transition-time) 0.1s;
   width: var(--thumb-size);
   height: var(--thumb-size);
@@ -565,7 +560,7 @@ img {
   background-color: var(--clr-fade-light);
   border-radius: 100vmin;
 }
-.hourly .hourly__panel {
+.hourly__panel {
   text-align: center;
   animation: entry 0.5s ease-out;
 }
@@ -596,8 +591,7 @@ img {
   margin-right: var(--gap);
 }
 .hourly__time {
-  font-size: 1rem;
-  font-weight: 200;
+  font-weight: var(--fw-s);
 }
 .hourly__icon img {
   width: 3.5rem;
@@ -605,7 +599,7 @@ img {
 }
 .hourly__temp {
   font-size: 1.25rem;
-  font-weight: 200;
+  font-weight: var(--fw-s);
 }
 
 .daily {
@@ -645,14 +639,10 @@ img {
 }
 .daily__min-max {
   font-size: 1.25rem;
-  width: 9ch;
   text-align: right;
 }
-.daily__min-max .max {
-  font-weight: 400;
-}
 .daily__min-max .min {
-  font-weight: 200;
+  font-weight: var(--fw-s);
 }
 
 .wind__panel {

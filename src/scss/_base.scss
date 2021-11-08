@@ -10,7 +10,7 @@ body {
    min-height: 100vh;
    color: var(--clr-light-1);
    font-family: var(--ff-main);
-   font-weight: 400;
+   font-weight: var(--fw-m);
    background: linear-gradient(
       135deg,
       var(--clr-bg-dark-1) 0%,

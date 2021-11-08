@@ -90,7 +90,7 @@
 
    &__title {
       font-size: 1.5rem;
-      font-weight: 300;
+      font-weight: var(--fw-s);
       grid-row: 1 / 1;
       grid-column: 1 / -1;
       justify-self: start;
@@ -106,14 +106,12 @@
 
    &__text {
       font-size: 1.15rem;
-      white-space: nowrap;
       .name {
-         font-weight: 300;
          text-transform: capitalize;
       }
 
       .value {
-         font-weight: 200;
+         font-weight: var(--fw-s);
          margin-left: 1rem;
       }
    }
@@ -163,7 +161,6 @@
          var(--clr-error-2) 100%
       );
       color: var(--clr-light-1);
-      font-weight: 300;
       font-size: 0.85rem;
       text-align: center;
       border-radius: 100vmin;

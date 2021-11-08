@@ -36,14 +36,9 @@
 
    &__min-max {
       font-size: 1.25rem;
-      width: 9ch;
       text-align: right;
-      .max {
-         font-weight: 400;
-      }
-
       .min {
-         font-weight: 200;
+         font-weight: var(--fw-s);
       }
    }
 }

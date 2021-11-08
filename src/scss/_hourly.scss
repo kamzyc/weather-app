@@ -15,7 +15,7 @@
       }
    }
 
-   .hourly__panel {
+   &__panel {
       text-align: center;
       @include entryAnimation;
    }
@@ -45,8 +45,7 @@
    }
 
    &__time {
-      font-size: 1rem;
-      font-weight: 200;
+      font-weight: var(--fw-s);
    }
 
    &__icon {
@@ -57,6 +56,6 @@
 
    &__temp {
       font-size: 1.25rem;
-      font-weight: 200;
+      font-weight: var(--fw-s);
    }
 }
