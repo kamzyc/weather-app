@@ -15,7 +15,7 @@
    &__item {
       @include flexCenter;
       justify-content: space-between;
-      @include border(var(--soft-border), bottom);
+      border-bottom: var(--soft-border);
       padding-block: 1rem;
    }
 

@@ -1,10 +1,10 @@
 .navbar {
    width: 100%;
    padding-block: 2rem;
-   background-color: var(--clr-dark-fade);
+   background-color: var(--clr-fade-dark);
    position: relative;
-   @include border(var(--hard-border), top);
-   @include border(var(--hard-border), bottom);
+   border-top: var(--hard-border);
+   border-bottom: var(--hard-border);
 
    &__list {
       @include flexCenter();
@@ -46,7 +46,7 @@
          position: absolute;
          inset: 0;
          transition: 0.4s;
-         background-color: var(--clr-dark-fade);
+         background-color: var(--clr-fade-dark);
          outline: var(--hard-border);
          border-right: none;
          border-top-left-radius: calc(var(--track-width) / 2);
@@ -59,34 +59,34 @@
          @include boxSize(var(--thumb-size));
          left: calc(var(--thumb-offset));
          bottom: calc(var(--thumb-offset));
-         background-color: var(--clr-main-2);
+         background-color: var(--clr-light-2);
          border-radius: 50%;
          transition: transform var(--transition-time),
             background-color var(--transition-time);
 
          @media (hover: none) {
             & {
-               background-color: var(--clr-main-1);
+               background-color: var(--clr-light-1);
             }
          }
       }
 
       input:focus + .slider::before,
       input:hover + .slider::before {
-         background: var(--clr-main-1);
+         background: var(--clr-light-1);
       }
 
       @supports selector(:focus-visible) {
          input:focus + .slider::before {
-            background: var(--clr-main-2);
+            background: var(--clr-light-2);
          }
 
          input:hover + .slider::before {
-            background: var(--clr-main-1);
+            background: var(--clr-light-1);
          }
 
          input:focus-visible + .slider {
-            box-shadow: 0 0 0 2px var(--clr-main-1);
+            box-shadow: 0 0 0 2px var(--clr-light-1);
             outline: var(--soft-border);
             outline-offset: 0.4em;
          }
@@ -114,12 +114,12 @@
       }
 
       .f {
-         color: var(--clr-main-2);
+         color: var(--clr-light-2);
          top: var(--thumb-offset);
       }
 
       input:checked ~ .c {
-         color: var(--clr-main-2);
+         color: var(--clr-light-2);
       }
 
       input:checked ~ .f {

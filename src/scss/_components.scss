@@ -2,8 +2,8 @@
    --transition-time: 0.1s;
    @include boxSize(var(--btn-size));
    @include flexCenter;
-   border: 1px solid var(--clr-main-2);
-   color: var(--clr-main-2);
+   border: 1px solid var(--clr-light-2);
+   color: var(--clr-light-2);
    border-radius: 50%;
    outline: none;
    background: transparent;
@@ -18,27 +18,27 @@
 
    &:hover,
    &:focus {
-      border-color: var(--clr-main-1);
-      color: var(--clr-main-1);
+      border-color: var(--clr-light-1);
+      color: var(--clr-light-1);
       transform: scale(1.1);
    }
 
    @supports selector(:focus-visible) {
       &:focus {
-         border-color: var(--clr-main-2);
-         color: var(--clr-main-2);
+         border-color: var(--clr-light-2);
+         color: var(--clr-light-2);
          transform: scale(1);
       }
 
       &:hover {
-         border-color: var(--clr-main-1);
-         color: var(--clr-main-1);
+         border-color: var(--clr-light-1);
+         color: var(--clr-light-1);
          transform: scale(1.1);
       }
 
       &:focus-visible {
-         border-color: var(--clr-main-1);
-         color: var(--clr-main-1);
+         border-color: var(--clr-light-1);
+         color: var(--clr-light-1);
          transform: scale(1.1);
          outline: var(--soft-border);
          outline-offset: 0.4em;
@@ -47,8 +47,8 @@
       &--disabled:focus-visible {
          outline: none;
          transform: scale(1);
-         color: var(--clr-main-2);
-         border-color: var(--clr-main-2);
+         color: var(--clr-light-2);
+         border-color: var(--clr-light-2);
       }
    }
 
@@ -63,8 +63,8 @@
 
    @media (hover: none) {
       & {
-         border-color: var(--clr-main-1);
-         color: var(--clr-main-1);
+         border-color: var(--clr-light-1);
+         color: var(--clr-light-1);
       }
 
       &:hover,
@@ -84,7 +84,7 @@
    justify-content: center;
    align-items: center;
    gap: 0.75rem 1rem;
-   @include border(var(--soft-border), top);
+   border-top: var(--soft-border);
    @include entryAnimation;
    margin-inline: 1rem;
 
@@ -157,8 +157,12 @@
    transform: translateX(-50%);
 
    &__error {
-      background: var(--clr-error);
-      color: var(--clr-main-1);
+      background: linear-gradient(
+         to bottom,
+         var(--clr-error-1) 0%,
+         var(--clr-error-2) 100%
+      );
+      color: var(--clr-light-1);
       font-weight: 300;
       font-size: 0.85rem;
       text-align: center;

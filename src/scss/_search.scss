@@ -12,13 +12,13 @@
 
    &__input {
       font-family: inherit;
-      border: 1px solid var(--clr-main-1);
-      background: var(--clr-light-fade);
+      border: 1px solid var(--clr-light-1);
+      background: var(--clr-fade-light);
       border-radius: 100vmin;
       padding: 0 calc(var(--btn-size) / 2);
       outline: none;
       height: var(--btn-size);
-      color: var(--clr-main-1);
+      color: var(--clr-light-1);
       font-size: 1.25rem;
       font-weight: 400;
       flex: 1;
@@ -27,11 +27,11 @@
 
       &:hover,
       &:focus {
-         background: var(--clr-dark-fade);
+         background: var(--clr-fade-dark);
       }
 
       &::placeholder {
-         color: var(--clr-main-2);
+         color: var(--clr-light-2);
          opacity: 0.6;
          font-size: 1rem;
       }

@@ -8,21 +8,25 @@
 
 body {
    min-height: 100vh;
-   color: var(--clr-main-1);
+   color: var(--clr-light-1);
    font-family: var(--ff-main);
    font-weight: 400;
-   background: var(--clr-bg);
+   background: linear-gradient(
+      135deg,
+      var(--clr-bg-dark-1) 0%,
+      var(--clr-bg-dark-2) 100%
+   );
 }
 
 ::-webkit-scrollbar {
    width: 10px;
 
    &-track {
-      background: var(--clr-main-2);
+      background: var(--clr-light-2);
    }
 
    &-thumb {
-      background-color: var(--clr-dark-fade);
+      background-color: var(--clr-fade-dark);
       border-radius: 100vmin;
    }
 }
@@ -30,7 +34,7 @@ body {
 @supports (scrollbar-color: white white) {
    * {
       scrollbar-width: thin;
-      scrollbar-color: var(--clr-dark-fade) var(--clr-main-2);
+      scrollbar-color: var(--clr-fade-dark) var(--clr-light-2);
    }
 }
 

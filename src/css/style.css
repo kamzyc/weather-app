@@ -2,9 +2,9 @@
 :root {
   --ff-main: "Titillium Web", sans-serif;
   --hue: 192;
-  --clr-bg-1: hsl(var(--hue) 44% 35% / 0.8);
-  --clr-bg-2: hsl(var(--hue) 44% 24% / 1);
-  --clr-bg-3: hsl(var(--hue) 44% 18% / 1);
+  --clr-bg-1: hsl(var(--hue) 45% 35% / 0.8);
+  --clr-bg-2: hsl(var(--hue) 45% 24% / 1);
+  --clr-bg-3: hsl(var(--hue) 45% 18% / 1);
   --clr-bg-container: linear-gradient(
      to bottom,
      var(--clr-bg-1) 0%,
@@ -12,22 +12,18 @@
      var(--clr-bg-3) 80%
   );
   --clr-bg-dark-1: hsl(var(--hue) 5% 10% / 1);
-  --clr-bg-dark-2: hsl(var(--hue) 5% 5% / 1);
-  --clr-bg: linear-gradient(
-     136deg,
-     var(--clr-bg-dark-1) 0%,
-     var(--clr-bg-dark-2) 100%
-  );
-  --clr-main-1: hsl(var(--hue) 5% 90% / 1);
-  --clr-main-2: hsl(var(--hue) 5% 80% / 1);
-  --clr-dark-fade: hsl(var(--hue) 20% 10% / 0.5);
-  --clr-light-fade: hsl(var(--hue) 20% 10% / 0.3);
+  --clr-bg-dark-2: hsl(var(--hue) 5% 7% / 1);
+  --clr-light-1: hsl(var(--hue) 5% 90% / 1);
+  --clr-light-2: hsl(var(--hue) 5% 75% / 1);
   --clr-dark: hsl(var(--hue) 10% 10% / 1);
-  --clr-error: hsl(10 90% 35% / 1);
+  --clr-fade-dark: hsl(var(--hue) 20% 10% / 0.6);
+  --clr-fade-light: hsl(var(--hue) 20% 10% / 0.3);
+  --clr-error-1: hsl(0 91% 35% / 1);
+  --clr-error-2: hsl(5 91% 20% / 1);
   --btn-size: 3rem;
   --icon-size: 1rem;
-  --soft-border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
-  --hard-border: 2px solid var(--clr-main-2);
+  --soft-border: 1px solid hsl(var(--hue) 5% 90% / 0.3);
+  --hard-border: 2px solid var(--clr-light-2);
 }
 
 @keyframes entry {
@@ -50,27 +46,27 @@
 
 body {
   min-height: 100vh;
-  color: var(--clr-main-1);
+  color: var(--clr-light-1);
   font-family: var(--ff-main);
   font-weight: 400;
-  background: var(--clr-bg);
+  background: linear-gradient(135deg, var(--clr-bg-dark-1) 0%, var(--clr-bg-dark-2) 100%);
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--clr-main-2);
+  background: var(--clr-light-2);
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--clr-dark-fade);
+  background-color: var(--clr-fade-dark);
   border-radius: 100vmin;
 }
 
 @supports (scrollbar-color: white white) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--clr-dark-fade) var(--clr-main-2);
+    scrollbar-color: var(--clr-fade-dark) var(--clr-light-2);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -120,8 +116,8 @@ img {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--clr-main-2);
-  color: var(--clr-main-2);
+  border: 1px solid var(--clr-light-2);
+  color: var(--clr-light-2);
   border-radius: 50%;
   outline: none;
   background: transparent;
@@ -134,24 +130,24 @@ img {
   color: inherit;
 }
 .btn:hover, .btn:focus {
-  border-color: var(--clr-main-1);
-  color: var(--clr-main-1);
+  border-color: var(--clr-light-1);
+  color: var(--clr-light-1);
   transform: scale(1.1);
 }
 @supports selector(:focus-visible) {
   .btn:focus {
-    border-color: var(--clr-main-2);
-    color: var(--clr-main-2);
+    border-color: var(--clr-light-2);
+    color: var(--clr-light-2);
     transform: scale(1);
   }
   .btn:hover {
-    border-color: var(--clr-main-1);
-    color: var(--clr-main-1);
+    border-color: var(--clr-light-1);
+    color: var(--clr-light-1);
     transform: scale(1.1);
   }
   .btn:focus-visible {
-    border-color: var(--clr-main-1);
-    color: var(--clr-main-1);
+    border-color: var(--clr-light-1);
+    color: var(--clr-light-1);
     transform: scale(1.1);
     outline: var(--soft-border);
     outline-offset: 0.4em;
@@ -159,8 +155,8 @@ img {
   .btn--disabled:focus-visible {
     outline: none;
     transform: scale(1);
-    color: var(--clr-main-2);
-    border-color: var(--clr-main-2);
+    color: var(--clr-light-2);
+    border-color: var(--clr-light-2);
   }
 }
 .btn:active {
@@ -172,8 +168,8 @@ img {
 }
 @media (hover: none) {
   .btn {
-    border-color: var(--clr-main-1);
-    color: var(--clr-main-1);
+    border-color: var(--clr-light-1);
+    color: var(--clr-light-1);
   }
   .btn:hover, .btn:focus {
     transform: none;
@@ -258,8 +254,8 @@ img {
   transform: translateX(-50%);
 }
 .status__error {
-  background: var(--clr-error);
-  color: var(--clr-main-1);
+  background: linear-gradient(to bottom, var(--clr-error-1) 0%, var(--clr-error-2) 100%);
+  color: var(--clr-light-1);
   font-weight: 300;
   font-size: 0.85rem;
   text-align: center;
@@ -352,13 +348,13 @@ img {
 }
 .search__input {
   font-family: inherit;
-  border: 1px solid var(--clr-main-1);
-  background: var(--clr-light-fade);
+  border: 1px solid var(--clr-light-1);
+  background: var(--clr-fade-light);
   border-radius: 100vmin;
   padding: 0 calc(var(--btn-size) / 2);
   outline: none;
   height: var(--btn-size);
-  color: var(--clr-main-1);
+  color: var(--clr-light-1);
   font-size: 1.25rem;
   font-weight: 400;
   flex: 1;
@@ -366,10 +362,10 @@ img {
   transition: background 0.2s;
 }
 .search__input:hover, .search__input:focus {
-  background: var(--clr-dark-fade);
+  background: var(--clr-fade-dark);
 }
 .search__input::placeholder {
-  color: var(--clr-main-2);
+  color: var(--clr-light-2);
   opacity: 0.6;
   font-size: 1rem;
 }
@@ -441,7 +437,7 @@ img {
 .navbar {
   width: 100%;
   padding-block: 2rem;
-  background-color: var(--clr-dark-fade);
+  background-color: var(--clr-fade-dark);
   position: relative;
   border-top: var(--hard-border);
   border-bottom: var(--hard-border);
@@ -482,7 +478,7 @@ img {
   position: absolute;
   inset: 0;
   transition: 0.4s;
-  background-color: var(--clr-dark-fade);
+  background-color: var(--clr-fade-dark);
   outline: var(--hard-border);
   border-right: none;
   border-top-left-radius: calc(var(--track-width) / 2);
@@ -495,28 +491,28 @@ img {
   height: var(--thumb-size);
   left: calc(var(--thumb-offset));
   bottom: calc(var(--thumb-offset));
-  background-color: var(--clr-main-2);
+  background-color: var(--clr-light-2);
   border-radius: 50%;
   transition: transform var(--transition-time), background-color var(--transition-time);
 }
 @media (hover: none) {
   .navbar__units .slider:before {
-    background-color: var(--clr-main-1);
+    background-color: var(--clr-light-1);
   }
 }
 .navbar__units input:focus + .slider::before,
 .navbar__units input:hover + .slider::before {
-  background: var(--clr-main-1);
+  background: var(--clr-light-1);
 }
 @supports selector(:focus-visible) {
   .navbar__units input:focus + .slider::before {
-    background: var(--clr-main-2);
+    background: var(--clr-light-2);
   }
   .navbar__units input:hover + .slider::before {
-    background: var(--clr-main-1);
+    background: var(--clr-light-1);
   }
   .navbar__units input:focus-visible + .slider {
-    box-shadow: 0 0 0 2px var(--clr-main-1);
+    box-shadow: 0 0 0 2px var(--clr-light-1);
     outline: var(--soft-border);
     outline-offset: 0.4em;
   }
@@ -544,11 +540,11 @@ img {
   bottom: calc(var(--thumb-offset));
 }
 .navbar__units .f {
-  color: var(--clr-main-2);
+  color: var(--clr-light-2);
   top: var(--thumb-offset);
 }
 .navbar__units input:checked ~ .c {
-  color: var(--clr-main-2);
+  color: var(--clr-light-2);
 }
 .navbar__units input:checked ~ .f {
   color: var(--clr-bg-dark-1);
@@ -566,7 +562,7 @@ img {
   margin-inline: var(--gap);
 }
 .hourly ::-webkit-scrollbar-thumb {
-  background-color: var(--clr-dark-fade);
+  background-color: var(--clr-fade-light);
   border-radius: 100vmin;
 }
 .hourly .hourly__panel {

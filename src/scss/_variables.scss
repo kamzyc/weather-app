@@ -1,13 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap");
 
 :root {
+   //------------FONTS-----------
    --ff-main: "Titillium Web", sans-serif;
 
+   //------------COLORS-----------
    --hue: 192;
 
-   --clr-bg-1: hsl(var(--hue) 44% 35% / 0.8);
-   --clr-bg-2: hsl(var(--hue) 44% 24% / 1);
-   --clr-bg-3: hsl(var(--hue) 44% 18% / 1);
+   // container background colors (3 colors for gradient)
+   --clr-bg-1: hsl(var(--hue) 45% 35% / 0.8);
+   --clr-bg-2: hsl(var(--hue) 45% 24% / 1);
+   --clr-bg-3: hsl(var(--hue) 45% 18% / 1);
 
    --clr-bg-container: linear-gradient(
       to bottom,
@@ -16,29 +19,32 @@
       var(--clr-bg-3) 80%
    );
 
+   // body background colors
    --clr-bg-dark-1: hsl(var(--hue) 5% 10% / 1);
-   --clr-bg-dark-2: hsl(var(--hue) 5% 5% / 1);
+   --clr-bg-dark-2: hsl(var(--hue) 5% 7% / 1);
 
-   --clr-bg: linear-gradient(
-      136deg,
-      var(--clr-bg-dark-1) 0%,
-      var(--clr-bg-dark-2) 100%
-   );
+   // main colors (white)
+   --clr-light-1: hsl(var(--hue) 5% 90% / 1);
+   --clr-light-2: hsl(var(--hue) 5% 75% / 1);
 
-   --clr-main-1: hsl(var(--hue) 5% 90% / 1);
-   --clr-main-2: hsl(var(--hue) 5% 80% / 1);
-
-   --clr-dark-fade: hsl(var(--hue) 20% 10% / 0.5);
-   --clr-light-fade: hsl(var(--hue) 20% 10% / 0.3);
-
+   // main color (dark
    --clr-dark: hsl(var(--hue) 10% 10% / 1);
-   --clr-error: hsl(10 90% 35% / 1);
 
+   // fade colors (with a little of transparency)
+   --clr-fade-dark: hsl(var(--hue) 20% 10% / 0.6);
+   --clr-fade-light: hsl(var(--hue) 20% 10% / 0.3);
+
+   // red colors (for error)
+   --clr-error-1: hsl(0 91% 35% / 1);
+   --clr-error-2: hsl(5 91% 20% / 1);
+
+   //------------SIZES-----------
    --btn-size: 3rem;
    --icon-size: 1rem;
 
-   --soft-border: 1px solid hsl(var(--hue) 5% 95% / 0.3);
-   --hard-border: 2px solid var(--clr-main-2);
+   //------------BORDERS----------
+   --soft-border: 1px solid hsl(var(--hue) 5% 90% / 0.3);
+   --hard-border: 2px solid var(--clr-light-2);
 }
 
 // breakpoints
@@ -55,10 +61,6 @@ $bp-xs: 800px;
 @mixin boxSize($value) {
    width: $value;
    height: $value;
-}
-
-@mixin border($type, $side) {
-   border-#{$side}: $type;
 }
 
 @mixin mq($breakpoint) {
