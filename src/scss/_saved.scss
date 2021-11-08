@@ -1,37 +1,33 @@
 .saved {
-   --width: 30rem;
+   --panel-width: 30rem;
+   --panel-height: 30rem;
    position: absolute;
-   left: -30rem;
-   width: var(--width);
-   height: 100vh;
+   top: 0;
+   left: calc(-1 * var(--panel-width));
+   width: var(--panel-width);
+   // max-width: calc(100vw - var(--btn-size));
+   height: var(--panel-height);
    background-color: red;
-   border: 1px solid var(--clr-main-1);
-   background-color: var(--clr-main-1);
+   border: 2px solid currentColor;
+   border-left: none;
+   border-top: none;
+   border-bottom-right-radius: 20px;
+   background: var(--clr-dark);
+   transition: transform 1s ease;
    z-index: 99;
-   transition: all 1s;
 
    &__btn {
       position: absolute;
-      top: 10%;
-      left: var(--width);
-
+      right: calc(-1 * var(--btn-size));
+      top: 5rem;
+      border: 2px solid currentColor;
       border-left: none;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
 
-      &::before {
-         content: "";
-         position: absolute;
-         background-color: red;
-         width: 5px;
-         top: 0;
-         // left: -6px;
-         height: var(--btn-size);
-      }
-
       &:hover,
       &:focus {
-         transform: scale(1) translateX(5px);
+         transform: scale(1);
       }
 
       @supports selector(:focus-visible) {
@@ -40,11 +36,11 @@
          }
 
          &:hover {
-            transform: scale(1) translateX(5px);
+            transform: scale(1);
          }
 
          &:focus-visible {
-            transform: scale(1) translateX(5px);
+            transform: scale(1);
          }
       }
 
@@ -55,7 +51,7 @@
          }
 
          &:active {
-            transform: translateX(5px);
+            transform: translateY(0);
          }
       }
    }

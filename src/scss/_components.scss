@@ -123,46 +123,31 @@
    display: none;
 }
 
-.bg-clouds,
-.bg-rain,
-.bg-night,
-.bg-day,
-.bg-snow,
-.bg-thunderstorm,
-.bg-mist {
-   --img-name: url("../imgs/bg/clouds.jpg");
-   background: var(--clr-bg-container), var(--img-name) no-repeat;
-   background-size: cover;
-}
+.overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 10;
+   width: 100%;
+   height: 100%;
+   background-color: var(--clr-dark);
+   opacity: 0.9;
 
-.bg-clouds {
-   --img-name: url("../imgs/bg/clouds.jpg");
-}
+   transition: opacity 1s ease;
+   // animation: fadeIn 1s ease;
 
-.bg-rain {
-   --img-name: url("../imgs/bg/rain.jpg");
-}
+   @supports (backdrop-filter: none) {
+      backdrop-filter: blur(5px);
+   }
 
-.bg-night {
-   --img-name: url("../imgs/bg/night.jpg");
-}
-
-.bg-day {
-   --img-name: url("../imgs/bg/day.jpg");
-}
-
-.bg-snow {
-   --img-name: url("../imgs/bg/snow.jpg");
-}
-
-.bg-thunderstorm {
-   --img-name: url("../imgs/bg/thunderstorm.jpg");
-   background-size: auto;
-}
-
-.bg-mist {
-   --img-name: url("../imgs/bg/mist.jpg");
-   background-size: auto;
+   @keyframes fadeIn {
+      0% {
+         opacity: 0;
+      }
+      100% {
+         opacity: 1;
+      }
+   }
 }
 
 .status {
@@ -207,4 +192,46 @@
    clip: rect(0, 0, 0, 0);
    white-space: nowrap;
    border: 0;
+}
+
+.bg-clouds,
+.bg-rain,
+.bg-night,
+.bg-day,
+.bg-snow,
+.bg-thunderstorm,
+.bg-mist {
+   --img-name: url("../imgs/bg/clouds.jpg");
+   background: var(--clr-bg-container), var(--img-name) no-repeat;
+   background-size: cover;
+}
+
+.bg-clouds {
+   --img-name: url("../imgs/bg/clouds.jpg");
+}
+
+.bg-rain {
+   --img-name: url("../imgs/bg/rain.jpg");
+}
+
+.bg-night {
+   --img-name: url("../imgs/bg/night.jpg");
+}
+
+.bg-day {
+   --img-name: url("../imgs/bg/day.jpg");
+}
+
+.bg-snow {
+   --img-name: url("../imgs/bg/snow.jpg");
+}
+
+.bg-thunderstorm {
+   --img-name: url("../imgs/bg/thunderstorm.jpg");
+   background-size: auto;
+}
+
+.bg-mist {
+   --img-name: url("../imgs/bg/mist.jpg");
+   background-size: auto;
 }

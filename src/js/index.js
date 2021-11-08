@@ -11,6 +11,7 @@ import * as view from "./views/view";
 
 //!
 const savedPanel = document.querySelector(".saved");
+const overlay = document.querySelector(".overlay");
 
 function init() {
    // add handlers
@@ -28,16 +29,26 @@ function init() {
    // simulate click on geo btn
    view.geoBtn.click();
 
-   //! saved panel test
    const savedBtn = document.querySelector(".saved__btn");
    savedBtn.addEventListener("click", savedPanelHandler);
 }
+//! saved panel test
+let show = false;
 
 const savedPanelHandler = () => {
-   console.log("CLicked!");
-   DOMCreator.addStyles(savedPanel, {
-      transform: `translateX(30rem)`,
-   });
+   // !clicked
+   if (show) {
+      DOMCreator.addStyles(savedPanel, {
+         transform: "translateX(30rem)",
+      });
+      DOMCreator.removeClasses(overlay, "hidden");
+   } else {
+      DOMCreator.addStyles(savedPanel, {
+         transform: "translateX(0)",
+      });
+      DOMCreator.addClasses(overlay, "hidden");
+   }
+   show = !show;
 };
 
 const searchHandler = async (event) => {
