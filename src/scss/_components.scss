@@ -89,7 +89,7 @@
    margin-inline: 1rem;
 
    &__title {
-      font-size: 1.5rem;
+      font-size: var(--fs-l);
       font-weight: var(--fw-s);
       grid-row: 1 / 1;
       grid-column: 1 / -1;
@@ -105,7 +105,7 @@
    }
 
    &__text {
-      font-size: 1.15rem;
+      font-size: var(--fs-s);
       .name {
          text-transform: capitalize;
       }
@@ -161,7 +161,7 @@
          var(--clr-error-2) 100%
       );
       color: var(--clr-light-1);
-      font-size: 0.85rem;
+      font-size: var(--fs-xxs);
       text-align: center;
       border-radius: 100vmin;
       padding: 0.25em 1em;

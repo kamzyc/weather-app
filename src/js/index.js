@@ -39,7 +39,7 @@ const savedPanelHandler = () => {
    // !clicked
    if (show) {
       DOMCreator.addStyles(savedPanel, {
-         transform: "translateX(30rem)",
+         transform: "translateX(90%)",
       });
       DOMCreator.removeClasses(overlay, "hidden");
    } else {

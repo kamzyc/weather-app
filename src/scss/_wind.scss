@@ -4,7 +4,7 @@
    }
 
    &__arrow {
-      font-size: 5rem;
+      font-size: var(--fs-arrow);
       justify-self: center;
    }
 }

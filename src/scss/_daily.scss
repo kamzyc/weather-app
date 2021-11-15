@@ -24,7 +24,7 @@
    }
 
    &__time {
-      font-size: 1.25rem;
+      font-size: var(--fs-m);
       width: 10ch;
    }
 
@@ -35,7 +35,7 @@
    }
 
    &__min-max {
-      font-size: 1.25rem;
+      font-size: var(--fs-m);
       text-align: right;
       .min {
          font-weight: var(--fw-s);

@@ -121,10 +121,6 @@ const setBg = ({ id }, { currentDate, sunrise, sunset }) => {
 
 //////////////////////////////////////////////////////////////////////////////////////////
 export const updateView = (location, timeData, weather, hourly, daily) => {
-   clearStatus();
-   DOMCreator.removeClasses(syncBtn, "btn--disabled");
-   DOMCreator.removeClasses(unitsSwitcher, "btn--disabled");
-
    // create elements
    const mainWeatherElement = createMainWeatherElement(
       location,
@@ -144,6 +140,11 @@ export const updateView = (location, timeData, weather, hourly, daily) => {
       windContainer,
       comfortLevelContainer,
    ]);
+
+   // clear status
+   clearStatus();
+   DOMCreator.removeClasses(syncBtn, "btn--disabled");
+   DOMCreator.removeClasses(unitsSwitcher, "btn--disabled");
 
    // update bg
    setBg(weather, timeData);

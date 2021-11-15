@@ -10,12 +10,12 @@
    }
 
    &__location {
-      font-size: 1.5rem;
+      font-size: var(--fs-l);
       font-weight: inherit;
    }
 
    &__date {
-      font-size: 1rem;
+      font-size: var(--fs-xs);
       font-weight: var(--fw-s);
    }
 
@@ -30,7 +30,7 @@
    &__temp {
       grid-column: 1 / span 1;
       grid-row: 1 / span 1;
-      font-size: 7rem;
+      font-size: var(--fs-main-temp);
       font-weight: var(--fw-l);
    }
 
@@ -47,13 +47,13 @@
    &__description {
       grid-column: 1 / -1;
       grid-row: 2 / span 1;
-      font-size: 1.75rem;
+      font-size: var(--fs-xl);
    }
 
    &__min-max {
       grid-column: 1 / -1;
       grid-row: 3 / span 1;
-      font-size: 1.25rem;
+      font-size: var(--fs-m);
 
       .min {
          font-weight: var(--fw-s);

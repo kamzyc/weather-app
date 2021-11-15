@@ -103,6 +103,7 @@
          position: absolute;
          left: var(--thumb-offset);
          transition: color var(--transition-time) 0.1s;
+         font-size: var(--fs-xs);
          @include boxSize(var(--thumb-size));
          @include flexCenter;
       }
